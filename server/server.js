@@ -4,7 +4,9 @@ var express = require('express')
   , server = http.createServer(app)
   , io = require('socket.io').listen(server);
 
-app.use(express.static(__dirname));
+app.use("/Bootstrap", express.static(__dirname + "/bower_components/"));
+app.use(express.static(__dirname + "/public"));
+app.use("/Templates", express.static(__dirname + "/Templates"));
 server.listen(8080);
 
 var _collectionName = "MesDB";
@@ -14,6 +16,12 @@ var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
 // Connection URL. This is where your mongodb server is running.
 var url = 'mongodb://localhost:27017/MesDB';
+
+// send the basic html (no attention to screen id..)
+// http://localhost:8080/display?screen=1
+app.get('/Edit', function (req, res) {
+    res.sendFile(__dirname + "/Views/Edit.html");
+});
 
 // send the basic html (no attention to screen id..)
 // http://localhost:8080/display?screen=1

@@ -24,8 +24,8 @@ var data = [
             "text10": ""
         },
         "img": {
-            "image1": "public/images/bannerO.jpg",
-            "image2": "public/images/bannerB.jpg",
+            "image1": "/images/bannerO.jpg",
+            "image2": "/images/bannerB.jpg",
             "image3": "",
             "image4": "",
             "image5": ""
@@ -58,8 +58,8 @@ var data = [
             "text10": ""
         },
         "img": {
-            "image1": "public/images/bannerO.jpg",
-            "image2": "public/images/bannerB.jpg",
+            "image1": "/images/bannerO.jpg",
+            "image2": "/images/bannerB.jpg",
             "image3": "",
             "image4": "",
             "image5": ""
@@ -100,7 +100,7 @@ var data = [
             "text10": "In household certainty an on tolerably smallness difficult. Many no each like up be is next neat."
         },
         "img": {
-            "image1": "public/images/bannerG.jpg",
+            "image1": "/images/bannerG.jpg",
             "image2": "",
             "image3": "",
             "image4": "",
@@ -202,8 +202,8 @@ var data = [
             "text10": ""
         },
         "img": {
-            "image1": "public/images/bannerB.jpg",
-            "image2": "public/images/bannerG.jpg",
+            "image1": "/images/bannerB.jpg",
+            "image2": "/images/bannerG.jpg",
             "image3": "",
             "image4": "",
             "image5": ""
