@@ -5,6 +5,6 @@ start cmd /k c:\mongodb\bin\mongod.exe
 
 timeout 5
 @echo *** Start node server ***
-start cmd /k node server\init.js
+start cmd /k node server\DatabaseInitialize.js
 
 @PAUSE

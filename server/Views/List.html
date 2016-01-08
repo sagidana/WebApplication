@@ -1,17 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
-<head ng-app>
+<html lang="en" ng-app="MessagesApp.List">
+<head>
 
-    <script src="../angular/angular.js"></script>
-    <script src="../angular/angular-route.js"></script>
+    <script src="../public/javascripts/angular/angular.js"></script>
+    <script src="../public/javascripts/angular/angular-route.js"></script>
+    <script type="text/javascript" src="../public/javascripts/display.js"></script>
+    <script type="text/javascript" src="../public/javascripts/jquery.js"></script>
+    <script type="text/javascript" src="../public/javascripts/socket.io-client/socket.io.js"></script>
+    <script type="text/javascript" src="../public/javascripts/App.js"></script>
+    <script type="text/javascript" src="../public/javascripts/List.js"></script>
 
     <meta charset="UTF-8">
     <title>Messages list</title>
 </head>
 
 <body ng-controller="ListCtrl">
-
-
+Messages:
+<div ng-repeat="Message in Messages">
+    <b>Name:</b> {{Message.name}}
+    <div id="MainContainer">
+        <div class="FullLine">
+            <div class="text">
+                <b>Text 1: </b>
+                {{Message.text.text1}}
+            </div>
+            <div class="text">
+                <b>Text 2:</b>
+                {{Message.text.text2}}
+            </div>
+            <div class="text">
+                <b>Text 3:</b>
+                {{Message.text.text3}}
+            </div>
+            <div class="text">
+                <b>Text 4:</b>
+                {{Message.text.text4}}
+            </div>
+            <div class="text">
+                <b>Text 5:</b>
+                {{Message.text.text5}}
+            </div>
+            <div class="text">
+                <b>Text 6:</b>
+                {{Message.text.text6}}
+            </div>
+            <div class="text">
+                <b>Text 7:</b>
+                {{Message.text.text7}}
+            </div>
+            <div class="text">
+                <b>Text 8:</b>
+                {{Message.text.text8}}
+            </div>
+            <div class="text">
+                <b>Text 9:</b>
+                {{Message.text.text9}}
+            </div>
+            <div class="text">
+                <b>Text 10:</b>
+                {{Message.text.text10}}
+            </div>
+            <div class="text">
+                <b>Image 1:</b>
+                {{Message.img.image1}}
+            </div>
+            <div class="text">
+                <b>Image 2:</b>
+                {{Message.img.image2}}
+            </div>
+            <div class="text">
+                <b>Image 3:</b>
+                {{Message.img.image3}}
+            </div>
+            <div class="text">
+                <b>Image 4:</b>
+                {{Message.img.image4}}
+            </div>
+            <div class="text">
+                <b>Image 5:</b>
+                {{Message.img.image5}}
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 

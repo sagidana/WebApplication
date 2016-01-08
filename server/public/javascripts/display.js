@@ -158,7 +158,7 @@ function CheckTime(Time) {
 // .load() and activate text and img replace
 function ShowMes(mes) {
 
-    $("#pageTemplate").load(mes.template, function () {
+    $("#pageTemplate").load('Templates/' + mes.template, function () {
         addText(mes.text);
         addImage(mes.img);
     });

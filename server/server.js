@@ -18,7 +18,6 @@ var url = 'mongodb://localhost:27017/MesDB';
 // send the basic html (no attention to screen id..)
 // http://localhost:8080/display?screen=1
 app.get('/List', function (req, res) {
-    console.log("display: " + req.query.screen);
     res.sendFile(__dirname + "/Views/List.html");
 });
 
@@ -26,19 +25,26 @@ app.get('/List', function (req, res) {
 // http://localhost:8080/display?screen=1
 app.get('/display', function (req, res) {
     console.log("display: " + req.query.screen);
-    res.sendFile(__dirname + "/Main.html");
+    res.sendFile(__dirname + "/Views/Display.html");
 });
 
 // allow the user to add a Mes to screen i
 // http://localhost:8080/update?screen=1
 app.get('/update', function (req, res) {
     console.log("display: " + req.query.screen);
-    res.sendFile(__dirname + "/Update.html");
+    res.sendFile(__dirname + "/Views/Update.html");
 });
+
 
 // after the user get the basic html, a get request is send with the screen id
 io.sockets.on('connection', function (socket) {
 
+    socket.on('askMessages',function(){
+        getMessages(function (result) {
+            var data = result;
+            socket.emit('getMessages', data);
+        });
+    });
     // the server will get the data from DB and send back to user as 'result'
     socket.on('getdata', function (screenId) {
 
@@ -64,7 +70,6 @@ io.sockets.on('connection', function (socket) {
     });
 }); // sock.on
 
-
 function addMesToDb(message, screenId, callback) {
     MongoClient.connect(url, function (err, db) {
         if (err) {
@@ -88,6 +93,31 @@ function addMesToDb(message, screenId, callback) {
         }
     });
 };
+
+function getMessages(callback) {
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+
+        var collection = db.collection(_collectionName);
+        collection.find().toArray(function (err, result) {
+
+            if (err) {
+                console.log("Error: " + err);
+
+            } else if (result.length) {
+                console.log("Sending result");
+                callback(result);
+            } else {
+                console.log("No document(s) found");
+            }
+
+            db.close();
+        });
+    });
+};
+
 function getDataFromDb(screenId, callback) {
     MongoClient.connect(url, function (err, db) {
         if (err) {
@@ -96,7 +126,7 @@ function getDataFromDb(screenId, callback) {
         // add else
         var collection = db.collection(_collectionName);
         //console.log("Connected to Database");
-
+        console.log(screenId);
         collection.find({ screen: screenId }).toArray(function (err, result) {
             if (err) {
                 console.log("Error: " + err);
