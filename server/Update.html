@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Update</title>
+    <link rel="stylesheet" type="text/css" href="public/stylesheets/Display.css" />
+    <script type="text/javascript" src="public/javascripts/display.js"></script>
+    <script type="text/javascript" src="public/javascripts/jquery.js"></script>
+    <script type="text/javascript" src="public/javascripts/jquery.serialize-object.min.js"></script>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script type="text/javascript">
+        var TFsize = 1;
+        var message = {};
+        var text = {};
+        var img = {};
+        var TimeFrame = [];
+        TimeFrame[TFsize - 1] = {};
+        var days = [];
+        var screen = [];
+
+
+        var screenId = getParameterByName('screen');
+        console.log('screen: ' + screenId);
+        var socket = io.connect('http://localhost:8080');
+
+        $(function () {
+            message = {};
+            text = {};
+            img = {};
+            days = [];
+            
+            // when the client clicks SEND
+            $("#datasend").click(function () {
+
+                message['name'] = $("#name").val();
+
+                $("#Form #Text").find("input").each(function () {
+                    if (this.tagName.toUpperCase() === "INPUT") {
+                        text[this.name] = $(this).val();
+                    }
+                });
+                message['text'] = text;
+
+                $("#Form #IMG").find("input").each(function () {
+                    if (this.tagName.toUpperCase() === "INPUT") {
+                        img[this.name] = $(this).val();
+                    }
+                });
+                message['img'] = img;
+
+                message['template'] = $("#template").val();
+                message['dispTimeSec'] = $("#dispTimeSec").val() * 1000;
+
+                for (var i = 0; i < TFsize; i++) {
+                    days = [];
+
+                    $("#Form #TimeFrame" + i).find("input").each(function () {
+                        if (this.tagName.toUpperCase() === "INPUT") {
+                            TimeFrame[i][this.name] = $(this).val();
+                        }
+                    });
+
+                    // checked
+                    $("#Form #TimeFrame #TimeFrame" + i + " input:checked").each(function () {
+                        days.push($(this).val());
+                    });
+                    TimeFrame[i]['days'] = days;
+                }
+                message['TimeFrame'] = TimeFrame;
+
+                message['screen'] = $('#screen').val();
+
+                //console.log(JSON.stringify(message));
+                socket.emit('update', message, screenId);
+               
+
+            });
+
+            $("#addTF").click(function () { addTF(); });
+        }); // on load
+
+        // add more Time Frame option
+        function addTF() {
+            TFsize++;
+            TimeFrame[TFsize - 1] = {};
+            console.log("TFsize", TFsize - 1);
+            $("#TimeFrame").append('<div id="TimeFrame' + (TFsize - 1) + '">From date: <input type="date" id="FromDate" name="FromDate" />To date: <input type="date" id="ToDate" name="ToDate" /><input type="checkbox" id="days" name="days" value="0" />sunday<input type="checkbox" id="days" name="days" value="1" />monday<input type="checkbox" id="days" name="days" value="2" />tuesday<input type="checkbox" id="days" name="days" value="3" />wednesday<input type="checkbox" id="days" name="days" value="4" />thursday<input type="checkbox" id="days" name="days" value="5" />friday<input type="checkbox" id="days" name="days" value="6" />saturday From time: <input type="time" id="FromTime" name="FromTime" />To time: <input type="time" id="ToTime" name="ToTime" /></div>');
+        };
+
+    </script>
+</head>
+<body>
+
+    <div id="Form">
+        <p>name: <input type="text" id="name" name="name" value="name" /></p>
+        <div id="Text">
+            <p>text1: <input type="text" id="text1" name="text1" value="text1" /></p>
+            <p>text2: <input type="text" id="text2" name="text2" value="text2" /></p>
+            <p>text3: <input type="text" id="text3" name="text3" value="text3" /></p>
+            <p>text4: <input type="text" id="text4" name="text4" value="text4" /></p>
+            <p>text5: <input type="text" id="text5" name="text5" value="text5" /></p>
+            <p>text6: <input type="text" id="text6" name="text6" value="text6" /></p>
+            <p>text7: <input type="text" id="text7" name="text7" value="text7" /></p>
+            <p>text8: <input type="text" id="text8" name="text2" value="text2" /></p>
+            <p>text9: <input type="text" id="text9" name="text9" value="text9" /></p>
+            <p>text10: <input type="text" id="text10" name="text10" value="text10" /></p>
+        </div>
+        <div id="IMG">
+            *Full path needed
+            <p>img1: <input type="text" id="image3" name="image1" value="image1" /></p>
+            <p>img2: <input type="text" id="image3" name="image2" value="image2" /></p>
+            <p>img3: <input type="text" id="image3" name="image3" value="image3" /></p>
+            <p>img4: <input type="text" id="image3" name="image4" value="image4" /></p>
+            <p>img5: <input type="text" id="image3" name="image5" value="image5" /></p>
+        </div>
+        <p>template:  <input type="text" id="template" name="template" value="tempA.html"/></p>
+        <p>dispTimeSec:  <input type="text" id="dispTimeSec" name="dispTimeSec" value="6"/>sec</p>
+
+        <div id="TimeFrame">
+            TimeFrame:
+            <input type="button" id="addTF" value="add more" />
+            <br />
+
+            <div id="TimeFrame0">
+                From date: <input type="date" id="FromDate" name="FromDate" />
+                To date: <input type="date" id="ToDate" name="ToDate" />
+                <input type="checkbox" id="days" name="days" value="0" />sunday
+                <input type="checkbox" id="days" name="days" value="1" />monday
+                <input type="checkbox" id="days" name="days" value="2" />tuesday
+                <input type="checkbox" id="days" name="days" value="3" />wednesday
+                <input type="checkbox" id="days" name="days" value="4" />thursday
+                <input type="checkbox" id="days" name="days" value="5" />friday
+                <input type="checkbox" id="days" name="days" value="6" />saturday
+                From time: <input type="time" id="FromTime" name="FromTime" />
+                To time: <input type="time" id="ToTime" name="ToTime" />
+            </div>
+
+
+        </div>
+
+        <p>
+            screen:
+            <select id="screen" name="screen" multiple=multiple>
+                <option value="-1">-1</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+            </select>
+        </p>
+        <p><input type="button" id="datasend" value="send" /></p>
+    </div>
+</body>
+</html>

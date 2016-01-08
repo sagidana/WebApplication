@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Display</title>
+    <link rel="stylesheet" type="text/css" href="public/stylesheets/Display.css" />
+    <script type="text/javascript" src="public/javascripts/display.js"></script>
+    <script type="text/javascript" src="public/javascripts/jquery.js"></script>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script type="text/javascript">
+
+
+        var screenId = getParameterByName('screen');
+        console.log('screen: ' + screenId);
+
+        var socket = io.connect('http://localhost:8080');
+
+        // on connection to server, ask for user's name with an anonymous callback
+        socket.on('connect', function () {
+            socket.emit('getdata', screenId);
+
+        });
+
+        socket.on('displayData', function (data) {
+            //console.log("data:"+data);
+            _Messages = data;
+            _ON = true;
+            StartCycle();
+
+        });
+        socket.on('updateData', function (result) {
+            //console.log("updateData:"+ JSON.stringify(result)+"\n\n\n");
+            _Messages = result;
+            if (!_ON)
+                StartCycle(_Messages);
+
+        });
+    </script>
+</head>
+<body>
+    <div id="pageTemplate">
+
+    </div>
+</body>
+</html>
