@@ -7,6 +7,7 @@
     <script type="text/javascript" src="javascripts/display.js"></script>
     <script type="text/javascript" src="/javascripts/jquery.js"></script>
     <script type="text/javascript" src="/javascripts/socket.io-client/socket.io.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.tmpl.js"></script>
     <script type="text/javascript" src="/javascripts/App.js"></script>
     <script type="text/javascript" src="/javascripts/List.js"></script>
 
@@ -15,70 +16,27 @@
 </head>
 
 <body ng-controller="ListCtrl">
-Messages:
-<div ng-repeat="Message in Messages">
-    <b>Name:</b> {{Message.name}}
+<H1><B>Search:</B></H1>
+<label>Any: <input ng-model="search.$"></label>
+<label>Name: <input ng-model="search.name"></label>
+<label>text: <input ng-model="search.text"></label>
+<br/>
+<H2><B>Messages:</B></H2>
+<div ng-repeat="Message in Messages | filter:search">
+
+    <p style="font-size:20px">Name: {{Message.name}}</p>
+
     <div id="MainContainer">
         <div class="FullLine">
-            <div class="text">
-                <b>Text 1: </b>
-                {{Message.text.text1}}
+
+            <p style="font-size:20px">Texts:</p>
+            <div class="list-group" ng-repeat="Text in Message.text">
+                <p style="font-size:15px">{{Text}}</p>
             </div>
-            <div class="text">
-                <b>Text 2:</b>
-                {{Message.text.text2}}
-            </div>
-            <div class="text">
-                <b>Text 3:</b>
-                {{Message.text.text3}}
-            </div>
-            <div class="text">
-                <b>Text 4:</b>
-                {{Message.text.text4}}
-            </div>
-            <div class="text">
-                <b>Text 5:</b>
-                {{Message.text.text5}}
-            </div>
-            <div class="text">
-                <b>Text 6:</b>
-                {{Message.text.text6}}
-            </div>
-            <div class="text">
-                <b>Text 7:</b>
-                {{Message.text.text7}}
-            </div>
-            <div class="text">
-                <b>Text 8:</b>
-                {{Message.text.text8}}
-            </div>
-            <div class="text">
-                <b>Text 9:</b>
-                {{Message.text.text9}}
-            </div>
-            <div class="text">
-                <b>Text 10:</b>
-                {{Message.text.text10}}
-            </div>
-            <div class="text">
-                <b>Image 1:</b>
-                {{Message.img.image1}}
-            </div>
-            <div class="text">
-                <b>Image 2:</b>
-                {{Message.img.image2}}
-            </div>
-            <div class="text">
-                <b>Image 3:</b>
-                {{Message.img.image3}}
-            </div>
-            <div class="text">
-                <b>Image 4:</b>
-                {{Message.img.image4}}
-            </div>
-            <div class="text">
-                <b>Image 5:</b>
-                {{Message.img.image5}}
+
+            <p style="font-size:20px">Images:</p>
+            <div class="list-group" ng-repeat="Image in Message.images">
+                <p style="font-size:15px">{{Image}}</p>
             </div>
         </div>
     </div>

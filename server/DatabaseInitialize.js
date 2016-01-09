@@ -11,28 +11,19 @@ var url = 'mongodb://localhost:27017/MesDB';
 var data = [
     {
         "name": "init",
-        "text": {
-            "text1": "This is the title of the page",
-            "text2": "Sudden she seeing garret far regard. By hardly it direct if pretty up regret.",
-            "text3": "Ability thought enquire settled prudent you sir. Or easy knew sold on well come year.",
-            "text4": "Something consulted age extremely end procuring. Collecting preference he inquietude projection me in by.",
-            "text5": "",
-            "text6": "",
-            "text7": "",
-            "text8": "",
-            "text9": "",
-            "text10": ""
-        },
-        "img": {
-            "image1": "/images/bannerO.jpg",
-            "image2": "/images/bannerB.jpg",
-            "image3": "",
-            "image4": "",
-            "image5": ""
-        },
+        "text": [
+            "This is the title of the page",
+            "Sudden she seeing garret far regard. By hardly it direct if pretty up regret.",
+            "Ability thought enquire settled prudent you sir. Or easy knew sold on well come year.",
+            "Something consulted age extremely end procuring. Collecting preference he inquietude projection me in by."
+        ],
+        "images": [
+            "/images/bannerO.jpg",
+            "/images/bannerB.jpg"
+        ],
         "template": "tempA.html",
         "dispTimeSec": "10",
-        "TimeFreame": [
+        "TimeFrame": [
             {
                 "FromDate": "1.1.2015",
                 "ToDate": "12.31.2016",
@@ -45,28 +36,19 @@ var data = [
     },
     {
         "name": "mes1",
-        "text": {
-            "text1": "This is the title of the page",
-            "text2": "Sudden she seeing garret far regard. By hardly it direct if pretty up regret.",
-            "text3": "Ability thought enquire settled prudent you sir. Or easy knew sold on well come year.",
-            "text4": "Something consulted age extremely end procuring. Collecting preference he inquietude projection me in by.",
-            "text5": "",
-            "text6": "",
-            "text7": "",
-            "text8": "",
-            "text9": "",
-            "text10": ""
-        },
-        "img": {
-            "image1": "/images/bannerO.jpg",
-            "image2": "/images/bannerB.jpg",
-            "image3": "",
-            "image4": "",
-            "image5": ""
-        },
+        "text": [
+            "This is the title of the page",
+            "Sudden she seeing garret far regard. By hardly it direct if pretty up regret.",
+            "Ability thought enquire settled prudent you sir. Or easy knew sold on well come year.",
+            "Something consulted age extremely end procuring. Collecting preference he inquietude projection me in by."
+        ],
+        "images": [
+            "/images/bannerO.jpg",
+            "/images/bannerB.jpg"
+        ],
         "template": "tempA.html",
         "dispTimeSec": "2000",
-        "TimeFreame": [
+        "TimeFrame": [
             {
                 "FromDate": "1.1.2015",
                 "ToDate": "12.31.2016",
@@ -77,7 +59,7 @@ var data = [
             {
                 "FromDate": "1.1.2015",
                 "ToDate": "12.31.2016",
-                "days": [ 3 ],
+                "days": [ "3" ],
                 "FromTime": "13:00",
                 "ToTime": "20:00"
             }
@@ -87,28 +69,24 @@ var data = [
     },
     {
         "name": "mes2",
-        "text": {
-            "text1": "This is the title of the page",
-            "text2": "Sudden she seeing garret far regard. By hardly it direct if pretty up regret.",
-            "text3": "Ability thought enquire settled prudent you sir. Or easy knew sold on well come year.",
-            "text4": "Something consulted age extremely end procuring. Collecting preference he inquietude projection me in by.",
-            "text5": "So do of sufficient projecting an thoroughly uncommonly prosperous conviction.",
-            "text6": "Pianoforte principles our unaffected not for astonished travelling are particular.",
-            "text7": "Her companions instrument set estimating sex remarkably solicitude motionless. Property men the why smallest graceful day insisted required.",
-            "text8": "Inquiry justice country old placing sitting any ten age. Looking venture justice in evident in totally he do ability.",
-            "text9": "Be is lose girl long of up give. Trifling wondered unpacked ye at he.",
-            "text10": "In household certainty an on tolerably smallness difficult. Many no each like up be is next neat."
-        },
-        "img": {
-            "image1": "/images/bannerG.jpg",
-            "image2": "",
-            "image3": "",
-            "image4": "",
-            "image5": ""
-        },
+        "text": [
+            "This is the title of the page",
+            "Sudden she seeing garret far regard. By hardly it direct if pretty up regret.",
+            "Ability thought enquire settled prudent you sir. Or easy knew sold on well come year.",
+            "Something consulted age extremely end procuring. Collecting preference he inquietude projection me in by.",
+            "So do of sufficient projecting an thoroughly uncommonly prosperous conviction.",
+            "Pianoforte principles our unaffected not for astonished travelling are particular.",
+            "Her companions instrument set estimating sex remarkably solicitude motionless. Property men the why smallest graceful day insisted required.",
+            "Inquiry justice country old placing sitting any ten age. Looking venture justice in evident in totally he do ability.",
+            "Be is lose girl long of up give. Trifling wondered unpacked ye at he.",
+            "In household certainty an on tolerably smallness difficult. Many no each like up be is next neat."
+        ],
+        "images": [
+            "/images/bannerG.jpg"
+        ],
         "template": "tempB.html",
         "dispTimeSec": "5000",
-        "TimeFreame": [
+        "TimeFrame": [
             {
                 "FromDate": "1.1.2015",
                 "ToDate": "12.31.2016",
@@ -121,28 +99,13 @@ var data = [
     },
     {
         "name": "mes3",
-        "text": {
-            "text1": "",
-            "text2": "",
-            "text3": "",
-            "text4": "",
-            "text5": "",
-            "text6": "",
-            "text7": "",
-            "text8": "",
-            "text9": "",
-            "text10": ""
-        },
-        "img": {
-            "image1": "",
-            "image2": "",
-            "image3": "",
-            "image4": "",
-            "image5": ""
-        },
+        "text": [
+        ],
+        "images": [
+        ],
         "template": "tempC.html",
         "dispTimeSec": "3000",
-        "TimeFreame": [
+        "TimeFrame": [
             {
                 "FromDate": "1.1.2015",
                 "ToDate": "12.31.2016",
@@ -155,28 +118,15 @@ var data = [
     },
     {
         "name": "mes4",
-        "text": {
-            "text1": "This is the title of the page",
-            "text2": "Sudden she seeing garret far regard. By hardly it direct if pretty up regret.",
-            "text3": "",
-            "text4": "",
-            "text5": "",
-            "text6": "",
-            "text7": "",
-            "text8": "",
-            "text9": "",
-            "text10": ""
-        },
-        "img": {
-            "image1": "",
-            "image2": "",
-            "image3": "",
-            "image4": "",
-            "image5": ""
-        },
+        "text": [
+            "This is the title of the page",
+            "Sudden she seeing garret far regard. By hardly it direct if pretty up regret."
+        ],
+        "images": [
+        ],
         "template": "tempA.html",
         "dispTimeSec": "4000",
-        "TimeFreame": [
+        "TimeFrame": [
             {
                 "FromDate": "1.1.2015",
                 "ToDate": "12.31.2016",
@@ -189,28 +139,22 @@ var data = [
     },
     {
         "name": "mes5",
-        "text": {
-            "text1": "This is the title of the page",
-            "text2": "Sudden she seeing garret far regard. By hardly it direct if pretty up regret.",
-            "text3": "Ability thought enquire settled prudent you sir. Or easy knew sold on well come year.",
-            "text4": "Something consulted age extremely end procuring. Collecting preference he inquietude projection me in by.",
-            "text5": "So do of sufficient projecting an thoroughly uncommonly prosperous conviction.",
-            "text6": "Pianoforte principles our unaffected not for astonished travelling are particular.",
-            "text7": "Her companions instrument set estimating sex remarkably solicitude motionless. Property men the why smallest graceful day insisted required.",
-            "text8": "",
-            "text9": "",
-            "text10": ""
-        },
-        "img": {
-            "image1": "/images/bannerB.jpg",
-            "image2": "/images/bannerG.jpg",
-            "image3": "",
-            "image4": "",
-            "image5": ""
-        },
+        "text": [
+            "This is the title of the page",
+            "Sudden she seeing garret far regard. By hardly it direct if pretty up regret.",
+            "Ability thought enquire settled prudent you sir. Or easy knew sold on well come year.",
+            "Something consulted age extremely end procuring. Collecting preference he inquietude projection me in by.",
+            "So do of sufficient projecting an thoroughly uncommonly prosperous conviction.",
+            "Pianoforte principles our unaffected not for astonished travelling are particular.",
+            "Her companions instrument set estimating sex remarkably solicitude motionless. Property men the why smallest graceful day insisted required."
+            ],
+        "images": [
+            "/images/bannerB.jpg",
+            "/images/bannerG.jpg"
+        ],
         "template": "tempB.html",
         "dispTimeSec": "2000",
-        "TimeFreame": [
+        "TimeFrame": [
             {
                 "FromDate": "1.1.2015",
                 "ToDate": "12.31.2016",

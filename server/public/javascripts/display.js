@@ -113,7 +113,7 @@ function CheckTimeFrame(DisplayData) {
 
     var flag = false;
 
-    $.each(DisplayData.TimeFreame, function (i, Time) {
+    $.each(DisplayData.TimeFrame, function (i, Time) {
          //console.log('***'+ CheckDates(Time));                        // Debug
          //console.log(CheckDays(Time));
          //console.log(CheckTime(Time));
@@ -160,30 +160,37 @@ function ShowMes(mes) {
 
     $("#pageTemplate").load('Templates/' + mes.template, function () {
         addText(mes.text);
-        addImage(mes.img);
+        addImage(mes.images);
     });
 }
 
 //  text replace
 function addText(textArr) {
 
-    $.each(textArr, function (i, text) {
-        if (text != '')
-            $("#" + i).html(text);
-        else
-            $('#' + i).hide();
-    });
+    var index = 0;
+    for (; index < textArr.length; index++){
+        $('#text' + (index+1)).html(textArr[index]);
+    };
+
+    while(index < 10)
+    {
+        $('#text' + (index+1)).hide();
+        index++;
+    }
 }
 
 // img replace
 function addImage(imgArr) {
+    var index = 0;
 
-    $.each(imgArr, function (i, img) {
-        if (img != '')
-            $('#' + i).attr("src", img);
-        else
-            $('#' + i).hide();
-    });
+    for (; index < imgArr.length; index++){
+        $('#image' + (index + 1)).attr("src", imgArr[index]);
+    };
+
+    while(index < 5) {
+        $('#image' + (index + 1)).hide();
+        index++;
+    }
 }
 
 // return the value of param Name from the URL
