@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="MessagesApp.Edit">
+<html lang="en" ng-app="MessagesApp">
+<ng-view>
 <head>
     <script src="/javascripts/angular/angular.js"></script>
     <script src="/javascripts/angular/angular-route.js"></script>
@@ -8,13 +9,16 @@
     <script type="text/javascript" src="/javascripts/jquery.js"></script>
     <script type="text/javascript" src="/javascripts/socket.io-client/socket.io.js"></script>
     <script type="text/javascript" src="/javascripts/App.js"></script>
+    <script type="text/javascript" src="/javascripts/Services.js"></script>
     <script type="text/javascript" src="/javascripts/Edit.js"></script>
     <script type="text/javascript" src="/javascripts/List.js"></script>
 
     <meta charset="UTF-8">
     <title>Edit message</title>
 </head>
-<body>
 
+<body ng-controller="EditCtrl">
+{{Message.name}}
 </body>
+</ng-view>
 </html>

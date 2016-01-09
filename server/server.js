@@ -6,6 +6,7 @@ var express = require('express')
 
 app.use("/Bootstrap", express.static(__dirname + "/bower_components/"));
 app.use(express.static(__dirname + "/public"));
+app.use("/Views", express.static(__dirname + "/Views"));
 app.use("/Templates", express.static(__dirname + "/Templates"));
 server.listen(8080);
 
@@ -53,6 +54,14 @@ io.sockets.on('connection', function (socket) {
             socket.emit('getMessages', data);
         });
     });
+
+    socket.on('askMessage',function(messageName){
+        getMessage(messageName, function (result) {
+            var data = result;
+            socket.emit('getMessage', data);
+        });
+    });
+
     // the server will get the data from DB and send back to user as 'result'
     socket.on('getdata', function (screenId) {
 
@@ -99,6 +108,26 @@ function addMesToDb(message, screenId, callback) {
                 }
             });
         }
+    });
+};
+
+function getMessage(messageName, callback) {
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+
+        var collection = db.collection(_collectionName);
+        var cursor = collection.find({"name": messageName});
+
+        cursor.nextObject(function(err, item) {
+            if ((err == null) && item) {
+                callback(item);
+            }
+        });
+
+        db.close();
+
     });
 };
 
