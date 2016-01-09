@@ -27,7 +27,7 @@ var data = [
             {
                 "FromDate": "1.1.2015",
                 "ToDate": "12.31.2016",
-                "days": [ "0", "1", "2", "3", "4", "5", "6" ],
+                "days": [true, true, true, true, true, true, true],
                 "FromTime": "01:00",
                 "ToTime": "23:59"
             }
@@ -52,14 +52,14 @@ var data = [
             {
                 "FromDate": "1.1.2015",
                 "ToDate": "12.31.2016",
-                "days": ["1"],
+                "days": [true, false,false,false,false,false,false],
                 "FromTime": "06:00",
                 "ToTime": "12:00"
             },
             {
                 "FromDate": "1.1.2015",
                 "ToDate": "12.31.2016",
-                "days": [ "3" ],
+                "days": [false, false, true, false,false, false, false],
                 "FromTime": "13:00",
                 "ToTime": "20:00"
             }
@@ -90,7 +90,7 @@ var data = [
             {
                 "FromDate": "1.1.2015",
                 "ToDate": "12.31.2016",
-                "days": ["0", "1", "2", "3", "4", "5", "6"],
+                "days": [true, true, true, true, true, true, true],
                 "FromTime": "01:00",
                 "ToTime": "23:59"
             }
@@ -109,7 +109,7 @@ var data = [
             {
                 "FromDate": "1.1.2015",
                 "ToDate": "12.31.2016",
-                "days": ["0", "1", "2", "3", "4", "5", "6"],
+                "days": [true, true, true, true, true, true, true],
                 "FromTime": "01:00",
                 "ToTime": "23:59"
             }
@@ -130,7 +130,7 @@ var data = [
             {
                 "FromDate": "1.1.2015",
                 "ToDate": "12.31.2016",
-                "days": ["0", "1", "2", "3", "4", "5", "6"],
+                "days": [true, true, true, true, true, true, true],
                 "FromTime": "01:00",
                 "ToTime": "23:59"
             }
@@ -158,7 +158,7 @@ var data = [
             {
                 "FromDate": "1.1.2015",
                 "ToDate": "12.31.2016",
-                "days": ["0", "1", "2", "3", "4", "5", "6"],
+                "days": [true, true, true, true, true, true, true],
                 "FromTime": "01:00",
                 "ToTime": "23:59"
             }

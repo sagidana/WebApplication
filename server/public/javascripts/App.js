@@ -13,9 +13,9 @@ module.config(['$locationProvider', function($locationProvider) {
     });
 }]);
 
-//module.config(['$routeProvider', function($routeProvider) {
-//    $routeProvider.
-//    otherwise({redirectTo: '/List'});
-//}]);
-//
+module.config(['$routeProvider', function($routeProvider) {
+    $routeProvider.
+    otherwise({redirectTo: '/'});
+}]);
+
 

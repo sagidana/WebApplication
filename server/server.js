@@ -18,6 +18,10 @@ var MongoClient = mongodb.MongoClient;
 // Connection URL. This is where your mongodb server is running.
 var url = 'mongodb://localhost:27017/MesDB';
 
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + "/Views/index.html");
+});
+
 // send the basic html (no attention to screen id..)
 // http://localhost:8080/display?screen=1
 app.get('/Edit', function (req, res) {
@@ -56,9 +60,8 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('askMessage',function(messageName){
-        getMessage(messageName, function (result) {
-            var data = result;
-            socket.emit('getMessage', data);
+        getMessage(messageName, function (message) {
+            socket.emit('getMessage', message);
         });
     });
 
@@ -116,17 +119,17 @@ function getMessage(messageName, callback) {
         if (err) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
         }
-
         var collection = db.collection(_collectionName);
-        var cursor = collection.find({"name": messageName});
 
-        cursor.nextObject(function(err, item) {
-            if ((err == null) && item) {
-                callback(item);
+        collection.findOne({name: messageName}, function(err, message) {
+            if (err) {
+                console.log('Unable to connect to the mongoDB server. Error:', err);
             }
+            else {
+                callback(message);
+            }
+            db.close();
         });
-
-        db.close();
 
     });
 };

@@ -23,6 +23,7 @@
 <label>text: <input ng-model="search.text"></label>
 <br/>
 <H2><B>Messages:</B></H2>
+
 <div ng-repeat="Message in Messages | filter:search">
 
     <p style="font-size:20px">Name: {{Message.name}}</p>
@@ -42,7 +43,5 @@
         </div>
     </div>
 </div>
-
 </body>
-
 </html>

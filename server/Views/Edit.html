@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="MessagesApp">
-<ng-view>
 <head>
     <script src="/javascripts/angular/angular.js"></script>
     <script src="/javascripts/angular/angular-route.js"></script>
     <link rel="stylesheet" type="text/css" href="/Bootstrap/bootstrap/dist/css/bootstrap.css" />
     <script type="text/javascript" src="/javascripts/display.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.js"></script>
+    <script type="text/javascript" src="/Bootstrap/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/Bootstrap/bootstrap/dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="/javascripts/socket.io-client/socket.io.js"></script>
     <script type="text/javascript" src="/javascripts/App.js"></script>
     <script type="text/javascript" src="/javascripts/Services.js"></script>
@@ -14,11 +14,75 @@
     <script type="text/javascript" src="/javascripts/List.js"></script>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Edit message</title>
 </head>
-
 <body ng-controller="EditCtrl">
-{{Message.name}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Message</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Edit message</h2>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="control-label col-sm-2">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" placeholder={{Message.name}}>
+            </div>
+        </div>
+        <h3>Texts</h3>
+        <div ng-repeat="index in [1,2,3,4,5,6,7,8,9,10]">
+        <div class="form-group">
+            <label class="control-label col-sm-2">Text {{index}}: </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="text{{index}}" placeholder={{Message.text[index-1]}}>
+            </div>
+        </div>
+        </div>
+        <h3>Images</h3>
+        <div ng-repeat="index in [1,2,3,4,5]">
+            <div class="form-group">
+            <label class="control-label col-sm-2">Image {{index}}: </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="image{{index}}" placeholder={{Message.images[index-1]}}>
+            </div>
+            </div>
+        </div>
+        <div ng-repeat="frame in Message.TimeFrame">
+            <h3>Time Frame {{$index+1}}</h3>
+            <div class="form-group">
+                <label class="control-label col-sm-2">From date:</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" id="fromdate{{$index+1}}" placeholder={{frame.FromDate}}>
+                </div>
+                <label class="control-label col-sm-2">To date:</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" id="todate{{$index+1}}" placeholder={{frame.ToDate}}>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 </body>
-</ng-view>
+</html>
+
+
+</body>
 </html>

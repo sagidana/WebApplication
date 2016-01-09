@@ -142,7 +142,7 @@ function CheckDates(timeF) {
 // today day is on days?
 function CheckDays(Time) {
     //console.log(new Date().getDay().toString(), Time.days.indexOf(new Date().getDay().toString()));                                  // Debug
-    if (Time.days.indexOf(new Date().getDay().toString()) != -1)
+    if (Time.days[new Date().getDay()])
         return true;
     return false;
 }
