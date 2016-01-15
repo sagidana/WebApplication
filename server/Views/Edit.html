@@ -3,6 +3,7 @@
 <head>
     <script src="/javascripts/angular/angular.js"></script>
     <script src="/javascripts/angular/angular-route.js"></script>
+    <script type="text/javascript" src="/javascripts/checklist-model.js"></script>
     <link rel="stylesheet" type="text/css" href="/Bootstrap/bootstrap/dist/css/bootstrap.css" />
     <script type="text/javascript" src="/javascripts/display.js"></script>
     <script type="text/javascript" src="/Bootstrap/jquery/dist/jquery.js"></script>
@@ -58,7 +59,7 @@
                 <label class="control-label col-sm-2">Screens</label>
 
                 <label class="checkbox-inline" ng-repeat="screen in Screens">
-                    <input type="checkbox" checklist-model="Message.screen" checklist-value="screen.number" ng-checked="Message.screen.indexOf(screen.number) > -1">
+                    <input type="checkbox" checklist-model="Message.screen" checklist-value="screen.number">
                     {{screen.location}}
                 </label>
             </div>
