@@ -114,6 +114,10 @@ function CheckTimeFrame(DisplayData) {
     var flag = false;
 
     $.each(DisplayData.TimeFrame, function (i, Time) {
+        //console.log('***'+ CheckDates(Time));
+        //console.log(CheckDays(Time));
+        //console.log(CheckTime(Time));
+
         if (CheckDates(Time) && CheckDays(Time) && CheckTime(Time))
             flag = true;
     });
@@ -128,7 +132,7 @@ function CheckDates(timeF) {
     var fromD = new Date(timeF.FromDate);
     var toD = new Date(timeF.ToDate);
 
-    console.log('f '+fromD+ ' n ' + nowD + ' t ' + toD); // Debug
+    //console.log('f '+fromD+ ' n ' + nowD + ' t ' + toD); // Debug
     if (nowD > fromD && nowD < toD) {
         return true;
     }
@@ -137,18 +141,26 @@ function CheckDates(timeF) {
 
 // today day is on days?
 function CheckDays(Time) {
-    console.log(new Date().getDay().toString(), Time.days.indexOf(new Date().getDay().toString())); // Debug
+    //console.log(new Date().getDay().toString(), Time.days.indexOf(new Date().getDay().toString())); // Debug
     if (Time.days[new Date().getDay()])
         return true;
     return false;
 }
 
 function CheckTime(Time) {
-    var now = new Date().getHours() + ":" + new Date().getMinutes();
+    var nowH = new Date().getHours();
+    var nowM = new Date().getMinutes();
 
-    console.log(Time.FromTime, now, Time.ToTime, now > Time.FromTime, now < Time.ToTime); // Debug
+    var fromH = new Date(Time.FromTime).getHours();
+    var fromM = new Date(Time.FromTime).getMinutes();
 
-    if (now > Time.FromTime && now < Time.ToTime)
+    var toH = new Date(Time.ToTime).getHours();
+    var toM = new Date(Time.ToTime).getMinutes();
+
+    //console.log('f '+fromH+':'+fromM+ ' n ' + nowH+':'+nowM + ' t ' + toH+':'+toM); // Debug
+
+
+    if (nowH > fromH && nowH < toH && nowM > fromM && nowM < toM)
         return true;
     return false;
 }
