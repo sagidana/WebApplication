@@ -91,6 +91,12 @@ io.sockets.on('connection', function (socket) {
         });
     });
 
+    socket.on('editMessage', function (message) {
+        editMessage(message, function (result) {
+            socket.emit('getStatus', result);
+        });
+    });
+
     // the server will get the data from DB and send back to user as 'result'
     socket.on('getdata', function (screenId) {
 
@@ -138,6 +144,34 @@ function addMesToDb(message, screenId, callback) {
         }
     });
 };
+
+function editMessage(message, callback)
+{
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+        else {
+            var messagesCollection = db.collection("messagesCollection");
+
+            messagesCollection.updateOne({
+                "name": message.name
+            },{
+                $set : message,
+                $currentDate:{"lastModified":true}
+            }, function(err, result){
+
+                if (err) {
+                    callback(err);
+                } else {
+                    callback(result);
+                }
+
+                db.close();
+            });
+        }
+    });
+}
 
 function getTemplates(callback){
     MongoClient.connect(url, function (err, db) {
