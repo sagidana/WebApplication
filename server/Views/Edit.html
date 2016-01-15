@@ -49,7 +49,7 @@
                 <label class="control-label col-sm-2">Screens</label>
 
                 <label class="checkbox-inline" ng-repeat="screen in Screens">
-                    <input class="" type="checkbox" id="screen{{$index}}" ng-model="screen.number in Message.screen"/>
+                    <input class="" type="checkbox" id="screen{{$index}}" ng-checked="Message.screen.indexOf(screen.number) > -1"/>
                     {{screen.location}}
                 </label>
             </div>
