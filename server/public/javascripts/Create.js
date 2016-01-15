@@ -11,6 +11,28 @@ module.config(['$routeProvider', function($routeProvider) {
 
 module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
 
+    /*
+    $scope.Message = {
+        "name": "",
+        "text": [],
+        "images": [],
+        "template": "",
+        "dispTimeSec": "",
+        "TimeFrame": [
+            {
+                "FromDate": Date(),
+                "ToDate": new Date(),
+                "days": [],
+                "FromTime": new Date(),
+                "ToTime": new Date()
+            }
+        ],
+        "screen": []
+    };
+*/
+
+    $scope.Message = { "TimeFrame": [ {} ] };
+
     ioFactory.emit('askScreens', '', function (result) { });
 
     ioFactory.on('getScreens', function (result) {
