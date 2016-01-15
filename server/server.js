@@ -239,8 +239,10 @@ function getDataFromDb(screenId, callback) {
         // add else
         var collection = db.collection(_collectionName);
         //console.log("Connected to Database");
+
         console.log(screenId);
-        collection.find({ screen: screenId }).toArray(function (err, result) {
+
+        collection.find({ screen: parseInt(screenId) }).toArray(function (err, result) {
             if (err) {
                 console.log("Error: " + err);
 
