@@ -29,6 +29,22 @@ module.controller('EditCtrl',function($scope, $routeParams, ioFactory) {
         }
     });
 
+    ioFactory.emit('askScreens', '', function (result) { });
+
+    ioFactory.on('getScreens', function (result) {
+        if (result) {
+            console.log(result);
+            $scope.Screens = result;
+        }
+    });
+
+    ioFactory.emit('askTemplates', '', function (result) { });
+
+    ioFactory.on('getTemplates', function (result) {
+        if (result) {
+            $scope.Templates = result;
+        }
+    });
 
     //{
     //    "FromDate": new Date("1.1.2015"),
