@@ -5,9 +5,8 @@ var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
 
 // Connection URL. This is where your mongodb server is running.
-var url = 'mongodb://localhost:27017/MesDB';
+var url = 'mongodb://localhost:27017/MessagesDb';
 
-// messages
 var messages = [
     {
         "name": "init",
@@ -22,7 +21,7 @@ var messages = [
             "/images/bannerB.jpg"
         ],
         "template": "tempA.html",
-        "dispTimeSec": "10",
+        "dispTimeSec": "10000",
         "TimeFrame": [
             {
                 "FromDate": new Date(2015,1,1),
@@ -32,7 +31,7 @@ var messages = [
                 "ToTime": new Date(1000,1,1,23,59,0)
             }
         ],
-        "screen": ["-1"]
+        "screen": [0]
     },
     {
         "name": "mes1",
@@ -65,7 +64,7 @@ var messages = [
             }
 
         ],
-        "screen": ["1","2"]
+        "screen": [1,2]
     },
     {
         "name": "mes2",
@@ -95,7 +94,7 @@ var messages = [
                 "ToTime": new Date(1000,1,1,23,59,0)
             }
         ],
-        "screen": ["1","3"]
+        "screen": [1,3]
     },
     {
         "name": "mes3",
@@ -114,7 +113,7 @@ var messages = [
                 "ToTime": new Date(1000,1,1,23,59,0)
             }
         ],
-        "screen": ["2","3"]
+        "screen": [2,3]
     },
     {
         "name": "mes4",
@@ -163,7 +162,38 @@ var messages = [
                 "ToTime": new Date(1000,1,1,23,59,0)
             }
         ],
-        "screen": ["3"]
+        "screen": [3]
+    }
+];
+
+var templates = [
+    {
+        "path": "tempA.html"
+    },
+    {
+        "path": "tempB.html"
+    },
+    {
+        "path": "tempC.html"
+    }
+];
+
+var screens = [
+    {
+        "number": 1,
+        "location": "Beer Sheva"
+    },
+    {
+        "number": 2,
+        "location": "Tel Aviv"
+    },
+    {
+        "number": 3,
+        "location": "Rishon"
+    },
+    {
+        "number": -1,
+        "location": "Ramat Gan"
     }
 ];
 
@@ -174,21 +204,42 @@ MongoClient.connect(url, function (err, db) {
     } else {
         console.log('Connection established to', url);
 
-        // Get the documents collection
-        var collection = db.collection('MesDB');
-
-	    for ( var i in messages){
-		    collection.insert(messages[i],function(err,result){
+        var messagesCollection = db.collection('messagesCollection');
+	    for ( var index = 0; index <messages.length; index++){
+            messagesCollection.insert(messages[index],function(err,result){
 			    if (err) {
 				    console.log("1 "+err);
 			    } else {
 				    console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
 			    }
 		    });
-
 	    }
 
-        db.close();
-        console.log("Done!");
+        var screensCollection = db.collection('screensCollection');
+        for ( var index = 0; index <screens.length; index++){
+            screensCollection.insert(screens[index],function(err,result){
+                if (err) {
+                    console.log("1 "+err);
+                } else {
+                    console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
+                }
+            });
+        }
+
+        var templatesCollection = db.collection('templatesCollection');
+        for ( var index = 0; index <templates.length; index++){
+            templatesCollection.insert(templates[index],function(err,result){
+                if (err) {
+                    console.log("1 "+err);
+                } else {
+                    console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
+                }
+
+                if (index == templates.length - 1){
+                    db.close();
+                    console.log("Done!");
+                }
+            });
+        }
     }
 });

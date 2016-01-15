@@ -10,13 +10,13 @@ app.use("/Views", express.static(__dirname + "/Views"));
 app.use("/Templates", express.static(__dirname + "/Templates"));
 server.listen(8080);
 
-var _collectionName = "MesDB";
+var _collectionName = "messagesCollection";
 //require node modules (see package.json)
 var mongodb = require('mongodb');
 //We need to work with "MongoClient" interface in order to connect to a mongodb server.
 var MongoClient = mongodb.MongoClient;
 // Connection URL. This is where your mongodb server is running.
-var url = 'mongodb://localhost:27017/MesDB';
+var url = 'mongodb://localhost:27017/MessagesDb';
 
 console.log("Server on.");
 
@@ -73,6 +73,18 @@ io.sockets.on('connection', function (socket) {
         });
     });
 
+    socket.on('askScreens',function(){
+        getScreens(function (screens) {
+            socket.emit('getScreens', screens);
+        });
+    });
+
+    socket.on('askTemplates',function(){
+        getTemplates(function (templates) {
+            socket.emit('getTemplates', templates);
+        });
+    });
+
     socket.on('askMessage',function(messageName){
         getMessage(messageName, function (message) {
             socket.emit('getMessage', message);
@@ -95,9 +107,8 @@ io.sockets.on('connection', function (socket) {
 
         // add to db
         addMesToDb(message, screenId, function () {
-            // emit to screen
-            getDataFromDb(screenId, function (result) {
-                //console.log("result:	"+JSON.stringify(result)+"\n\n\n\n");
+                // emit to screen
+                getDataFromDb(screenId, function (result) {
                 io.sockets.emit('updateData', result);
             });
         });
@@ -127,6 +138,54 @@ function addMesToDb(message, screenId, callback) {
         }
     });
 };
+
+function getTemplates(callback){
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+
+        var templatesCollection = db.collection("templatesCollection");
+        templatesCollection.find().toArray(function (err, result) {
+
+            if (err) {
+                console.log("Error: " + err);
+
+            } else if (result.length) {
+                console.log("Sending result");
+                callback(result);
+            } else {
+                console.log("No document(s) found");
+            }
+
+            db.close();
+        });
+    });
+}
+
+function getScreens(callback){
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+
+        var screensCollection = db.collection("screensCollection");
+        screensCollection.find().toArray(function (err, result) {
+
+            if (err) {
+                console.log("Error: " + err);
+
+            } else if (result.length) {
+                console.log("Sending result");
+                callback(result);
+            } else {
+                console.log("No document(s) found");
+            }
+
+            db.close();
+        });
+    });
+}
 
 function getMessage(messageName, callback) {
     MongoClient.connect(url, function (err, db) {
