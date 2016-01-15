@@ -17,32 +17,43 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Edit message</title>
+    <title>Create message</title>
 
 </head>
-<body ng-controller="EditCtrl">
+<body ng-controller="CreateCtrl">
 
     <div class="container">
+        <header>
+            <h3 class="text-muted">Messages</h3>
+            <ul class="nav nav-pills">
+                <li><a href="/list">List</a></li>
+                <li class="active"><a href="/Create">Create</a></li>
+                <li><a href="/Manage">Manage</a></li>
+                <li><a href="/About">About</a></li>
+            </ul>
+
+        </header>
         <h2>Edit message</h2>
         <form class="form-horizontal" role="form">
             <div class="form-group">
                 <label class="control-label col-sm-2">Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" value={{Message.name}}>
+                    <input type="text" class="form-control" id="name">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">Template</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="template" value={{Message.template}}>
+                    <input type="text" class="form-control" id="template">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">Dispy Time (sec)</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="dispTimeSec" value={{Message.dispTimeSec}}>
+                    <input type="text" class="form-control" id="dispTimeSec">
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="control-label col-sm-2">Screen</label>
                 <div class="col-sm-10">
@@ -56,19 +67,13 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2">Screen</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="screen" value={{Message.screen}}>
-                </div>
-            </div>
 
             <h3>Texts</h3>
             <div ng-repeat="index in [1,2,3,4,5,6,7,8,9,10]">
                 <div class="form-group">
                     <label class="control-label col-sm-2">Text {{index}}: </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="text{{index}}" value={{Message.text[index-1]}}>
+                        <input type="text" class="form-control" id="text{{index}}">
                     </div>
                 </div>
             </div>
@@ -77,36 +82,42 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2">Image {{index}}: </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="image{{index}}" value={{Message.images[index-1]}}>
+                        <input type="text" class="form-control" id="image{{index}}">
                     </div>
                 </div>
             </div>
-            <div ng-repeat="frame in Message.TimeFrame">
-                <h3>Time Frame {{$index+1}}</h3>
-                <div class="form-group">
-                    <label class="control-label col-sm-2">From date:</label>
-                    <div class="col-sm-10">
-                        <input type="date" class="form-control" id="fromdate{{$index+1}}" value={{frame.FromDate}}>
-                    </div>
-                    <label class="control-label col-sm-2">To date:</label>
-                    <div class="col-sm-10">
-                        <input type="date" class="form-control" id="todate{{$index+1}}" value={{frame.ToDate}}>
-                    </div>
-                    <label class="control-label col-sm-2">Days:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="days" value={{frame.days}}>
-                    </div>
-                    <label class="control-label col-sm-2">From time:</label>
-                    <div class="col-sm-10">
-                        <input type="time" class="form-control" id="FromTime{{$index+1}}" value={{frame.FromTime}}>
-                    </div>
-                    <label class="control-label col-sm-2">To time:</label>
-                    <div class="col-sm-10">
-                        <input type="time" class="form-control" id="ToTime{{$index+1}}" value={{frame.ToTime}}>
-                    </div>
-                </div>
-            </div>
+            <div>
+                <div id="TimeFrame">
+                    <h3>Time Frame</h3>
+                    <input type="button" id="addTF" value="add more" />
 
+                    <div class="form-group" id="TimeFrame0">
+                        <label class="control-label col-sm-2">From date:</label>
+                        <div class="col-sm-4">
+                            <input type="date" class="form-control" id="fromdate">
+                        </div>
+                        <label class="control-label col-sm-2">To date:</label>
+                        <div class="col-sm-4">
+                            <input type="date" class="form-control" id="todate" />
+                        </div>
+                        <label class="control-label col-sm-2">From time:</label>
+                        <div class="col-sm-4">
+                            <input type="time" class="form-control" id="FromTime">
+                        </div>
+                        <label class="control-label col-sm-2">To time:</label>
+                        <div class="col-sm-4">
+                            <input type="time" class="form-control" id="ToTime">
+                        </div>
+                        <label class="control-label col-sm-2">Days:</label>
+                        <div class="form-group col-sm-10">
+                            <label class="checkbox-inline" ng-repeat="day in ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']">
+                                <input class="" type="checkbox" id="days" name="days" value="{{$index}}" />
+                                {{day}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default">Submit</button>
@@ -114,6 +125,5 @@
             </div>
         </form>
     </div>
-
 </body>
 </html>

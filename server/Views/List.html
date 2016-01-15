@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" ng-app="MessagesApp">
 <head>
     <script src="/javascripts/angular/angular.js"></script>
@@ -8,40 +8,94 @@
     <script type="text/javascript" src="/javascripts/jquery.js"></script>
     <script type="text/javascript" src="/javascripts/socket.io-client/socket.io.js"></script>
     <script type="text/javascript" src="/javascripts/App.js"></script>
-    <script type="text/javascript" src="/javascripts/Edit.js"></script>
     <script type="text/javascript" src="/javascripts/Services.js"></script>
+    <script type="text/javascript" src="/javascripts/Edit.js"></script>
     <script type="text/javascript" src="/javascripts/List.js"></script>
+    <script type="text/javascript" src="/javascripts/Create.js"></script>
+    <script type="text/javascript" src="/javascripts/Item.js"></script>
 
     <meta charset="UTF-8">
     <title>Messages list</title>
 </head>
 
 <body ng-controller="ListCtrl">
-<H1><B>Search:</B></H1>
-<label>Any: <input ng-model="search.$"></label>
-<label>Name: <input ng-model="search.name"></label>
-<label>text: <input ng-model="search.text"></label>
-<br/>
-<H2><B>Messages:</B></H2>
 
-<div ng-repeat="Message in Messages | filter:search">
+    <div class="container">
+        <header>
+            <h3 class="text-muted">Messages</h3>
+            <ul class="nav nav-pills">
+                <li class="active"><a href="/list">List</a></li>
+                <li><a href="/Create">Create</a></li>
+                <li><a href="/Manage">Manage</a></li>
+                <li><a href="/About">About</a></li>
+            </ul>
 
-    <p style="font-size:20px">Name: {{Message.name}}</p>
+        </header>
+        <div>
+            <div class="jumbotron">
+                <h1>Search:</h1>
+                <label>Any: <input ng-model="search.$"></label>&nbsp;
+                <label>Name: <input ng-model="search.name"></label>&nbsp;
+                <label>Text: <input ng-model="search.text"></label>&nbsp;
+                <label>Screen: <input ng-model="search.screen"></label>&nbsp;
+            </div>
+            <h2>Messages:</h2>
 
-    <div id="MainContainer">
-        <div class="FullLine">
 
-            <p style="font-size:20px">Texts:</p>
-            <div class="list-group" ng-repeat="Text in Message.text">
-                <p style="font-size:15px">{{Text}}</p>
+            <div ng-repeat="Message in Messages | filter:search" class="col-md-12">
+
+                <p style="font-size:20px;">Name: 
+                    <span style="text-decoration:underline;font-weight:bold">
+                        <a href="/Item?name={{Message.name}}" role="button">                            
+                            {{Message.name}}
+                        </a>
+                    </span>
+                </p>
+
+                <div id="MainContainer">
+                    <div class="FullLine">
+
+                        <p style="font-size:20px">Texts:</p>
+                        <div class="list-group" ng-repeat="Text in Message.text">
+                            <p style="font-size:15px">{{Text}}</p>
+                        </div>
+
+                        <p style="font-size:20px">Images:</p>
+                        <div class="list-group" ng-repeat="Image in Message.images">
+                            <img ng-src="{{Image}}" />
+                        </div>
+
+                        <p style="font-size:20px">Template: {{Message.template}}</p>
+                        <p style="font-size:20px">Display Time: {{Message.dispTimeSec}} (sec)</p>
+                        <p style="font-size:20px">
+                            Screens:
+                            <span ng-repeat="screen in Message.screen">
+                                {{screen}}
+                            </span>
+                        </p>
+
+                        <p style="font-size:20px">Time Frame:</p>
+                        <div class="list-group" ng-repeat="Time in Message.TimeFrame">
+                            <span style="font-size:15px">Date: {{Time.FromDate}} - {{Time.ToDate}}</span>
+                            <br />
+                            <span style="font-size:15px">
+                                Days:
+                                <span class="list-group" ng-repeat="Day in Time.days track by $index">
+                                    {{ {val:Day, index:$index} | Day}}
+                                </span>
+                            </span>
+                            <br />
+                            <span style="font-size:15px">Time: {{Time.FromTime}} - {{Time.ToTime}}</span>
+                        </div>
+                        <p>
+                            <a class="btn btn-primary" href="/Edit?name={{Message.name}}" role="button">Edit &raquo;</a>
+                            <a class="btn btn-warning" href="/Delete?name={{Message.name}}" role="button">Delete &raquo;</a>
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <p style="font-size:20px">Images:</p>
-            <div class="list-group" ng-repeat="Image in Message.images">
-                <p style="font-size:15px">{{Image}}</p>
-            </div>
         </div>
     </div>
-</div>
 </body>
 </html>

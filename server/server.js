@@ -18,23 +18,37 @@ var MongoClient = mongodb.MongoClient;
 // Connection URL. This is where your mongodb server is running.
 var url = 'mongodb://localhost:27017/MesDB';
 
+console.log("Server on.");
+
 app.get('/', function (req, res) {
     res.sendFile(__dirname + "/Views/index.html");
 });
 
-// send the basic html (no attention to screen id..)
-// http://localhost:8080/display?screen=1
+// send the basic html
+// http://localhost:8080/Edit?name=mes1
+app.get('/Item', function (req, res) {
+    res.sendFile(__dirname + "/Views/Item.html");
+});
+
+// send the basic html
+// http://localhost:8080/Edit?name=mes1
+app.get('/Create', function (req, res) {
+    res.sendFile(__dirname + "/Views/Create.html");
+});
+
+// send the basic html
+// http://localhost:8080/Edit?name=mes1
 app.get('/Edit', function (req, res) {
     res.sendFile(__dirname + "/Views/Edit.html");
 });
 
 // send the basic html (no attention to screen id..)
-// http://localhost:8080/display?screen=1
+// http://localhost:8080/List
 app.get('/List', function (req, res) {
     res.sendFile(__dirname + "/Views/List.html");
 });
 
-// send the basic html (no attention to screen id..)
+// send the basic html
 // http://localhost:8080/display?screen=1
 app.get('/display', function (req, res) {
     console.log("display: " + req.query.screen);
@@ -44,7 +58,7 @@ app.get('/display', function (req, res) {
 // allow the user to add a Mes to screen i
 // http://localhost:8080/update?screen=1
 app.get('/update', function (req, res) {
-    console.log("display: " + req.query.screen);
+    console.log("update: " + req.query.screen);
     res.sendFile(__dirname + "/Views/Update.html");
 });
 

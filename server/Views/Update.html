@@ -1,16 +1,23 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app="MessagesApp">
+<html lang="en" ng-app="MessagesApp">
 <head>
+   
+    <link rel="stylesheet" type="text/css" href="/stylesheets/Display.css" />
+
+    <script type="text/javascript" src="/javascripts/angular/angular.js"></script>
+    <script type="text/javascript" src="/javascripts/angular/angular-route.js"></script>
+    <script type="text/javascript" src="/javascripts/display.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.js"></script>
+    <script type="text/javascript" src="/javascripts/socket.io-client/socket.io.js"></script>
+    <script type="text/javascript" src="/javascripts/App.js"></script>
+    <script type="text/javascript" src="/javascripts/Services.js"></script>
+    <script type="text/javascript" src="/javascripts/Edit.js"></script>
+    <script type="text/javascript" src="/javascripts/List.js"></script>
+    <script type="text/javascript" src="/javascripts/Create.js"></script>
+    <script type="text/javascript" src="/javascripts/Item.js"></script>
+
+    <meta charset="UTF-8" />
     <title>Update</title>
-    <link rel="stylesheet" type="text/css" href="../public/stylesheets/Display.css" />
-    <script type="text/javascript" src="../public/javascripts/angular/angular.js"></script>
-    <script type="text/javascript" src="../public/javascripts/angular/angular-route.js"></script>
-    <script type="text/javascript" src="../public/javascripts/display.js"></script>
-    <script type="text/javascript" src="../public/javascripts/jquery.js"></script>
-    <script type="text/javascript" src="../public/javascripts/socket.io-client/socket.io.js"></script>
-    <script type="text/javascript" src="../public/javascripts/App.js"></script>
-    <script type="text/javascript" src="../public/javascripts/Edit.js"></script>
-    <script type="text/javascript" src="../public/javascripts/List.js"></script>
 
     <script type="text/javascript">
         var TFsize = 1;
@@ -105,17 +112,17 @@
             <p>text5: <input type="text" id="text5" name="text5" value="text5" /></p>
             <p>text6: <input type="text" id="text6" name="text6" value="text6" /></p>
             <p>text7: <input type="text" id="text7" name="text7" value="text7" /></p>
-            <p>text8: <input type="text" id="text8" name="text2" value="text2" /></p>
+            <p>text8: <input type="text" id="text8" name="text8" value="text8" /></p>
             <p>text9: <input type="text" id="text9" name="text9" value="text9" /></p>
             <p>text10: <input type="text" id="text10" name="text10" value="text10" /></p>
         </div>
         <div id="IMG">
             *Full path needed
-            <p>img1: <input type="text" id="image3" name="image1" value="image1" /></p>
-            <p>img2: <input type="text" id="image3" name="image2" value="image2" /></p>
+            <p>img1: <input type="text" id="image1" name="image1" value="image1" /></p>
+            <p>img2: <input type="text" id="image2" name="image2" value="image2" /></p>
             <p>img3: <input type="text" id="image3" name="image3" value="image3" /></p>
-            <p>img4: <input type="text" id="image3" name="image4" value="image4" /></p>
-            <p>img5: <input type="text" id="image3" name="image5" value="image5" /></p>
+            <p>img4: <input type="text" id="image4" name="image4" value="image4" /></p>
+            <p>img5: <input type="text" id="image5" name="image5" value="image5" /></p>
         </div>
         <p>template:  <input type="text" id="template" name="template" value="tempA.html"/></p>
         <p>dispTimeSec:  <input type="text" id="dispTimeSec" name="dispTimeSec" value="6"/>sec</p>

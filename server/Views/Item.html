@@ -17,49 +17,42 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Edit message</title>
+    <title>Message item</title>
+
+
 
 </head>
-<body ng-controller="EditCtrl">
-
+<body ng-controller="ItemCtrl">
     <div class="container">
         <h2>Edit message</h2>
+        <p>
+            <a class="btn btn-primary" href="/Edit?name={{Message.name}}" role="button">Edit &raquo;</a>
+            <a class="btn btn-warning" href="/Delete?name={{Message.name}}" role="button">Delete &raquo;</a>
+        </p>
         <form class="form-horizontal" role="form">
             <div class="form-group">
                 <label class="control-label col-sm-2">Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" value={{Message.name}}>
+                    <p class="form-control-static">{{Message.name}}</p>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">Template</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="template" value={{Message.template}}>
+                    <p class="form-control-static">{{Message.template}}</p>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">Dispy Time (sec)</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="dispTimeSec" value={{Message.dispTimeSec}}>
+                    <p class="form-control-static">{{Message.dispTimeSec}}</p>
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="control-label col-sm-2">Screen</label>
                 <div class="col-sm-10">
-                    <select multiple class="form-control" id="screen">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2">Screen</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="screen" value={{Message.screen}}>
+                    <p class="form-control-static">{{Message.screen}}</p>
                 </div>
             </div>
 
@@ -68,7 +61,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2">Text {{index}}: </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="text{{index}}" value={{Message.text[index-1]}}>
+                        <p class="form-control-static">{{Message.text[index-1]}}</p>
                     </div>
                 </div>
             </div>
@@ -77,7 +70,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2">Image {{index}}: </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="image{{index}}" value={{Message.images[index-1]}}>
+                        <p class="form-control-static">{{Message.images[index-1]}}</p>
                     </div>
                 </div>
             </div>
@@ -86,34 +79,29 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2">From date:</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control" id="fromdate{{$index+1}}" value={{frame.FromDate}}>
+                        <p class="form-control-static">{{frame.FromDate}}</p>
                     </div>
                     <label class="control-label col-sm-2">To date:</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control" id="todate{{$index+1}}" value={{frame.ToDate}}>
+                        <p class="form-control-static">{{frame.ToDate}}</p>
                     </div>
                     <label class="control-label col-sm-2">Days:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="days" value={{frame.days}}>
+                        <p class="form-control-static">{{frame.days}}</p>
                     </div>
                     <label class="control-label col-sm-2">From time:</label>
                     <div class="col-sm-10">
-                        <input type="time" class="form-control" id="FromTime{{$index+1}}" value={{frame.FromTime}}>
+                        <p class="form-control-static">{{frame.FromTime}}</p>
                     </div>
                     <label class="control-label col-sm-2">To time:</label>
                     <div class="col-sm-10">
-                        <input type="time" class="form-control" id="ToTime{{$index+1}}" value={{frame.ToTime}}>
+                        <p class="form-control-static">{{frame.ToTime}}</p>
                     </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </div>
-            </div>
+          
         </form>
+       
     </div>
-
 </body>
 </html>

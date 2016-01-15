@@ -4,7 +4,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-var module = angular.module('MessagesApp', ['ngRoute', 'MessagesApp.List', 'MessagesApp.Edit','ServicesModule']);
+var module = angular.module('MessagesApp', ['ngRoute', 'MessagesApp.List', 'MessagesApp.Edit', 'MessagesApp.Create', 'MessagesApp.Item', 'ServicesModule']);
 
 module.config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode({
@@ -17,5 +17,3 @@ module.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
     otherwise({redirectTo: '/'});
 }]);
-
-
