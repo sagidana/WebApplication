@@ -134,7 +134,7 @@ var messages = [
                 "ToTime": new Date(1000,1,1,23,59,0)
             }
         ],
-        "screen": ["1"]
+        "screen": [1]
     },
     {
         "name": "mes5",
@@ -192,7 +192,7 @@ var screens = [
         "location": "Rishon"
     },
     {
-        "number": -1,
+        "number": 0,
         "location": "Ramat Gan"
     }
 ];
