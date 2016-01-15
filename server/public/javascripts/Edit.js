@@ -33,7 +33,7 @@ module.controller('EditCtrl',function($scope, $routeParams, ioFactory) {
 
     ioFactory.on('getScreens', function (result) {
         if (result) {
-            console.log(result);
+            //console.log(result);
             $scope.Screens = result;
         }
     });

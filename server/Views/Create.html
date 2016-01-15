@@ -34,38 +34,34 @@
 
         </header>
         <h2>Create message</h2>
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form" ng-submit="addMessage(Message)">
             <div class="form-group">
                 <label class="control-label col-sm-2">Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" class="form-control" id="name"  ng-model="Message.name">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">Template</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="template">
+                    <select class="form-control" id="template" ng-options="template.path for template in Templates track by template.path" ng-model="Message.template">
+                        <option value="">-- choose template --</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">Dispy Time (sec)</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="dispTimeSec">
+                    <input type="text" class="form-control" id="dispTimeSec" ng-model="Message.dispTimeSec">
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="control-label col-sm-2">Screen</label>
-                <div class="col-sm-10">
-                    <select multiple class="form-control" id="screen">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
-                </div>
+                <label class="control-label col-sm-2">Screens</label>
+                <label class="checkbox-inline" ng-repeat="screen in Screens">
+                    <input class="" type="checkbox" title="{{screen.number}}" id="{{screen.number}}" ng-model="Message.screen"/>
+                    {{screen.location}}
+                </label>
             </div>
 
             <h3>Texts</h3>
@@ -73,7 +69,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2">Text {{index}}: </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="text{{index}}">
+                        <input type="text" class="form-control" id="text{{index}}"  ng-model="Message.text">
                     </div>
                 </div>
             </div>
@@ -82,7 +78,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2">Image {{index}}: </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="image{{index}}">
+                        <input type="text" class="form-control" id="image{{index}}"  ng-model="Message.images">
                     </div>
                 </div>
             </div>
