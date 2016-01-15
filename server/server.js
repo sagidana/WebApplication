@@ -147,6 +147,8 @@ function addMesToDb(message, screenId, callback) {
 
 function editMessage(message, callback)
 {
+    delete message._id;
+
     MongoClient.connect(url, function (err, db) {
         if (err) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
@@ -157,8 +159,7 @@ function editMessage(message, callback)
             messagesCollection.updateOne({
                 "name": message.name
             },{
-                $set : message,
-                $currentDate:{"lastModified":true}
+                $set : message
             }, function(err, result){
 
                 if (err) {

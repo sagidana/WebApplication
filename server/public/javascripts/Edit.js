@@ -27,6 +27,7 @@ module.controller('EditCtrl',function($scope, $routeParams, ioFactory) {
 
             $scope.saveChanges = function(){
                 $scope.Message.TimeFrame = angular.toJson($scope.Message.TimeFrame);
+                $scope.Message.TimeFrame = JSON.parse($scope.Message.TimeFrame);
 
                 ioFactory.emit('editMessage', $scope.Message, function(result){})
                 ioFactory.on('getStatus',function(result){

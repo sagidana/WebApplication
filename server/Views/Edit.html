@@ -58,7 +58,7 @@
                 <label class="control-label col-sm-2">Screens</label>
 
                 <label class="checkbox-inline" ng-repeat="screen in Screens">
-                    <input type="checkbox" checklist-model="Message.screen" checklist-value="screen" ng-checked="Message.screen.indexOf(screen.number) > -1">
+                    <input type="checkbox" checklist-model="Message.screen" checklist-value="screen.number" ng-checked="Message.screen.indexOf(screen.number) > -1">
                     {{screen.location}}
                 </label>
             </div>
@@ -86,24 +86,24 @@
                     <div class="form-group" id="TimeFrame">
                         <label class="control-label col-sm-2">From date:</label>
                         <div class="col-sm-4">
-                            <input type="date" class="form-control" id="formDate{{$index+1}}" ng-model="frame.FromDate" placeholder="dd-MM-yyyy">
+                            <input type="date" class="form-control" ng-model="frame.FromDate" placeholder="dd-MM-yyyy">
                         </div>
                         <label class="control-label col-sm-2">To date:</label>
                         <div class="col-sm-4">
-                            <input type="date" class="form-control" id="toDate{{$index+1}}" ng-model="frame.ToDate" placeholder="dd-MM-yyyy">
+                            <input type="date" class="form-control" ng-model="frame.ToDate" placeholder="dd-MM-yyyy">
                         </div>
                         <label class="control-label col-sm-2">From time:</label>
                         <div class="col-sm-4">
-                            <input type="time" class="form-control" id="fromTime{{$index+1}}" ng-model="frame.FromTime" placeholder="HH:mm:ss">
+                            <input type="time" class="form-control" ng-model="frame.FromTime" placeholder="HH:mm:ss">
                         </div>
                         <label class="control-label col-sm-2">To time:</label>
                         <div class="col-sm-4">
-                            <input type="time" class="form-control" id="toTime{{$index+1}}" ng-model="frame.ToTime" placeholder="HH:mm:ss">
+                            <input type="time" class="form-control" ng-model="frame.ToTime" placeholder="HH:mm:ss">
                         </div>
                         <label class="control-label col-sm-2">Days:</label>
                         <div class="form-group col-sm-10">
                             <label class="checkbox-inline" ng-repeat="day in ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']">
-                                <input class="" type="checkbox" id="day{{$index}}" ng-model="frame.days[$index]"/>
+                                <input class="" type="checkbox" ng-model="frame.days[$index]"/>
                                 {{day}}
                             </label>
                         </div>
