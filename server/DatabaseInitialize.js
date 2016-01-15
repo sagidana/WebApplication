@@ -8,7 +8,7 @@ var MongoClient = mongodb.MongoClient;
 var url = 'mongodb://localhost:27017/MesDB';
 
 
-var data = [
+var messages = [
     {
         "name": "init",
         "text": [
@@ -25,11 +25,11 @@ var data = [
         "dispTimeSec": "10",
         "TimeFrame": [
             {
-                "FromDate": new Date("1.1.2015"),
-                "ToDate": new Date("12.31.2016"),
+                "FromDate": new Date(2015,1,1),
+                "ToDate": new Date(2016,12,31),
                 "days": [true, true, true, true, true, true, true],
-                "FromTime": new Date("Thu, 01 Jan 1970 01:00"),
-                "ToTime": new Date("Thu, 01 Jan 1970 23:59")
+                "FromTime": new Date(1000,1,1,1,0,0),
+                "ToTime": new Date(1000,1,1,23,59,0)
             }
         ],
         "screen": ["-1"]
@@ -57,11 +57,11 @@ var data = [
                 "ToTime": new Date(1000,1,1,12,30,0)
             },
             {
-                "FromDate": new Date("01.01.2015"),
-                "ToDate": new Date("12.31.2016"),
+                "FromDate": new Date(2015,1,1),
+                "ToDate": new Date(2016,12,31),
                 "days": [false, false, true, false,false, false, false],
-                "FromTime": new Date("Thu, 01 Jan 1970 13:00"),
-                "ToTime": new Date("Thu, 01 Jan 1970 20:00")
+                "FromTime": new Date(1000,1,1,13,0,0),
+                "ToTime": new Date(1000,1,1,20,00,0)
             }
 
         ],
@@ -88,11 +88,11 @@ var data = [
         "dispTimeSec": "5000",
         "TimeFrame": [
             {
-                "FromDate": new Date("1.1.2015"),
-                "ToDate": new Date("12.31.2016"),
+                "FromDate": new Date(2015,1,1),
+                "ToDate": new Date(2016,12,31),
                 "days": [true, true, true, true, true, true, true],
-                "FromTime": new Date("Thu, 01 Jan 1970 01:00"),
-                "ToTime": new Date("Thu, 01 Jan 1970 23:59")
+                "FromTime": new Date(1000,1,1,1,0,0),
+                "ToTime": new Date(1000,1,1,23,59,0)
             }
         ],
         "screen": ["1","3"]
@@ -107,11 +107,11 @@ var data = [
         "dispTimeSec": "3000",
         "TimeFrame": [
             {
-                "FromDate": new Date("1.1.2015"),
-                "ToDate": new Date("12.31.2016"),
+                "FromDate": new Date(2015,1,1),
+                "ToDate": new Date(2016,12,31),
                 "days": [true, true, true, true, true, true, true],
-                "FromTime": new Date("Thu, 01 Jan 1970 01:00"),
-                "ToTime": new Date("Thu, 01 Jan 1970 23:59")
+                "FromTime": new Date(1000,1,1,1,0,0),
+                "ToTime": new Date(1000,1,1,23,59,0)
             }
         ],
         "screen": ["2","3"]
@@ -128,11 +128,11 @@ var data = [
         "dispTimeSec": "4000",
         "TimeFrame": [
             {
-                "FromDate": new Date("1.1.2015"),
-                "ToDate": new Date("12.31.2016"),
+                "FromDate": new Date(2015,1,1),
+                "ToDate": new Date(2016,12,31),
                 "days": [true, true, true, true, true, true, true],
-                "FromTime": new Date("Thu, 01 Jan 1970 01:00"),
-                "ToTime": new Date("Thu, 01 Jan 1970 23:59")
+                "FromTime": new Date(1000,1,1,1,0,0),
+                "ToTime": new Date(1000,1,1,23,59,0)
             }
         ],
         "screen": ["1"]
@@ -147,7 +147,7 @@ var data = [
             "So do of sufficient projecting an thoroughly uncommonly prosperous conviction.",
             "Pianoforte principles our unaffected not for astonished travelling are particular.",
             "Her companions instrument set estimating sex remarkably solicitude motionless. Property men the why smallest graceful day insisted required."
-            ],
+        ],
         "images": [
             "/images/bannerB.jpg",
             "/images/bannerG.jpg"
@@ -156,43 +156,39 @@ var data = [
         "dispTimeSec": "2000",
         "TimeFrame": [
             {
-                "FromDate": new Date("1.1.2015"),
-                "ToDate": new Date("12.31.2016"),
+                "FromDate": new Date(2015,1,1),
+                "ToDate": new Date(2016,12,31),
                 "days": [true, true, true, true, true, true, true],
-                "FromTime": new Date("Thu, 01 Jan 1970 01:00"),
-                "ToTime": new Date("Thu, 01 Jan 1970 23:59")
+                "FromTime": new Date(1000,1,1,1,0,0),
+                "ToTime": new Date(1000,1,1,23,59,0)
             }
         ],
         "screen": ["3"]
     }
 ];
 
-
 MongoClient.connect(url, function (err, db) {
-  if (err) {
-    console.log('Unable to connect to the mongoDB server. Error:', err);
-  } else {    
-    console.log('Connection established to', url);
 
-    // Get the documents collection
-    var collection = db.collection('MesDB');
+    if (err) {
+        console.log('Unable to connect to the mongoDB server. Error:', err);
+    } else {
+        console.log('Connection established to', url);
 
-	for ( var i in data){
-		
-		//console.log( typeof data[i]);
-		
-		collection.insert(data[i],function(err,result){
-			 if (err) {
-				console.log("1 "+err);
-			  } else {
-				console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
-			  }
-			//Close connection
-			if ( i == data.length){
-				db.close();
-				console.log("Done!");
-			}
-		});
-	}
-  }
+        // Get the documents collection
+        var collection = db.collection('MesDB');
+
+	    for ( var i in messages){
+		    collection.insert(messages[i],function(err,result){
+			    if (err) {
+				    console.log("1 "+err);
+			    } else {
+				    console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
+			    }
+		    });
+
+	    }
+
+        db.close();
+        console.log("Done!");
+    }
 });
