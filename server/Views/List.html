@@ -76,7 +76,7 @@
 
                         <p style="font-size:20px">Time Frame:</p>
                         <div class="list-group" ng-repeat="Time in Message.TimeFrame">
-                            <span style="font-size:15px">Date: {{Time.FromDate}} - {{Time.ToDate}}</span>
+                            <span style="font-size:15px">Date: {{Time.FromDate | date: "yyyy-MM-dd"}} -> {{Time.ToDate| date: "yyyy-MM-dd"}}</span>
                             <br />
                             <span style="font-size:15px">
                                 Days:
@@ -85,7 +85,7 @@
                                 </span>
                             </span>
                             <br />
-                            <span style="font-size:15px">Time: {{Time.FromTime}} - {{Time.ToTime}}</span>
+                            <span style="font-size:15px">Time: {{Time.FromTime | date: "HH:mm"}} -> {{Time.ToTime | date: "HH:mm"}}</span>
                         </div>
                         <p>
                             <a class="btn btn-primary" href="/Edit?name={{Message.name}}" role="button">Edit &raquo;</a>

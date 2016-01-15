@@ -25,11 +25,11 @@ var data = [
         "dispTimeSec": "10",
         "TimeFrame": [
             {
-                "FromDate": "1.1.2015",
-                "ToDate": "12.31.2016",
+                "FromDate": new Date("1.1.2015"),
+                "ToDate": new Date("12.31.2016"),
                 "days": [true, true, true, true, true, true, true],
-                "FromTime": "01:00",
-                "ToTime": "23:59"
+                "FromTime": new Date("Thu, 01 Jan 1970 01:00"),
+                "ToTime": new Date("Thu, 01 Jan 1970 23:59")
             }
         ],
         "screen": ["-1"]
@@ -50,18 +50,18 @@ var data = [
         "dispTimeSec": "2000",
         "TimeFrame": [
             {
-                "FromDate": "1.1.2015",
-                "ToDate": "12.31.2016",
+                "FromDate": new Date(2015,1,1),
+                "ToDate": new Date(2016,12,31),
                 "days": [true, false,false,false,false,false,false],
-                "FromTime": "06:00",
-                "ToTime": "12:00"
+                "FromTime": new Date(1000,1,1,6,0,0),
+                "ToTime": new Date(1000,1,1,12,30,0)
             },
             {
-                "FromDate": "1.1.2015",
-                "ToDate": "12.31.2016",
+                "FromDate": new Date("01.01.2015"),
+                "ToDate": new Date("12.31.2016"),
                 "days": [false, false, true, false,false, false, false],
-                "FromTime": "13:00",
-                "ToTime": "20:00"
+                "FromTime": new Date("Thu, 01 Jan 1970 13:00"),
+                "ToTime": new Date("Thu, 01 Jan 1970 20:00")
             }
 
         ],
@@ -88,11 +88,11 @@ var data = [
         "dispTimeSec": "5000",
         "TimeFrame": [
             {
-                "FromDate": "1.1.2015",
-                "ToDate": "12.31.2016",
+                "FromDate": new Date("1.1.2015"),
+                "ToDate": new Date("12.31.2016"),
                 "days": [true, true, true, true, true, true, true],
-                "FromTime": "01:00",
-                "ToTime": "23:59"
+                "FromTime": new Date("Thu, 01 Jan 1970 01:00"),
+                "ToTime": new Date("Thu, 01 Jan 1970 23:59")
             }
         ],
         "screen": ["1","3"]
@@ -107,11 +107,11 @@ var data = [
         "dispTimeSec": "3000",
         "TimeFrame": [
             {
-                "FromDate": "1.1.2015",
-                "ToDate": "12.31.2016",
+                "FromDate": new Date("1.1.2015"),
+                "ToDate": new Date("12.31.2016"),
                 "days": [true, true, true, true, true, true, true],
-                "FromTime": "01:00",
-                "ToTime": "23:59"
+                "FromTime": new Date("Thu, 01 Jan 1970 01:00"),
+                "ToTime": new Date("Thu, 01 Jan 1970 23:59")
             }
         ],
         "screen": ["2","3"]
@@ -128,11 +128,11 @@ var data = [
         "dispTimeSec": "4000",
         "TimeFrame": [
             {
-                "FromDate": "1.1.2015",
-                "ToDate": "12.31.2016",
+                "FromDate": new Date("1.1.2015"),
+                "ToDate": new Date("12.31.2016"),
                 "days": [true, true, true, true, true, true, true],
-                "FromTime": "01:00",
-                "ToTime": "23:59"
+                "FromTime": new Date("Thu, 01 Jan 1970 01:00"),
+                "ToTime": new Date("Thu, 01 Jan 1970 23:59")
             }
         ],
         "screen": ["1"]
@@ -156,11 +156,11 @@ var data = [
         "dispTimeSec": "2000",
         "TimeFrame": [
             {
-                "FromDate": "1.1.2015",
-                "ToDate": "12.31.2016",
+                "FromDate": new Date("1.1.2015"),
+                "ToDate": new Date("12.31.2016"),
                 "days": [true, true, true, true, true, true, true],
-                "FromTime": "01:00",
-                "ToTime": "23:59"
+                "FromTime": new Date("Thu, 01 Jan 1970 01:00"),
+                "ToTime": new Date("Thu, 01 Jan 1970 23:59")
             }
         ],
         "screen": ["3"]
