@@ -24,83 +24,59 @@
 </head>
 <body ng-controller="ItemCtrl">
     <div class="container">
-        <h2>Edit message</h2>
+        <h2>message</h2>
         <p>
             <a class="btn btn-primary" href="/Edit?name={{Message.name}}" role="button">Edit &raquo;</a>
             <a class="btn btn-warning" href="/Delete?name={{Message.name}}" role="button">Delete &raquo;</a>
         </p>
-        <form class="form-horizontal" role="form">
-            <div class="form-group">
-                <label class="control-label col-sm-2">Name</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static">{{Message.name}}</p>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2">Template</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static">{{Message.template}}</p>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2">Dispy Time (sec)</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static">{{Message.dispTimeSec}}</p>
-                </div>
-            </div>
+        <p style="font-size:20px;">Name:
+                    <span style="text-decoration:underline;font-weight:bold">
+                        <a href="/Item?name={{Message.name}}" role="button">
+                            {{Message.name}}
+                        </a>
+                    </span>
+        </p>
 
-            <div class="form-group">
-                <label class="control-label col-sm-2">Screen</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static">{{Message.screen}}</p>
-                </div>
-            </div>
+        <div id="MainContainer">
+            <div class="FullLine">
 
-            <h3>Texts</h3>
-            <div ng-repeat="index in [1,2,3,4,5,6,7,8,9,10]">
-                <div class="form-group">
-                    <label class="control-label col-sm-2">Text {{index}}: </label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">{{Message.text[index-1]}}</p>
-                    </div>
+                <p style="font-size:20px">Texts:</p>
+                <div class="list-group" ng-repeat="Text in Message.text">
+                    <label class="control-label col-sm-1">Text {{$index + 1}}: </label>
+                    <p style="font-size:15px">{{Text}}</p>
+                </div>
+
+                <p style="font-size:20px">Images:</p>
+                <div class="list-group" ng-repeat="Image in Message.images">
+                    <label class="control-label col-sm-1">Image {{$index + 1}}: </label>
+                    <p style="font-size:15px">{{Image}} <img ng-src="{{Image}}" class="img-rounded" alt="Cinque Terre" width="110" height="60"> </p>
+                </div>
+
+                <p style="font-size:20px">Template: {{Message.template}}</p>
+                <p style="font-size:20px">Display Time: {{Message.dispTimeSec}} (sec)</p>
+                <p style="font-size:20px">
+                    Screens:
+                            <span ng-repeat="screen in Message.screen">
+                                {{screen}}
+                            </span>
+                </p>
+
+                <p style="font-size:25px">Time Frames:</p>
+                <div class="list-group" ng-repeat="Time in Message.TimeFrame">
+                    <H4>Time Frame {{$index + 1}}: </H4>
+                    <span style="font-size:15px">Date: {{Time.FromDate | date: "yyyy-MM-dd"}} -> {{Time.ToDate| date: "yyyy-MM-dd"}}</span>
+                    <br />
+                            <span style="font-size:15px">
+                                Days:
+                                <span class="list-group" ng-repeat="Day in Time.days track by $index">
+                                    {{ {val:Day, index:$index} | Day}}
+                                </span>
+                            </span>
+                    <br />
+                    <span style="font-size:15px">Time: {{Time.FromTime | date: "HH:mm"}} -> {{Time.ToTime | date: "HH:mm"}}</span>
                 </div>
             </div>
-            <h3>Images</h3>
-            <div ng-repeat="index in [1,2,3,4,5]">
-                <div class="form-group">
-                    <label class="control-label col-sm-2">Image {{index}}: </label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">{{Message.images[index-1]}}</p>
-                    </div>
-                </div>
-            </div>
-            <div ng-repeat="frame in Message.TimeFrame">
-                <h3>Time Frame {{$index+1}}</h3>
-                <div class="form-group">
-                    <label class="control-label col-sm-2">From date:</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">{{frame.FromDate}}</p>
-                    </div>
-                    <label class="control-label col-sm-2">To date:</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">{{frame.ToDate}}</p>
-                    </div>
-                    <label class="control-label col-sm-2">Days:</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">{{frame.days}}</p>
-                    </div>
-                    <label class="control-label col-sm-2">From time:</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">{{frame.FromTime}}</p>
-                    </div>
-                    <label class="control-label col-sm-2">To time:</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">{{frame.ToTime}}</p>
-                    </div>
-                </div>
-            </div>
-          
-        </form>
+        </div>
        
     </div>
 </body>
