@@ -23,6 +23,15 @@
 <body ng-controller="EditCtrl">
 
     <div class="container">
+        <header>
+            <h3 class="text-muted">Messages</h3>
+            <ul class="nav nav-pills">
+                <li><a href="/list">List</a></li>
+                <li><a href="/Create">Create</a></li>
+                <li><a href="/Manage">Manage</a></li>
+                <li><a href="/About">About</a></li>
+            </ul>
+        </header>
         <h2>Edit message</h2>
         <form class="form-horizontal" role="form">
             <div class="form-group">
@@ -34,7 +43,10 @@
             <div class="form-group">
                 <label class="control-label col-sm-2">Template</label>
                 <div class="col-sm-10">
-                    <select class="form-control" id="template" ng-options="template.path for template in Templates track by template.path" ng-model="Message.template">
+                    <select class="form-control" id="template"
+                            ng-options="template.path for template in Templates track by template.path"
+                            ng-model="Message.template"
+                            ng-checked="(template == Message.template)">
                         <option value="">-- choose template --</option>
                     </select>
                 </div>
@@ -49,7 +61,7 @@
                 <label class="control-label col-sm-2">Screens</label>
 
                 <label class="checkbox-inline" ng-repeat="screen in Screens">
-                    <input class="" type="checkbox" id="screen{{$index}}" ng-model="screen.number in Message.screen"/>
+                    <input class="" type="checkbox" id="{{screen.number}}" ng-checked="(Message.screen.indexOf(screen.number) != -1)"/>
                     {{screen.location}}
                 </label>
             </div>
