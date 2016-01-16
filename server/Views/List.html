@@ -57,7 +57,7 @@
                     <div class="FullLine">
 
                         <p style="font-size:20px">Texts:</p>
-                        <div class="list-group" ng-repeat="Text in Message.text">
+                        <div class="list-group" ng-repeat="Text in Message.text track by $index">
                             <p style="font-size:15px">{{Text}}</p>
                         </div>
 
