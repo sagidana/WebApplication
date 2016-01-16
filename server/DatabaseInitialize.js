@@ -21,7 +21,7 @@ var messages = [
             "/images/bannerB.jpg"
         ],
         "template": "tempA.html",
-        "dispTimeSec": "10000",
+        "dispTimeSec": 10000,
         "TimeFrame": [
             {
                 "FromDate": new Date(2015,1,1),
@@ -46,7 +46,7 @@ var messages = [
             "/images/bannerB.jpg"
         ],
         "template": "tempA.html",
-        "dispTimeSec": "2000",
+        "dispTimeSec": 2000,
         "TimeFrame": [
             {
                 "FromDate": new Date(2015,1,1),
@@ -84,7 +84,7 @@ var messages = [
             "/images/bannerG.jpg"
         ],
         "template": "tempB.html",
-        "dispTimeSec": "5000",
+        "dispTimeSec": 5000,
         "TimeFrame": [
             {
                 "FromDate": new Date(2015,1,1),
@@ -103,7 +103,7 @@ var messages = [
         "images": [
         ],
         "template": "tempC.html",
-        "dispTimeSec": "3000",
+        "dispTimeSec": 3000,
         "TimeFrame": [
             {
                 "FromDate": new Date(2015,1,1),
@@ -124,7 +124,7 @@ var messages = [
         "images": [
         ],
         "template": "tempA.html",
-        "dispTimeSec": "4000",
+        "dispTimeSec": 4000,
         "TimeFrame": [
             {
                 "FromDate": new Date(2015,1,1),
@@ -152,7 +152,7 @@ var messages = [
             "/images/bannerG.jpg"
         ],
         "template": "tempB.html",
-        "dispTimeSec": "2000",
+        "dispTimeSec": 2000,
         "TimeFrame": [
             {
                 "FromDate": new Date(2015,1,1),

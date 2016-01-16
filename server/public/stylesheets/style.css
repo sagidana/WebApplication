@@ -6,3 +6,17 @@ body {
 a {
   color: #00B7FF;
 }
+
+.row {
+  position: relative;
+}
+
+.hover-btn {
+  position: absolute;
+  right: 15px;
+  display: none;
+}
+
+.row:hover .hover-btn {
+  display: block;
+}
