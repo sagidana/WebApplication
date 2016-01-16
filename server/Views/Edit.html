@@ -6,6 +6,8 @@
     <script type="text/javascript" src="/javascripts/checklist-model.js"></script>
     <link rel="stylesheet" type="text/css" href="/Bootstrap/bootstrap/dist/css/bootstrap.css" />
     <script type="text/javascript" src="/javascripts/display.js"></script>
+    <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload.min.js"></script>
+    <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload-shim.js"></script>
     <script type="text/javascript" src="/Bootstrap/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="/Bootstrap/bootstrap/dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="/javascripts/socket.io-client/socket.io.js"></script>
@@ -74,11 +76,20 @@
                 </div>
             </div>
             <h3>Images</h3>
+
+            <div>
+                <input  type="file" fileread="imageToUpload"/>
+                <button class="btn btn-default" ng-click="uploadImage()">Upload</button>
+            </div>
+
             <div ng-repeat="index in [1,2,3,4,5]">
                 <div class="form-group">
-                    <label class="control-label col-sm-2">Image {{index}}: </label>
+
+                    <label class="control-label col-sm-2">Image {{index}}</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="image{{index}}" ng-model="Message.images[index-1]">
+                        <select class="form-control" ng-model="Message.images[index-1]">
+                            <option ng-repeat="image in Images" ng-value="image">{{image}}</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -130,6 +141,21 @@
                 </div>
             </div>
         </form>
+
+        <div id="chanegsSaved" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Changes saved!</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 
 </body>

@@ -9,6 +9,21 @@ module.config(['$routeProvider', function($routeProvider) {
     })
 }]);
 
+module.directive("fileread", [function () {
+    return {
+        scope: {
+            fileread: "="
+        },
+        link: function (scope, element, attributes) {
+            element.bind("change", function (changeEvent) {
+                scope.$apply(function () {
+                    scope.fileread = changeEvent.target.files[0];
+                });
+            });
+        }
+    }
+}]);
+
 module.controller('EditCtrl',function($scope, $routeParams, ioFactory) {
 
     var messageName = getParameterByName('name');
@@ -33,6 +48,14 @@ module.controller('EditCtrl',function($scope, $routeParams, ioFactory) {
                 $scope.Message.TimeFrame.splice($scope.Message.TimeFrame.length,0,{});
             };
 
+            $scope.uploadImage = function(){
+                console.log($scope.imageToUpload);
+            };
+
+            $scope.updateImages = function(){
+                ioFactory.emit('askImages', '', function (result) { });
+            };
+
             $scope.saveChanges = function(){
                 $scope.Message.TimeFrame = angular.toJson($scope.Message.TimeFrame);
                 $scope.Message.TimeFrame = JSON.parse($scope.Message.TimeFrame);
@@ -46,10 +69,19 @@ module.controller('EditCtrl',function($scope, $routeParams, ioFactory) {
                 }
 
                 ioFactory.emit('editMessage', $scope.Message, function(result){})
-                ioFactory.on('getStatus',function(result){
-                    $scope.Status = result;
+                ioFactory.on('getStatus',function(status){
+                    if (status.ok)
+                        $('#chanegsSaved').modal('show');
                 });
             };
+        }
+    });
+
+    ioFactory.emit('askImages', '', function (result) { });
+
+    ioFactory.on('getImages', function (result) {
+        if (result) {
+            $scope.Images = result;
         }
     });
 

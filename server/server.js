@@ -1,3 +1,4 @@
+var walk    = require('walk');
 var express = require('express')
   , app = express()
   , http = require('http')
@@ -91,6 +92,12 @@ io.sockets.on('connection', function (socket) {
         });
     });
 
+    socket.on('askImages',function(){
+        getImages(function (filesNames) {
+            socket.emit('getImages', filesNames);
+        });
+    });
+
     socket.on('editMessage', function (message) {
         editMessage(message, function (result) {
             socket.emit('getStatus', result);
@@ -145,8 +152,23 @@ function addMesToDb(message, screenId, callback) {
     });
 };
 
-function editMessage(message, callback)
-{
+function getImages(callback){
+    var filesNames   = [];
+// Walker options
+    var walker  = walk.walk(__dirname + "/public/images", { followLinks: false });
+
+    walker.on('file', function(root, stat, next) {
+        // Add this file to the list of files
+        filesNames.push("/images/"+stat.name);
+        next();
+    });
+
+    walker.on('end', function() {
+        callback(filesNames);
+    });
+}
+
+function editMessage(message, callback) {
     delete message._id;
 
     MongoClient.connect(url, function (err, db) {
