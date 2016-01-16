@@ -114,7 +114,7 @@ io.sockets.on('connection', function (socket) {
         });
     });
 
-    // recive new mess from the update page
+    // recive new mess from the update page - not in use
     socket.on('addMessage2', function (message) {
         //console.log("message: "+JSON.stringify(message)+"\n\n\n\n");
         addMessage(message, function () {

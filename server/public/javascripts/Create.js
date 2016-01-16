@@ -62,11 +62,11 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
             timef = JSON.parse(timef);
         }
         //console.log(JSON.stringify($scope.Message));
-        console.log($scope.Message);
+        //console.log($scope.Message);
 
         ioFactory.emit('addMessage', $scope.Message, function(result){})
         ioFactory.on('getStatus',function(result){
-            console.log(result);
+            //console.log(result);
             $scope.Status = result;
         });
 

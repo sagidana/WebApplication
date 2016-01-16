@@ -86,7 +86,10 @@
             <div id="TimeFrame">
                 <div ng-repeat="timef in Message.TimeFrame track by $index">
                     <div class="form-group" id="TimeFrame{{$index}}">
-                        <h3>Time Frame {{$index+1}}</h3>
+                        <h3>
+                            Time Frame {{$index+1}}
+                            <button ng-click="(Message.TimeFrame.length == 1 ? null: Message.TimeFrame.splice($index, 1) )" aria-label="Remove">X</button>
+                        </h3>
                         <label class="control-label col-sm-2">From date:</label>
                         <div class="col-sm-4">
                             <input type="date" class="form-control" id="fromdate{{$index}}" ng-model="Message.TimeFrame[$index].FromDate" />
