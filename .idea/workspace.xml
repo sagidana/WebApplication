@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="70df9a95-1a1b-412f-a8d6-441b63e6f2a5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Edit.html" afterPath="$PROJECT_DIR$/server/Views/Edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/javascripts/Edit.js" afterPath="$PROJECT_DIR$/server/public/javascripts/Edit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.js" afterPath="$PROJECT_DIR$/server/server.js" />
     </list>
     <ignored path="WebApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -527,7 +524,13 @@
       <option name="project" value="LOCAL" />
       <updated>1452963294038</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="upload images">
+      <created>1452973706820</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1452973706820</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -589,7 +592,8 @@
     <MESSAGE value="Fixing edit functionality - tempaltes" />
     <MESSAGE value="adding walk" />
     <MESSAGE value="Adding ScreensManagement" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding ScreensManagement" />
+    <MESSAGE value="upload images" />
+    <option name="LAST_COMMIT_MESSAGE" value="upload images" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
