@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="70df9a95-1a1b-412f-a8d6-441b63e6f2a5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Create.html" afterPath="$PROJECT_DIR$/server/Views/Create.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Display.html" afterPath="$PROJECT_DIR$/server/Views/Display.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/javascripts/Create.js" afterPath="$PROJECT_DIR$/server/public/javascripts/Create.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.js" afterPath="$PROJECT_DIR$/server/server.js" />
@@ -27,34 +26,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54714286">
-              <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="112" column="42" selection-start-line="112" selection-start-column="42" selection-end-line="112" selection-end-column="42" />
               <folding>
                 <element signature="e#2173#2309#0" expanded="false" />
                 <element signature="e#2350#2457#0" expanded="false" />
                 <element signature="e#2500#2615#0" expanded="false" />
                 <element signature="e#2667#2787#0" expanded="false" />
                 <element signature="e#3080#3270#0" expanded="false" />
+                <element signature="e#3594#3861#0" expanded="false" />
                 <element signature="n#!!block;n#addMessage#0" expanded="false" />
+                <element signature="n#!!block;n#editMessage#0" expanded="false" />
                 <element signature="n#!!block;n#getTemplates#0" expanded="false" />
                 <element signature="n#!!block;n#getScreens#0" expanded="false" />
                 <element signature="n#!!block;n#getMessage#0" expanded="false" />
                 <element signature="n#!!block;n#getMessages#0" expanded="false" />
-                <element signature="n#!!block;n#getDataFromDb#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Create.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/Views/Create.html">
+      <file leaf-file-name="DatabaseInitialize.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/DatabaseInitialize.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.7692308">
-              <caret line="76" column="25" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
-              <folding />
+            <state vertical-scroll-proportion="0.45714286">
+              <caret line="206" column="0" selection-start-line="206" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
+              <folding>
+                <element signature="e#336#6596#0" expanded="false" />
+                <element signature="e#6615#6743#0" expanded="false" />
+                <element signature="e#6760#7023#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,7 +67,7 @@
         <entry file="file://$PROJECT_DIR$/server/public/javascripts/Create.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+              <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
               <folding>
                 <element signature="e#1112#1223#0" expanded="false" />
               </folding>
@@ -74,8 +78,8 @@
       <file leaf-file-name="Display.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/Views/Display.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.166666">
-              <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+            <state vertical-scroll-proportion="-13.379311">
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -118,7 +122,6 @@
         <option value="$PROJECT_DIR$/server/public/javascripts/List.js" />
         <option value="$PROJECT_DIR$/server/public/javascripts/display.js" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/server/DatabaseInitialize.js" />
         <option value="$PROJECT_DIR$/server/public/javascripts/App.js" />
         <option value="$PROJECT_DIR$/server/public/javascripts/checklist-model.js" />
         <option value="$PROJECT_DIR$/server/Views/Update.html" />
@@ -126,11 +129,12 @@
         <option value="$PROJECT_DIR$/server/Views/index.html" />
         <option value="$PROJECT_DIR$/server/Views/Edit.html" />
         <option value="$PROJECT_DIR$/server/Views/Item.html" />
-        <option value="$PROJECT_DIR$/server/server.js" />
         <option value="$PROJECT_DIR$/server/public/javascripts/Edit.js" />
-        <option value="$PROJECT_DIR$/server/public/javascripts/Create.js" />
         <option value="$PROJECT_DIR$/server/Views/Create.html" />
+        <option value="$PROJECT_DIR$/server/public/javascripts/Create.js" />
+        <option value="$PROJECT_DIR$/server/server.js" />
         <option value="$PROJECT_DIR$/server/Views/Display.html" />
+        <option value="$PROJECT_DIR$/server/DatabaseInitialize.js" />
       </list>
     </option>
   </component>
@@ -403,19 +407,25 @@
       <option name="project" value="LOCAL" />
       <updated>1452940879306</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="server add mess to db.&#10;working on update all live screens">
+      <created>1452942957998</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1452942957998</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24710222" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24710222" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2112676" sideWeight="0.5021075" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284055" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2112676" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2112676" sideWeight="0.49789253" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -463,7 +473,8 @@
     <MESSAGE value="enable the edit functionality" />
     <MESSAGE value="before new way on create.days" />
     <MESSAGE value="finished create.js .html&#10;start working on server side" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished create.js .html&#10;start working on server side" />
+    <MESSAGE value="server add mess to db.&#10;working on update all live screens" />
+    <option name="LAST_COMMIT_MESSAGE" value="server add mess to db.&#10;working on update all live screens" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -782,14 +793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/DatabaseInitialize.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.77278733">
-          <caret line="39" column="70" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/public/javascripts/checklist-model.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.9326289">
@@ -802,24 +805,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-21.25">
           <caret line="115" column="63" selection-start-line="115" selection-start-column="52" selection-end-line="115" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/public/javascripts/Create.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding>
-            <element signature="e#1112#1223#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/Views/Create.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7692308">
-          <caret line="76" column="25" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -854,30 +839,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/Views/Display.html">
+    <entry file="file://$PROJECT_DIR$/server/Views/Create.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.166666">
-          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.1454006">
+          <caret line="76" column="25" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/public/javascripts/Create.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+          <folding>
+            <element signature="e#1112#1223#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54714286">
-          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="112" column="42" selection-start-line="112" selection-start-column="42" selection-end-line="112" selection-end-column="42" />
           <folding>
             <element signature="e#2173#2309#0" expanded="false" />
             <element signature="e#2350#2457#0" expanded="false" />
             <element signature="e#2500#2615#0" expanded="false" />
             <element signature="e#2667#2787#0" expanded="false" />
             <element signature="e#3080#3270#0" expanded="false" />
+            <element signature="e#3594#3861#0" expanded="false" />
             <element signature="n#!!block;n#addMessage#0" expanded="false" />
+            <element signature="n#!!block;n#editMessage#0" expanded="false" />
             <element signature="n#!!block;n#getTemplates#0" expanded="false" />
             <element signature="n#!!block;n#getScreens#0" expanded="false" />
             <element signature="n#!!block;n#getMessage#0" expanded="false" />
             <element signature="n#!!block;n#getMessages#0" expanded="false" />
-            <element signature="n#!!block;n#getDataFromDb#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/Views/Display.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.379311">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/DatabaseInitialize.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45714286">
+          <caret line="206" column="0" selection-start-line="206" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
+          <folding>
+            <element signature="e#336#6596#0" expanded="false" />
+            <element signature="e#6615#6743#0" expanded="false" />
+            <element signature="e#6760#7023#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -66,7 +66,7 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
 
         ioFactory.emit('addMessage', $scope.Message, function(result){})
         ioFactory.on('getStatus',function(result){
-            alert(result);
+            console.log(result);
             $scope.Status = result;
         });
 

@@ -107,22 +107,15 @@ io.sockets.on('connection', function (socket) {
         });
     }); // socket on connect
 
-    socket.on('addMessage2', function (message) {
+    socket.on('addMessage', function (message) {
         addMessage(message, function (result) {
-
             socket.emit('getStatus', result);
-
-            for (screen in message.screen) {
-                getDataFromDb(screen, function (result) {
-                  io.sockets.emit('updateData', result);
-                });
-            }
-
+            io.sockets.emit('updateData');
         });
     });
 
     // recive new mess from the update page
-    socket.on('addMessage', function (message) {
+    socket.on('addMessage2', function (message) {
         //console.log("message: "+JSON.stringify(message)+"\n\n\n\n");
         addMessage(message, function () {
 
@@ -145,15 +138,15 @@ function addMessage(message, callback) {
 
             collection.insert(message, function (err, records) {
                 if (err) {
-                    console.log("Error: " + err);
-
+                    //console.log("Error: " + err);
+                    callback(err);
                 } else {
                     //console.log("Record added: " + JSON.stringify(message) + "\n\n\n\n");
-                    callback();
-
+                    callback(records);
+                }
                     //Close connection
                     db.close();
-                }
+
             });
         }
     });

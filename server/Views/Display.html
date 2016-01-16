@@ -43,12 +43,17 @@
 
         });
 
-        socket.on('updateData', function (result) {
+        socket.on('updateData', function () {
+            socket.emit('getdata', screenId);
+            console.log("update Messages");
+
+            /*
             //console.log("updateData:"+ JSON.stringify(result)+"\n\n\n");
             console.log("update Messages");
             _Messages = result;
             if (!_ON)
                 StartCycle(_Messages);
+             */
 
         });
     </script>
