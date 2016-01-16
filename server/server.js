@@ -4,6 +4,26 @@ var express = require('express')
   , server = http.createServer(app)
   , io = require('socket.io').listen(server);
 
+var walk = require('walk');
+var multer = require('multer');
+var upload = multer({
+    dest:  __dirname + '/public/images',
+    limits: {
+        fieldNameSize: 50,
+        files: 1,
+        fields: 5,
+        fileSize: 1024 * 1024
+    },
+    rename: function(fieldname, filename) {
+        return filename;
+    },
+    onFileUploadStart: function(file) {
+        if(file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png') {
+            return false;
+        }
+    }
+});
+
 app.use("/Bootstrap", express.static(__dirname + "/bower_components/"));
 app.use(express.static(__dirname + "/public"));
 app.use("/Views", express.static(__dirname + "/Views"));
@@ -20,6 +40,14 @@ var url = 'mongodb://localhost:27017/MessagesDb';
 
 console.log("Server on.");
 
+app.post('/upload', upload.any(),function(req,res,next){
+    multer({
+        onFileUploadComplete: function(file) {
+            res.send();
+        }
+    });
+});
+
 app.get('/', function (req, res) {
     res.sendFile(__dirname + "/Views/index.html");
 });
@@ -29,6 +57,11 @@ app.get('/', function (req, res) {
 app.get('/Item', function (req, res) {
     res.sendFile(__dirname + "/Views/Item.html");
 });
+
+app.get('/ScreensManagement', function (req, res) {
+    res.sendFile(__dirname + "/Views/ScreensManagement.html");
+});
+
 
 // send the basic html
 // http://localhost:8080/Edit?name=mes1

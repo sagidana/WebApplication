@@ -1,6 +1,6 @@
 'use strict';
 
-var module = angular.module('MessagesApp.Edit', ['ngRoute', 'ServicesModule']);
+var module = angular.module('MessagesApp.Edit', ['ngRoute', 'ngFileUpload', 'ServicesModule']);
 
 module.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/edit/:name', {
@@ -9,24 +9,29 @@ module.config(['$routeProvider', function($routeProvider) {
     })
 }]);
 
-module.directive("fileread", [function () {
-    return {
-        scope: {
-            fileread: "="
-        },
-        link: function (scope, element, attributes) {
-            element.bind("change", function (changeEvent) {
-                scope.$apply(function () {
-                    scope.fileread = changeEvent.target.files[0];
-                });
-            });
-        }
-    }
-}]);
-
-module.controller('EditCtrl',function($scope, $routeParams, ioFactory) {
+module.controller('EditCtrl',function($scope, $routeParams, Upload, ioFactory) {
 
     var messageName = getParameterByName('name');
+
+    $scope.uploadImage = function(){
+
+        $scope.imageSelected = function(image) {
+            if (image && image.length) {
+                console.log(image);
+                $scope.imageToUpload = image[0];
+            }
+
+            Upload.upload({
+                    url: '/upload',
+                    file: $scope.imageToUpload
+                })
+                .success(function(data) {
+                    console.log(data, 'uploaded');
+                });
+
+        };
+    };
+
     ioFactory.emit('askMessage',messageName, function(result){});
     ioFactory.on('getMessage',function(result){
         if (result) {
@@ -78,7 +83,6 @@ module.controller('EditCtrl',function($scope, $routeParams, ioFactory) {
     });
 
     ioFactory.emit('askImages', '', function (result) { });
-
     ioFactory.on('getImages', function (result) {
         if (result) {
             $scope.Images = result;
@@ -86,7 +90,6 @@ module.controller('EditCtrl',function($scope, $routeParams, ioFactory) {
     });
 
     ioFactory.emit('askScreens', '', function (result) { });
-
     ioFactory.on('getScreens', function (result) {
         if (result) {
             $scope.Screens = result;
@@ -94,7 +97,6 @@ module.controller('EditCtrl',function($scope, $routeParams, ioFactory) {
     });
 
     ioFactory.emit('askTemplates', '', function (result) { });
-
     ioFactory.on('getTemplates', function (result) {
         if (result) {
             $scope.Templates = result;

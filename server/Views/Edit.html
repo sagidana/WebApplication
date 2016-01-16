@@ -6,7 +6,9 @@
     <script type="text/javascript" src="/javascripts/checklist-model.js"></script>
     <link rel="stylesheet" type="text/css" href="/Bootstrap/bootstrap/dist/css/bootstrap.css" />
     <script type="text/javascript" src="/javascripts/display.js"></script>
-    <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload.min.js"></script>
+    <!--<script type="text/javascript" src="/Bootstrap/angular-file-upload/dist/angular-file-upload.js"></script>-->
+    <!--<script type="text/javascript" src="/Bootstrap/angular-file-upload/dist/angular-file-upload.min.js"></script>-->
+    <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload.js"></script>
     <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload-shim.js"></script>
     <script type="text/javascript" src="/Bootstrap/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="/Bootstrap/bootstrap/dist/js/bootstrap.js"></script>
@@ -15,6 +17,7 @@
     <script type="text/javascript" src="/javascripts/Services.js"></script>
     <script type="text/javascript" src="/javascripts/Edit.js"></script>
     <script type="text/javascript" src="/javascripts/List.js"></script>
+    <script type="text/javascript" src="/javascripts/ScreensManagement.js"></script>
     <script type="text/javascript" src="/javascripts/Create.js"></script>
     <script type="text/javascript" src="/javascripts/Item.js"></script>
 
@@ -77,10 +80,15 @@
             </div>
             <h3>Images</h3>
 
-            <div>
-                <input  type="file" fileread="imageToUpload"/>
-                <button class="btn btn-default" ng-click="uploadImage()">Upload</button>
-            </div>
+
+            <form>
+                <input type="file" ng-file-select="imageSelected($image)" accept="'image/*'">
+                <input class="btn btn-default"  type="submit" ng-click="uploadImage()" >
+            </form>
+            <!--<div>-->
+                <!--<input  type="file" fileread="imageToUpload"/>-->
+                <!--<button class="btn btn-default" ng-click="uploadImage()">Upload</button>-->
+            <!--</div>-->
 
             <div ng-repeat="index in [1,2,3,4,5]">
                 <div class="form-group">
