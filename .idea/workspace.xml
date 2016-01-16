@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70df9a95-1a1b-412f-a8d6-441b63e6f2a5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/Views/ScreensManagement.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/public/javascripts/ScreensManagement.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Create.html" afterPath="$PROJECT_DIR$/server/Views/Create.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Display.html" afterPath="$PROJECT_DIR$/server/Views/Display.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Edit.html" afterPath="$PROJECT_DIR$/server/Views/Edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Item.html" afterPath="$PROJECT_DIR$/server/Views/Item.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/List.html" afterPath="$PROJECT_DIR$/server/Views/List.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Update.html" afterPath="$PROJECT_DIR$/server/Views/Update.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/javascripts/App.js" afterPath="$PROJECT_DIR$/server/public/javascripts/App.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/javascripts/Edit.js" afterPath="$PROJECT_DIR$/server/public/javascripts/Edit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.js" afterPath="$PROJECT_DIR$/server/server.js" />
     </list>
@@ -34,71 +26,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Edit.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/Views/Edit.html">
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5384617">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="99" />
+            <state vertical-scroll-proportion="0.39932886">
+              <caret line="14" column="85" selection-start-line="14" selection-start-column="85" selection-end-line="14" selection-end-column="85" />
+              <folding>
+                <element signature="e#1981#2035#0" expanded="false" />
+                <element signature="e#2139#2192#0" expanded="false" />
+                <element signature="e#2246#2312#0" expanded="false" />
+                <element signature="e#2418#2473#0" expanded="false" />
+                <element signature="e#2577#2630#0" expanded="false" />
+                <element signature="e#2754#2807#0" expanded="false" />
+                <element signature="e#2916#3021#0" expanded="false" />
+                <element signature="e#3148#3251#0" expanded="false" />
+                <element signature="n#!!block;n#getTemplates#0" expanded="false" />
+                <element signature="n#!!block;n#getScreens#0" expanded="false" />
+                <element signature="n#!!block;n#getMessages#0" expanded="false" />
+                <element signature="n#!!block;n#getDataFromDb#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseInitialize.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/DatabaseInitialize.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="189" column="5" selection-start-line="189" selection-start-column="5" selection-end-line="189" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="List.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/Views/List.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.807693">
-              <caret line="15" column="70" selection-start-line="15" selection-start-column="70" selection-end-line="15" selection-end-column="70" />
-              <folding>
-                <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#p#6;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
+      <file leaf-file-name="bannerG.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/public/images/bannerG.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Item.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/Views/Item.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.461538">
-              <caret line="16" column="70" selection-start-line="16" selection-start-column="70" selection-end-line="16" selection-end-column="70" />
-              <folding>
-                <element signature="n#style#0;n#p#5;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/public/javascripts/App.js">
+      <file leaf-file-name="Create.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/public/javascripts/Create.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#50#0" expanded="false" />
-              </folding>
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScreensManagement.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/Views/ScreensManagement.html">
+      <file leaf-file-name="Edit.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/Views/Edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.807693">
-              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="84" />
-              <folding>
-                <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#p#6;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Update.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/Views/Update.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.115385">
-              <caret line="17" column="84" selection-start-line="17" selection-start-column="84" selection-end-line="17" selection-end-column="84" />
+            <state vertical-scroll-proportion="35.96154">
+              <caret line="89" column="28" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -108,33 +90,33 @@
         <entry file="file://$PROJECT_DIR$/server/public/javascripts/Edit.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="73" selection-start-line="2" selection-start-column="61" selection-end-line="2" selection-end-column="73" />
+              <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
               <folding>
-                <element signature="e#465#918#0" expanded="false" />
-                <element signature="e#1033#3196#0" expanded="false" />
-                <element signature="e#3308#3383#0" expanded="false" />
-                <element signature="e#3497#3573#0" expanded="false" />
-                <element signature="e#3691#3769#0" expanded="false" />
+                <element signature="e#1472#1925#0" expanded="false" />
+                <element signature="e#2040#4203#0" expanded="false" />
+                <element signature="e#4315#4390#0" expanded="false" />
+                <element signature="e#4504#4580#0" expanded="false" />
+                <element signature="e#4698#4776#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/Views/index.html">
+      <file leaf-file-name="Services.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/public/javascripts/Services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2692308">
-              <caret line="5" column="82" selection-start-line="5" selection-start-column="82" selection-end-line="5" selection-end-column="82" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="43" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Create.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Create.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/Views/Create.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3961165">
-              <caret line="16" column="84" selection-start-line="16" selection-start-column="84" selection-end-line="16" selection-end-column="84" />
+            <state vertical-scroll-proportion="-1.3076923">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -191,18 +173,18 @@
         <option value="$PROJECT_DIR$/server/Views/index.html" />
         <option value="$PROJECT_DIR$/server/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/server/DatabaseInitialize.js" />
-        <option value="$PROJECT_DIR$/server/public/javascripts/Edit.js" />
         <option value="$PROJECT_DIR$/server/public/javascripts/ScreenManage.js" />
         <option value="$PROJECT_DIR$/server/public/javascripts/ScreensManagement.js" />
-        <option value="$PROJECT_DIR$/server/server.js" />
         <option value="$PROJECT_DIR$/server/public/javascripts/App.js" />
-        <option value="$PROJECT_DIR$/server/Views/Edit.html" />
         <option value="$PROJECT_DIR$/server/Views/ScreensManagement.html" />
         <option value="$PROJECT_DIR$/server/Views/List.html" />
         <option value="$PROJECT_DIR$/server/Views/Item.html" />
         <option value="$PROJECT_DIR$/server/Views/Update.html" />
         <option value="$PROJECT_DIR$/server/Views/Display.html" />
         <option value="$PROJECT_DIR$/server/Views/Create.html" />
+        <option value="$PROJECT_DIR$/server/public/javascripts/Edit.js" />
+        <option value="$PROJECT_DIR$/server/Views/Edit.html" />
+        <option value="$PROJECT_DIR$/server/server.js" />
       </list>
     </option>
   </component>
@@ -392,28 +374,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ng-file-upload" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -428,14 +388,14 @@
     <property name="SearchEverywhereHistoryKey" value="console.log(&#9;null&#9;null&#10;info&#9;FILE&#9;file://C:/Users/Administrator/Desktop/WebApp/server/node_modules/json3/coverage/lcov.info&#10;unhandled &#9;null&#9;null&#10;unhandled socket.io ur&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\WebApp\server\public\javascripts" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\Desktop\WebApp\server\Views" />
       <recent name="C:\Users\Administrator\Desktop\WebApp\server\Templates" />
       <recent name="C:\Users\Administrator\Desktop\WebApp\server\public\javascripts" />
       <recent name="C:\Users\Administrator\Desktop\WebApp\server" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Administrator\Desktop\WebApp\server\public\javascripts" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.server.js">
@@ -561,7 +521,13 @@
       <option name="project" value="LOCAL" />
       <updated>1452957977074</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Adding ScreensManagement">
+      <created>1452963294038</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1452963294038</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -573,11 +539,11 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284055" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3410771" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3410771" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39915523" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39915523" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -622,7 +588,8 @@
     <MESSAGE value="Fixing edit functionality - Screens!" />
     <MESSAGE value="Fixing edit functionality - tempaltes" />
     <MESSAGE value="adding walk" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding walk" />
+    <MESSAGE value="Adding ScreensManagement" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding ScreensManagement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -631,28 +598,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/Views/Edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/public/javascripts/Edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#465#918#0" expanded="false" />
-            <element signature="e#1033#3196#0" expanded="false" />
-            <element signature="e#3308#3383#0" expanded="false" />
-            <element signature="e#3497#3573#0" expanded="false" />
-            <element signature="e#3691#3769#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -804,20 +749,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/public/javascripts/Services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="43" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/public/javascripts/Create.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/public/javascripts/angular/version.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -904,14 +835,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/DatabaseInitialize.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="189" column="5" selection-start-line="189" selection-start-column="5" selection-end-line="189" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/express/lib/application.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -943,47 +866,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="66" column="39" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
-          <folding>
-            <element signature="e#1386#1491#0" expanded="false" />
-            <element signature="e#1528#1582#0" expanded="false" />
-            <element signature="e#1686#1739#0" expanded="false" />
-            <element signature="e#1966#2021#0" expanded="false" />
-            <element signature="e#2125#2178#0" expanded="false" />
-            <element signature="e#2302#2355#0" expanded="false" />
-            <element signature="e#2464#2569#0" expanded="false" />
-            <element signature="e#2696#2799#0" expanded="false" />
-            <element signature="n#!!block;n#getTemplates#0" expanded="false" />
-            <element signature="n#!!block;n#getScreens#0" expanded="false" />
-            <element signature="n#!!block;n#getMessages#0" expanded="false" />
-            <element signature="n#!!block;n#getDataFromDb#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/public/javascripts/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
           <folding>
             <element signature="e#0#50#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/public/javascripts/Edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="73" selection-start-line="2" selection-start-column="61" selection-end-line="2" selection-end-column="73" />
-          <folding>
-            <element signature="e#465#918#0" expanded="false" />
-            <element signature="e#1033#3196#0" expanded="false" />
-            <element signature="e#3308#3383#0" expanded="false" />
-            <element signature="e#3497#3573#0" expanded="false" />
-            <element signature="e#3691#3769#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1036,14 +924,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/Views/Edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="99" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/Views/Display.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.769231">
@@ -1054,9 +934,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/Views/Create.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3961165">
-          <caret line="16" column="84" selection-start-line="16" selection-start-column="84" selection-end-line="16" selection-end-column="84" />
+        <state vertical-scroll-proportion="-1.3076923">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/public/javascripts/Services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="43" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/Views/Edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="35.96154">
+          <caret line="89" column="28" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/public/images/bannerG.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/public/javascripts/Create.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/public/javascripts/Edit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+          <folding>
+            <element signature="e#1472#1925#0" expanded="false" />
+            <element signature="e#2040#4203#0" expanded="false" />
+            <element signature="e#4315#4390#0" expanded="false" />
+            <element signature="e#4504#4580#0" expanded="false" />
+            <element signature="e#4698#4776#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/DatabaseInitialize.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="189" column="5" selection-start-line="189" selection-start-column="5" selection-end-line="189" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39932886">
+          <caret line="14" column="85" selection-start-line="14" selection-start-column="85" selection-end-line="14" selection-end-column="85" />
+          <folding>
+            <element signature="e#1981#2035#0" expanded="false" />
+            <element signature="e#2139#2192#0" expanded="false" />
+            <element signature="e#2246#2312#0" expanded="false" />
+            <element signature="e#2418#2473#0" expanded="false" />
+            <element signature="e#2577#2630#0" expanded="false" />
+            <element signature="e#2754#2807#0" expanded="false" />
+            <element signature="e#2916#3021#0" expanded="false" />
+            <element signature="e#3148#3251#0" expanded="false" />
+            <element signature="n#!!block;n#getTemplates#0" expanded="false" />
+            <element signature="n#!!block;n#getScreens#0" expanded="false" />
+            <element signature="n#!!block;n#getMessages#0" expanded="false" />
+            <element signature="n#!!block;n#getDataFromDb#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

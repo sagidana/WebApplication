@@ -6,23 +6,33 @@ var express = require('express')
 
 var walk = require('walk');
 var multer = require('multer');
-var upload = multer({
-    dest:  __dirname + '/public/images',
-    limits: {
-        fieldNameSize: 50,
-        files: 1,
-        fields: 5,
-        fileSize: 1024 * 1024
+
+var storage =   multer.diskStorage({
+    destination: function (req, file, callback) {
+        callback(null, __dirname + '/public/images');
     },
-    rename: function(fieldname, filename) {
-        return filename;
-    },
-    onFileUploadStart: function(file) {
-        if(file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png') {
-            return false;
-        }
+    filename: function (req, file, callback) {
+        callback(null, 'image'); //needs to add random number + name of original file
     }
 });
+var upload = multer({ storage : storage}).any();
+
+//var upload = multer({
+//    dest:  __dirname + '/public/images',
+//    limits: {
+//        fieldNameSize: 50,
+//        files: 1,
+//        fields: 5,
+//        fileSize: 1024 * 1024
+//    },
+//    onFileUploadStart: function (file) {
+//        console.log('uploaading is starting ...');
+//    },
+//    rename: function(fieldname, filename,req,res) {
+//        return 'temp';
+//    },
+//
+//});
 
 app.use("/Bootstrap", express.static(__dirname + "/bower_components/"));
 app.use(express.static(__dirname + "/public"));
@@ -40,12 +50,20 @@ var url = 'mongodb://localhost:27017/MessagesDb';
 
 console.log("Server on.");
 
-app.post('/upload', upload.any(),function(req,res,next){
-    multer({
-        onFileUploadComplete: function(file) {
-            res.send();
+app.post('/upload',function(req,res){
+    upload(req,res,function(err) {
+        if(err) {
+            return res.end("Error uploading file.");
         }
+        res.end("File is uploaded");
     });
+
+    //upload
+    //multer({
+    //    onFileUploadComplete: function(file) {
+    //        res.send();
+    //    }
+    //});
 });
 
 app.get('/', function (req, res) {
@@ -61,7 +79,6 @@ app.get('/Item', function (req, res) {
 app.get('/ScreensManagement', function (req, res) {
     res.sendFile(__dirname + "/Views/ScreensManagement.html");
 });
-
 
 // send the basic html
 // http://localhost:8080/Edit?name=mes1

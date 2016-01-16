@@ -13,6 +13,36 @@ module.controller('EditCtrl',function($scope, $routeParams, Upload, ioFactory) {
 
     var messageName = getParameterByName('name');
 
+    //watch for image file upload
+    $scope.$watch('files', function() {
+        $scope.upload($scope.files);
+    });
+
+    $scope.upload = function(files) {
+        console.log(files);
+
+        if (files && files.length) {
+            var file = files[0];
+
+            Upload.upload({
+                url: '/upload',
+                file: file
+            }).progress(function(evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                console.log('progress: ' + progressPercentage + '% ' +
+                    evt.config.file.name);
+            }).success(function(data, status, headers, config) {
+                $scope.image = data;
+                if ($scope.image.uploadError) {
+                    $scope.user.uploadError = $scope.image.uploadError;
+                    console.log('error on hand');
+                } else {
+                    ioFactory.emit('askImages', '', function (result) { });
+                }
+            });
+        }
+    };
+
     $scope.uploadImage = function(){
 
         $scope.imageSelected = function(image) {

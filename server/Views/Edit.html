@@ -81,10 +81,15 @@
             <h3>Images</h3>
 
 
-            <form>
-                <input type="file" ng-file-select="imageSelected($image)" accept="'image/*'">
-                <input class="btn btn-default"  type="submit" ng-click="uploadImage()" >
-            </form>
+            <!--<form>-->
+                <!--<input type="file" ng-file-select="imageSelected($image)" accept="'image/*'">-->
+                <!--<input class="btn btn-default"  type="submit" ng-click="uploadImage()" >-->
+            <!--</form>-->
+
+            <button class="btn btn-default" ngf-select="upload($files)">
+                Upload Image
+            </button>
+
             <!--<div>-->
                 <!--<input  type="file" fileread="imageToUpload"/>-->
                 <!--<button class="btn btn-default" ng-click="uploadImage()">Upload</button>-->
