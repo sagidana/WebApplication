@@ -29,19 +29,10 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
         ],
         "screen": []
     };
-     ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']
 */
-    $scope.days =[
-        {name:'sunday',val:false},
-        {name:'monday',val:false},
-        {name:'tuesday',val:false},
-        {name:'wednesday',val:false},
-        {name:'thursday',val:false},
-        {name:'friday',val:false},
-        {name:'saturday',val:false}
-    ];
+    $scope.daysName = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
 
-    $scope.Message = { "TimeFrame": [ {days:[false,false,false,false,false,false,false]} ] };
+    $scope.Message = { TimeFrame: [ { days:[false,false,false,false,false,false,false] } ], screen:[], text:[] , images:[] };
 
     ioFactory.emit('askScreens', '', function (result) { });
 
@@ -61,8 +52,23 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
     });
 
     $scope.addMessage = function(Message){
+        clean($scope.Message.text,undefined);
+        clean($scope.Message.images,undefined);
+        $scope.Message.dispTimeSec = $scope.Message.dispTimeSec * 1000;
+
+        //console.log(JSON.stringify($scope.Message));
         console.log($scope.Message);
-        console.log($scope.days);
+
+
     };
 });
 
+var clean = function(arr,deleteValue) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] == deleteValue) {
+            arr.splice(i, 1);
+            i--;
+        }
+    }
+    return arr;
+};
