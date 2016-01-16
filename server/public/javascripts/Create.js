@@ -29,9 +29,19 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
         ],
         "screen": []
     };
+     ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']
 */
+    $scope.days =[
+        {name:'sunday',val:false},
+        {name:'monday',val:false},
+        {name:'tuesday',val:false},
+        {name:'wednesday',val:false},
+        {name:'thursday',val:false},
+        {name:'friday',val:false},
+        {name:'saturday',val:false}
+    ];
 
-    $scope.Message = { "TimeFrame": [ {} ] };
+    $scope.Message = { "TimeFrame": [ {days:[false,false,false,false,false,false,false]} ] };
 
     ioFactory.emit('askScreens', '', function (result) { });
 
@@ -51,7 +61,8 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
     });
 
     $scope.addMessage = function(Message){
-        console.log(Message);
+        console.log($scope.Message);
+        console.log($scope.days);
     };
 });
 

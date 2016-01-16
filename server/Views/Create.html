@@ -106,9 +106,9 @@
                         </div>
                         <label class="control-label col-sm-2">Days:</label>
                         <div class="form-group col-sm-10">
-                            <label class="checkbox-inline" ng-repeat="day in ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']">
-                                <input class="" type="checkbox" id="days{{$index}}" name="days" value="{{$index}}" ng-model="Message.TimeFrame[$index].days" />
-                                {{day}}
+                            <label class="checkbox-inline" ng-repeat="day in days">
+                                <input class="" type="checkbox" checklist-model="day[$index]" checklist-value="day.val" ng-true-value="true" ng-false-value="false"/>
+                                {{day.name}}
                             </label>
                         </div>
                     </div>
