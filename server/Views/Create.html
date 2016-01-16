@@ -35,46 +35,41 @@
 
         </header>
         <h2>Create message</h2>
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form" ng-submit="addMessage(Message)">
             <div class="form-group">
                 <label class="control-label col-sm-2">Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" class="form-control" id="name"  ng-model="Message.name">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">Template</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="template">
+                    <select class="form-control" ng-model="Message.template">
+                        <option value="">-- choose template --</option>
+                        <option ng-repeat="template in Templates"  ng-value="template.path">{{template.path}}</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">Dispy Time (sec)</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="dispTimeSec">
+                    <input type="number" class="form-control" id="dispTimeSec" ng-model="Message.dispTimeSec" min="0">
                 </div>
             </div>
-
+            <label class="control-label col-sm-2">Screens</label>
             <div class="form-group">
-                <label class="control-label col-sm-2">Screen</label>
-                <div class="col-sm-10">
-                    <select multiple class="form-control" id="screen">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
-                </div>
+                <label class="checkbox-inline" ng-repeat="screen in Screens">
+                    <input type="checkbox" title="{{screen.number}}" checklist-model="Message.screen" checklist-value="screen.number">
+                    {{screen.location}}
+                </label>
             </div>
-
             <h3>Texts</h3>
             <div ng-repeat="index in [1,2,3,4,5,6,7,8,9,10]">
                 <div class="form-group">
                     <label class="control-label col-sm-2">Text {{index}}: </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="text{{index}}">
+                        <input type="text" class="form-control" id="text{{index}}"  ng-model="Message.text[index-1]">
                     </div>
                 </div>
             </div>
@@ -83,41 +78,45 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2">Image {{index}}: </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="image{{index}}">
+                        <input type="text" class="form-control" id="image{{index}}"  ng-model="Message.images[index-1]">
                     </div>
                 </div>
             </div>
-            <div>
-                <div id="TimeFrame">
-                    <h3>Time Frame</h3>
-                    <input type="button" id="addTF" value="add more" />
 
-                    <div class="form-group" id="TimeFrame0">
+            <div id="TimeFrame">
+                <div ng-repeat="timef in Message.TimeFrame track by $index">
+                    <div class="form-group" id="TimeFrame{{$index}}">
+                        <h3>
+                            Time Frame {{$index+1}}
+                            <button ng-click="(Message.TimeFrame.length == 1 ? null: Message.TimeFrame.splice($index, 1) )" aria-label="Remove">X</button>
+                        </h3>
                         <label class="control-label col-sm-2">From date:</label>
                         <div class="col-sm-4">
-                            <input type="date" class="form-control" id="fromdate">
+                            <input type="date" class="form-control" id="fromdate{{$index}}" ng-model="Message.TimeFrame[$index].FromDate" />
                         </div>
                         <label class="control-label col-sm-2">To date:</label>
                         <div class="col-sm-4">
-                            <input type="date" class="form-control" id="todate" />
+                            <input type="date" class="form-control" id="todate{{$index}}" ng-model="Message.TimeFrame[$index].ToDate" />
                         </div>
                         <label class="control-label col-sm-2">From time:</label>
                         <div class="col-sm-4">
-                            <input type="time" class="form-control" id="FromTime">
+                            <input type="time" class="form-control" id="FromTime{{$index}}" ng-model="Message.TimeFrame[$index].FromTime" />
                         </div>
                         <label class="control-label col-sm-2">To time:</label>
                         <div class="col-sm-4">
-                            <input type="time" class="form-control" id="ToTime">
+                            <input type="time" class="form-control" id="ToTime{{$index}}" ng-model="Message.TimeFrame[$index].ToTime" />
                         </div>
                         <label class="control-label col-sm-2">Days:</label>
                         <div class="form-group col-sm-10">
-                            <label class="checkbox-inline" ng-repeat="day in ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']">
-                                <input class="" type="checkbox" id="days" name="days" value="{{$index}}" />
-                                {{day}}
+                            <label class="checkbox-inline" ng-repeat="day in Message.TimeFrame[$index].days track by $index">
+                                <input class="" type="checkbox" ng-model="Message.TimeFrame[$parent.$index].days[$index]" name="$parent.$index+'day'+[$index]" ng-true-value="true" ng-false-value="false" />
+                                {{daysName[$index]}}
                             </label>
                         </div>
                     </div>
                 </div>
+                <input type="button" id="addTF" value="add more" ng-click="Message.TimeFrame.push({ days:[false,false,false,false,false,false,false] } )" />
+
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">

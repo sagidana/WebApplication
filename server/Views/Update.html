@@ -20,7 +20,8 @@
     <meta charset="UTF-8" />
     <title>Update</title>
 
-    <script type="text/javascript">
+    <!-- script type="text/javascript">
+
         var TFsize = 1;
         var message = {};
         var text = {};
@@ -40,7 +41,7 @@
             text = {};
             img = {};
             days = [];
-            
+
             // when the client clicks SEND
             $("#datasend").click(function () {
 
@@ -83,7 +84,7 @@
                 message['screen'] = $('#screen').val();
 
                 //console.log(JSON.stringify(message));
-                socket.emit('update', message, screenId);
+                socket.emit('addMessage2', message, screenId);
                
 
             });
@@ -96,10 +97,10 @@
             TFsize++;
             TimeFrame[TFsize - 1] = {};
             console.log("TFsize", TFsize - 1);
-            $("#TimeFrame").append('<div id="TimeFrame' + (TFsize - 1) + '">From date: <input type="date" id="FromDate" name="FromDate" />To date: <input type="date" id="ToDate" name="ToDate" /><input type="checkbox" id="days" name="days" value="0" />sunday<input type="checkbox" id="days" name="days" value="1" />monday<input type="checkbox" id="days" name="days" value="2" />tuesday<input type="checkbox" id="days" name="days" value="3" />wednesday<input type="checkbox" id="days" name="days" value="4" />thursday<input type="checkbox" id="days" name="days" value="5" />friday<input type="checkbox" id="days" name="days" value="6" />saturday From time: <input type="time" id="FromTime" name="FromTime" />To time: <input type="time" id="ToTime" name="ToTime" /></div>');
+            //$("#TimeFrame").append('<div id="TimeFrame' + (TFsize - 1) + '">From date: <input type="date" id="FromDate" name="FromDate" />To date: <input type="date" id="ToDate" name="ToDate" /><input type="checkbox" id="days" name="days" value="0" />sunday<input type="checkbox" id="days" name="days" value="1" />monday<input type="checkbox" id="days" name="days" value="2" />tuesday<input type="checkbox" id="days" name="days" value="3" />wednesday<input type="checkbox" id="days" name="days" value="4" />thursday<input type="checkbox" id="days" name="days" value="5" />friday<input type="checkbox" id="days" name="days" value="6" />saturday From time: <input type="time" id="FromTime" name="FromTime" />To time: <input type="time" id="ToTime" name="ToTime" /></div>');
         };
 
-    </script>
+    </script -->
 </head>
 <body>
 

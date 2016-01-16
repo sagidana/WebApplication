@@ -1,4 +1,3 @@
-var walk    = require('walk');
 var express = require('express')
   , app = express()
   , http = require('http')
@@ -114,21 +113,27 @@ io.sockets.on('connection', function (socket) {
         });
     }); // socket on connect
 
-    // recive new mess from the update page
-    socket.on('update', function (message, screenId) {
-        //console.log("message: "+JSON.stringify(message)+"\n\n\n\n");
+    socket.on('addMessage', function (message) {
+        addMessage(message, function (result) {
+            socket.emit('getStatus', result);
+            io.sockets.emit('updateData');
+        });
+    });
 
-        // add to db
-        addMesToDb(message, screenId, function () {
-                // emit to screen
-                getDataFromDb(screenId, function (result) {
-                io.sockets.emit('updateData', result);
-            });
+    // recive new mess from the update page - not in use
+    socket.on('addMessage2', function (message) {
+        //console.log("message: "+JSON.stringify(message)+"\n\n\n\n");
+        addMessage(message, function () {
+
+            //getDataFromDb(screenId, function (result) {
+              //  io.sockets.emit('updateData', result);
+            //});
+
         });
     });
 }); // sock.on
 
-function addMesToDb(message, screenId, callback) {
+function addMessage(message, callback) {
     MongoClient.connect(url, function (err, db) {
         if (err) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
@@ -139,14 +144,15 @@ function addMesToDb(message, screenId, callback) {
 
             collection.insert(message, function (err, records) {
                 if (err) {
-                    console.log("Error: " + err);
-
+                    //console.log("Error: " + err);
+                    callback(err);
                 } else {
-                    console.log("Record added: " + JSON.stringify(message) + "\n\n\n\n");
-                    callback();
+                    //console.log("Record added: " + JSON.stringify(message) + "\n\n\n\n");
+                    callback(records);
+                }
                     //Close connection
                     db.close();
-                }
+
             });
         }
     });
