@@ -1,6 +1,8 @@
-<!D<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" ng-app="MessagesApp">
 <head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/Display.css" />
+
     <script src="/javascripts/angular/angular.js"></script>
     <script src="/javascripts/angular/angular-route.js"></script>
     <script type="text/javascript" src="/javascripts/checklist-model.js"></script>
@@ -19,7 +21,7 @@
     <script type="text/javascript" src="/javascripts/Item.js"></script>
 
     <meta charset="UTF-8">
-    <title>Messages list</title>
+    <title>Screen Display</title>
 </head>
 
 <body ng-controller="ScreensManagementCtrl">
@@ -28,75 +30,53 @@
     <header>
         <h3 class="text-muted">Messages</h3>
         <ul class="nav nav-pills">
-            <li class="active"><a href="/list">List</a></li>
+            <li><a href="/list">List</a></li>
             <li><a href="/Create">Create</a></li>
-            <li><a href="/Manage">Manage</a></li>
+            <li class="active"><a href="/ScreensManagement">Manage</a></li>
             <li><a href="/About">About</a></li>
         </ul>
 
     </header>
     <div>
         <div class="jumbotron">
-            <h1>Search:</h1>
-            <label>Any: <input ng-model="search.$"></label>&nbsp;
-            <label>Name: <input ng-model="search.name"></label>&nbsp;
-            <label>Text: <input ng-model="search.text"></label>&nbsp;
-            <label>Screen: <input ng-model="search.screen"></label>&nbsp;
-        </div>
-        <h2>Messages:</h2>
+            <h1>Show display:</h1>
+            <form class="form-horizontal" role="form" ng-submit="ShowScreen(Display)">
+                <div class="form-group">
 
-
-        <div ng-repeat="Message in Messages | filter:search" class="col-md-12">
-
-            <p style="font-size:20px;">Name:
-                    <span style="text-decoration:underline;font-weight:bold">
-                        <a href="/Item?name={{Message.name}}" role="button">
-                            {{Message.name}}
-                        </a>
-                    </span>
-            </p>
-
-            <div id="MainContainer">
-                <div class="FullLine">
-
-                    <p style="font-size:20px">Texts:</p>
-                    <div class="list-group" ng-repeat="Text in Message.text track by $index">
-                        <p style="font-size:15px">{{Text}}</p>
+                    <div class="col-sm-3">
+                        <select class="form-control" ng-model="Display.screen" required>
+                            <option value="" disabled>Screen</option>
+                            <option ng-repeat="screen in Screens"  ng-value="screen.number">{{screen.location}}</option>
+                        </select>
                     </div>
 
-                    <p style="font-size:20px">Images:</p>
-                    <div class="list-group" ng-repeat="Image in Message.images">
-                        <img ng-src="{{Image}}" />
+                    <div class="col-sm-3">
+                        <input class="form-control" type="date" ng-model="Display.date" required>
                     </div>
 
-                    <p style="font-size:20px">Template: {{Message.template}}</p>
-                    <p style="font-size:20px">Display Time: {{Message.dispTimeSec}} (sec)</p>
-                    <p style="font-size:20px">
-                        Screens:
-                            <span ng-repeat="screen in Message.screen">
-                                {{screen}}
-                            </span>
-                    </p>
-
-                    <p style="font-size:20px">Time Frame:</p>
-                    <div class="list-group" ng-repeat="Time in Message.TimeFrame">
-                        <span style="font-size:15px">Date: {{Time.FromDate | date: "yyyy-MM-dd"}} -> {{Time.ToDate| date: "yyyy-MM-dd"}}</span>
-                        <br />
-                            <span style="font-size:15px">
-                                Days:
-                                <span class="list-group" ng-repeat="Day in Time.days track by $index">
-                                    {{ {val:Day, index:$index} | Day}}
-                                </span>
-                            </span>
-                        <br />
-                        <span style="font-size:15px">Time: {{Time.FromTime | date: "HH:mm"}} -> {{Time.ToTime | date: "HH:mm"}}</span>
+                    <div class="col-sm-2">
+                        <input class="form-control" type="time" ng-model="Display.time" required>
                     </div>
-                    <p>
-                        <a class="btn btn-primary" href="/Edit?name={{Message.name}}" role="button">Edit &raquo;</a>
-                        <a class="btn btn-warning" href="/Delete?name={{Message.name}}" role="button">Delete &raquo;</a>
-                    </p>
+
+                    <div class="col-sm-2">
+                        <select class="form-control" ng-model="Display.day" required>
+                            <option value="" disabled>Day</option>
+                            <option ng-repeat="day in daysName"  ng-value="$index">{{day}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-1">
+                        <button type="submit" class="btn btn-default" ng-hide="ShowButtonDis" >Show</button>
+
+                        <button type="button" class="btn btn-default" ng-click="Stop()" ng-hide="StopButtonDis">Stop</button>
+                    </div>
                 </div>
-            </div>
+            </form>
+        </div>
+        <h2>Screen:</h2>
+
+        <div id="display" style="border: 1px black solid; height:400px">
+        &nbsp;
         </div>
 
     </div>

@@ -1,8 +1,3 @@
-/*
-to do:
-- more checks for null var (timeFrame, valid date..)
-- check more inputs
-*/
 
 // after 5 cycle which none of the mes display -> reload page
 var _threshold = 5;
@@ -11,10 +6,17 @@ var _threshold = 5;
 // Main function for the user - only need the Data array.
 //function MesDisplay(Messages) {
 var _Messages = {};
-var _ON;
+var _ON = false;
 var i = 0;
 var flag = false;
 var cycle = 1;
+var _DisplayContainer = "#pageTemplate";
+
+var _Date;
+var _Time;
+var _Day;
+
+var _Stop = false;
 //StartCycle(Messages, i, flag, cycle);
 //}
 
@@ -41,7 +43,7 @@ function StartCycle() {
             i = 0;
 
             // try to privent: Maximum call stack size exceeded
-            if (flag == false && cycle > _threshold) { // no Mes were displaued at this round  
+            if ( (flag == false && cycle > _threshold) || _Stop) { // no Mes were displaued at this round
                 console.log(_threshold + ' cycles with no item to display.');
                 _ON = false;
                 // location.reload(); // realod page after X cycle with no item to display.
@@ -88,7 +90,7 @@ function Show() {
         i = 0;
 
         // try to privent: Maximum call stack size exceeded
-        if (flag == false && cycle > _threshold) { // no Mes were displaued at this round  
+        if ( (flag == false && cycle > _threshold) || _Stop) { // no Mes were displaued at this round
             console.log(_threshold + ' cycles with no item to display.');
             _ON = false;
             // location.reload(); // realod page after X cycle with no item to display.
@@ -128,7 +130,10 @@ function CheckTimeFrame(DisplayData) {
 function CheckDates(timeF) {
     // if new Date will return Invalid - func will return False	
 
+
     var nowD = new Date();
+    if(_Date)
+        nowD = new Date(_Date);
     var fromD = new Date(timeF.FromDate);
     var toD = new Date(timeF.ToDate);
 
@@ -142,14 +147,25 @@ function CheckDates(timeF) {
 // today day is on days?
 function CheckDays(Time) {
     //console.log(new Date().getDay().toString(), Time.days.indexOf(new Date().getDay().toString())); // Debug
-    if (Time.days[new Date().getDay()])
+
+    var nowDay = new Date().getDay();
+    if(_Day)
+        nowDay = _Day;
+
+    if (Time.days[nowDay])
         return true;
     return false;
 }
 
 function CheckTime(Time) {
+
     var nowH = new Date().getHours();
     var nowM = new Date().getMinutes();
+
+    if(_Time) {
+        nowH = new Date(_Time).getHours();
+        nowM = new Date(_Time).getMinutes();
+    }
 
     var fromH = new Date(Time.FromTime).getHours();
     var fromM = new Date(Time.FromTime).getMinutes();
@@ -168,7 +184,7 @@ function CheckTime(Time) {
 // .load() and activate text and img replace
 function ShowMes(mes) {
 
-    $("#pageTemplate").load('Templates/' + mes.template, function () {
+    $(_DisplayContainer).load('Templates/' + mes.template, function () {
         addText(mes.text);
         addImage(mes.images);
     });
