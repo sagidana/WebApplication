@@ -54,11 +54,21 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
     $scope.addMessage = function(Message){
         clean($scope.Message.text,undefined);
         clean($scope.Message.images,undefined);
+
         $scope.Message.dispTimeSec = $scope.Message.dispTimeSec * 1000;
 
+        for (var timef in $scope.Message.TimeFrame) {
+            timef = angular.toJson(timef);
+            timef = JSON.parse(timef);
+        }
         //console.log(JSON.stringify($scope.Message));
         console.log($scope.Message);
 
+        ioFactory.emit('addMessage', $scope.Message, function(result){})
+        ioFactory.on('getStatus',function(result){
+            alert(result);
+            $scope.Status = result;
+        });
 
     };
 });

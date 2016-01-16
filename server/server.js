@@ -107,21 +107,34 @@ io.sockets.on('connection', function (socket) {
         });
     }); // socket on connect
 
-    // recive new mess from the update page
-    socket.on('update', function (message, screenId) {
-        //console.log("message: "+JSON.stringify(message)+"\n\n\n\n");
+    socket.on('addMessage2', function (message) {
+        addMessage(message, function (result) {
 
-        // add to db
-        addMesToDb(message, screenId, function () {
-                // emit to screen
-                getDataFromDb(screenId, function (result) {
-                io.sockets.emit('updateData', result);
-            });
+            socket.emit('getStatus', result);
+
+            for (screen in message.screen) {
+                getDataFromDb(screen, function (result) {
+                  io.sockets.emit('updateData', result);
+                });
+            }
+
+        });
+    });
+
+    // recive new mess from the update page
+    socket.on('addMessage', function (message) {
+        //console.log("message: "+JSON.stringify(message)+"\n\n\n\n");
+        addMessage(message, function () {
+
+            //getDataFromDb(screenId, function (result) {
+              //  io.sockets.emit('updateData', result);
+            //});
+
         });
     });
 }); // sock.on
 
-function addMesToDb(message, screenId, callback) {
+function addMessage(message, callback) {
     MongoClient.connect(url, function (err, db) {
         if (err) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
@@ -135,8 +148,9 @@ function addMesToDb(message, screenId, callback) {
                     console.log("Error: " + err);
 
                 } else {
-                    console.log("Record added: " + JSON.stringify(message) + "\n\n\n\n");
+                    //console.log("Record added: " + JSON.stringify(message) + "\n\n\n\n");
                     callback();
+
                     //Close connection
                     db.close();
                 }
@@ -145,8 +159,7 @@ function addMesToDb(message, screenId, callback) {
     });
 };
 
-function editMessage(message, callback)
-{
+function editMessage(message, callback){
     delete message._id;
 
     MongoClient.connect(url, function (err, db) {

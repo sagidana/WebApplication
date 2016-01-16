@@ -36,6 +36,7 @@
 
         socket.on('displayData', function (data) {
             //console.log("data:"+data);
+
             _Messages = data;
             _ON = true;
             StartCycle();
@@ -44,6 +45,7 @@
 
         socket.on('updateData', function (result) {
             //console.log("updateData:"+ JSON.stringify(result)+"\n\n\n");
+            console.log("update Messages");
             _Messages = result;
             if (!_ON)
                 StartCycle(_Messages);
