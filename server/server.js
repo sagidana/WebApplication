@@ -12,7 +12,10 @@ var storage = multer.diskStorage({
         callback(null, __dirname + '/public/images');
     },
     filename: function (req, file, callback) {
-        callback(null, file.originalname); //needs to add random number + name of original file
+        var date = new Date().getFullYear().toString() +'-'+ (new Date().getMonth()+1).toString() +'-'+ new Date().getDate().toString() +'-'+ new Date().getTime().toString();
+        var name = date +'-'+ file.originalname;
+        //console.log(name);
+        callback(null, name); //needs to add random number + name of original file
     }
 });
 var upload = multer({ storage : storage}).any();
