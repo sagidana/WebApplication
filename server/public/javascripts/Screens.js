@@ -28,6 +28,27 @@ module.controller('ScreensCtrl',function($scope, $routeParams, Upload, ioFactory
         $("#editScreen").modal('show');
     };
 
+    $scope.deleteScreen = function(deleteScreen){
+        $scope.deleteScreen = deleteScreen;
+        $("#deleteScreen").modal('show');
+    };
+
+    $scope.saveDeleteScreen = function(deleteScreen){
+        ioFactory.emit('deleteScreen',deleteScreen ,function (result){});
+        ioFactory.on('getStatus',function(status){
+            if (status.ok)
+                $('#chanegsSaved').modal('show');
+        });
+
+        ioFactory.emit('askScreens', '', function (result) { });
+        ioFactory.on('getScreens', function (result) {
+            if (result) {
+                $scope.Screens = result;
+                $scope.Initialize();
+            }
+        });
+    };
+
     $scope.saveEditScreen = function(editScreen){
 
         ioFactory.emit('editScreen',editScreen ,function (result){});
