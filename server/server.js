@@ -7,12 +7,15 @@ var express = require('express')
 var walk = require('walk');
 var multer = require('multer');
 
-var storage =   multer.diskStorage({
+var storage = multer.diskStorage({
     destination: function (req, file, callback) {
         callback(null, __dirname + '/public/images');
     },
     filename: function (req, file, callback) {
-        callback(null, 'image'); //needs to add random number + name of original file
+        var date = new Date().getFullYear().toString() +'-'+ (new Date().getMonth()+1).toString() +'-'+ new Date().getDate().toString() +'-'+ new Date().getTime().toString();
+        var name = date +'-'+ file.originalname;
+        //console.log(name);
+        callback(null, name); //needs to add random number + name of original file
     }
 });
 var upload = multer({ storage : storage}).any();
@@ -40,7 +43,10 @@ app.use("/Views", express.static(__dirname + "/Views"));
 app.use("/Templates", express.static(__dirname + "/Templates"));
 server.listen(8080);
 
-var _collectionName = "messagesCollection";
+var _collectionMessages = "messagesCollection";
+var _collectionScreens = "screensCollection";
+var _collactionTemplates = "templatesCollection";
+
 //require node modules (see package.json)
 var mongodb = require('mongodb');
 //We need to work with "MongoClient" interface in order to connect to a mongodb server.
@@ -76,8 +82,16 @@ app.get('/Item', function (req, res) {
     res.sendFile(__dirname + "/Views/Item.html");
 });
 
+app.get('/Templates', function (req, res) {
+    res.sendFile(__dirname + "/Views/Templates.html");
+});
+
 app.get('/ScreensManagement', function (req, res) {
     res.sendFile(__dirname + "/Views/ScreensManagement.html");
+});
+
+app.get('/Screens', function (req, res) {
+    res.sendFile(__dirname + "/Views/Screens.html");
 });
 
 // send the basic html
@@ -170,6 +184,25 @@ io.sockets.on('connection', function (socket) {
         });
     });
 
+    socket.on('addScreen', function(location){
+        addScreen(location,function(result){
+            socket.emit('getStatus', result);
+        });
+    });
+
+    socket.on('editScreen', function(screen){
+        editScreen(screen,function(result){
+            socket.emit('getStatus', result);
+        });
+    });
+
+    socket.on('deleteScreen', function(screen){
+        deleteScreen(screen,function(result){
+            socket.emit('getStatus', result);
+        });
+    });
+
+
     // recive new mess from the update page - not in use
     socket.on('addMessage2', function (message) {
         //console.log("message: "+JSON.stringify(message)+"\n\n\n\n");
@@ -189,7 +222,7 @@ function addMessage(message, callback) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
         }
         else {
-            var collection = db.collection(_collectionName);
+            var collection = db.collection(_collectionMessages);
             //console.log("Connected to Database");
 
             collection.insert(message, function (err, records) {
@@ -232,7 +265,7 @@ function editMessage(message, callback) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
         }
         else {
-            var messagesCollection = db.collection("messagesCollection");
+            var messagesCollection = db.collection(_collectionMessages);
 
             messagesCollection.updateOne({
                 "name": message.name
@@ -258,7 +291,7 @@ function getTemplates(callback){
             console.log('Unable to connect to the mongoDB server. Error:', err);
         }
 
-        var templatesCollection = db.collection("templatesCollection");
+        var templatesCollection = db.collection(_collactionTemplates);
         templatesCollection.find().toArray(function (err, result) {
 
             if (err) {
@@ -282,7 +315,7 @@ function getScreens(callback){
             console.log('Unable to connect to the mongoDB server. Error:', err);
         }
 
-        var screensCollection = db.collection("screensCollection");
+        var screensCollection = db.collection(_collectionScreens);
         screensCollection.find().toArray(function (err, result) {
 
             if (err) {
@@ -305,7 +338,7 @@ function getMessage(messageName, callback) {
         if (err) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
         }
-        var collection = db.collection(_collectionName);
+        var collection = db.collection(_collectionMessages);
 
         collection.findOne({name: messageName}, function(err, message) {
             if (err) {
@@ -326,7 +359,7 @@ function getMessages(callback) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
         }
 
-        var collection = db.collection(_collectionName);
+        var collection = db.collection(_collectionMessages);
         collection.find().toArray(function (err, result) {
 
             if (err) {
@@ -350,7 +383,7 @@ function getDataFromDb(screenId, callback) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
         }
         // add else
-        var collection = db.collection(_collectionName);
+        var collection = db.collection(_collectionMessages);
         //console.log("Connected to Database");
 
         console.log(screenId);
@@ -369,5 +402,97 @@ function getDataFromDb(screenId, callback) {
             //Close connection
             db.close();
         });
+    });
+};
+
+function editScreen(screen, callback){
+    delete screen._id;
+    delete screen.$$hashKey;
+
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+        else {
+            var collection = db.collection(_collectionScreens);
+
+            collection.updateOne({
+                "number": screen.number
+            },{
+                $set : screen
+            }, function(err, result){
+                if (err) {
+                    //console.log(err);
+                    callback(err);
+                } else {
+                    callback(result);
+                }
+                db.close();
+            });
+        }
+    });
+};
+
+function addScreen(location, callback){
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+        else {
+            var collection = db.collection(_collectionScreens);
+
+            collection.find().sort({number: -1}).limit(1).toArray(function (err, result) {
+                if (err) {
+                    console.log("Error: " + err);
+                } else if (result.length) {
+
+                    //console.log(result[0].number + 1);
+                    var num = result[0].number + 1;
+
+                    collection.insert({number:num, location: location}, function (err, records) {
+                        if (err) {
+                            //console.log("Error: " + err);
+                            callback(err);
+                        } else {
+                            //console.log("Record added: " + JSON.stringify(message) + "\n\n\n\n");
+                            callback(records);
+                        }
+                        //Close connection
+                       // db.close();
+
+                    });
+                }
+                db.close();
+            });
+
+        }
+
+    });
+};
+
+function deleteScreen(screen,callback){
+
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+        else {
+            var collection = db.collection(_collectionScreens);
+
+            // .remove( { type : "food" }, 1 )
+            collection.deleteOne({
+                "number": screen.number,
+                "location": screen.location
+            },
+            function(err, result){
+                if (err) {
+                    //console.log(err);
+                    callback(err);
+                } else {
+                    callback(result);
+                }
+                db.close();
+            });
+        }
     });
 };

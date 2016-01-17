@@ -18,15 +18,32 @@ module.controller('EditCtrl',function($scope, $routeParams, Upload, ioFactory) {
         $scope.upload($scope.files);
     });
 
+
     $scope.upload = function(files) {
         console.log(files);
 
         if (files && files.length) {
             var file = files[0];
 
+            //Upload.rename(file, 'preview1.jpg');
+
+            console.log(file);
+           // file = Upload.rename(file, 'text.jpg');
+            /*
+             var $file = $files[i];
+             Upload.upload({
+             url: 'my/upload/url',
+             data: {file: $file}
+
+              */
+
             Upload.upload({
                 url: '/upload',
+                //data: {file: file}
                 file: file
+                //file: {key:file, name:'test.jpg'}
+
+
             }).progress(function(evt) {
                 var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                 console.log('progress: ' + progressPercentage + '% ' +
@@ -40,6 +57,8 @@ module.controller('EditCtrl',function($scope, $routeParams, Upload, ioFactory) {
                     ioFactory.emit('askImages', '', function (result) { });
                 }
             });
+
+
         }
     };
 
@@ -103,7 +122,7 @@ module.controller('EditCtrl',function($scope, $routeParams, Upload, ioFactory) {
                     $scope.Message.TimeFrame[index].ToTime = new Date($scope.Message.TimeFrame[index].ToTime);
                 }
 
-                ioFactory.emit('editMessage', $scope.Message, function(result){})
+                ioFactory.emit('editMessage', $scope.Message, function(result){});
                 ioFactory.on('getStatus',function(status){
                     if (status.ok)
                         $('#chanegsSaved').modal('show');

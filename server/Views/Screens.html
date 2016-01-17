@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MessagesApp">
+<head>
+    <script src="/javascripts/angular/angular.js"></script>
+    <script src="/javascripts/angular/angular-route.js"></script>
+    <script type="text/javascript" src="/javascripts/checklist-model.js"></script>
+    <link rel="stylesheet" type="text/css" href="/Bootstrap/bootstrap/dist/css/bootstrap.css" />
+    <script type="text/javascript" src="/javascripts/display.js"></script>
+    <!--<script type="text/javascript" src="/Bootstrap/angular-file-upload/dist/angular-file-upload.js"></script>-->
+    <!--<script type="text/javascript" src="/Bootstrap/angular-file-upload/dist/angular-file-upload.min.js"></script>-->
+    <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload.js"></script>
+    <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload-shim.js"></script>
+    <script type="text/javascript" src="/Bootstrap/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/Bootstrap/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/javascripts/socket.io-client/socket.io.js"></script>
+    <script type="text/javascript" src="/javascripts/App.js"></script>
+    <script type="text/javascript" src="/javascripts/Services.js"></script>
+    <script type="text/javascript" src="/javascripts/Edit.js"></script>
+    <script type="text/javascript" src="/javascripts/List.js"></script>
+    <script type="text/javascript" src="/javascripts/ScreensManagement.js"></script>
+    <script type="text/javascript" src="/javascripts/Create.js"></script>
+    <script type="text/javascript" src="/javascripts/Item.js"></script>
+    <script type="text/javascript" src="/javascripts/Screens.js"></script>
+    <script type="text/javascript" src="/javascripts/Templates.js"></script>
+
+    <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=places" type="text/javascript"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Screens</title>
+</head>
+<body  ng-controller="ScreensCtrl">
+
+    <div class="container">
+        <header>
+            <h3 class="text-muted">Messages</h3>
+            <ul class="nav nav-pills">
+                <li><a href="/list">List</a></li>
+                <li><a href="/Create">Create</a></li>
+                <li><a href="/ScreensManagement">Manage</a></li>
+                <li class="active"><a href="/Screens">Screens</a></li>
+                <li><a href="/Templates">Templates</a></li>
+                <li><a href="/About">About</a></li>
+            </ul>
+        </header>
+
+        <div class="jumbotron">
+            <h1>Manage Screens:</h1>
+        </div>
+
+        <h2>Screens location:</h2>
+
+
+        <div id="map_canvas" style="border: 1px black solid; height:600px;" class="col-sm-6"></div>
+
+        <div class="col-sm-6">
+            <div class="col-sm-1">
+                Num.
+            </div>
+            <div class="col-sm-3">
+                Location.
+            </div>
+            <div class="col-sm-1">
+                <button type="button" ng-click="newScreen()" class="btn btn-default glyphicon glyphicon-plus"></button>
+            </div>
+            <div class="col-sm-1">
+                &nbsp;
+            </div>
+        </div>
+        <div ng-repeat="screen in Screens | orderBy: 'number'" class="col-sm-6">
+            <div class="col-sm-1">
+                {{screen.number}}
+            </div>
+            <div class="col-sm-3">
+                {{screen.location}}
+            </div>
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-default" ng-click="editScreen(screen)">Edit</button>
+            </div>
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-default" ng-click="deleteScreen(screen)">Delete</button>
+            </div>
+        </div>
+
+        <div id="deleteScreen" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Delete screen</h4>
+                        </div>
+                        <div class="modal-body">
+                            are you sure you want to delete screen-
+                            <label class="col-sm-2 form-control" style="font-weight: bold">
+                                {{deleteScreenData.number}}. {{deleteScreenData.location}}
+                            </label>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="saveDeleteScreen(deleteScreenData)">Yes</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">no</button>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="editScreen" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form class="form-horizontal" role="form">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Edit screen</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <label class=" col-sm-2">Location:</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="" ng-model="editScreenData.location" ng-value="$scope.editScreenData.location">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="saveEditScreen(editScreenData)">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="newScreen" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form class="form-horizontal" role="form">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">New screen</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <label class=" col-sm-2">Location:</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="" id="newLocation" ng-model="newLocation">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="saveNewScreen(newLocation)">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="chanegsSaved" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Changes saved!</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
