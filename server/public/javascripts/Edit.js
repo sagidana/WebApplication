@@ -18,32 +18,15 @@ module.controller('EditCtrl',function($scope, $routeParams, Upload, ioFactory) {
         $scope.upload($scope.files);
     });
 
-
     $scope.upload = function(files) {
         console.log(files);
 
         if (files && files.length) {
             var file = files[0];
 
-            //Upload.rename(file, 'preview1.jpg');
-
-            console.log(file);
-           // file = Upload.rename(file, 'text.jpg');
-            /*
-             var $file = $files[i];
-             Upload.upload({
-             url: 'my/upload/url',
-             data: {file: $file}
-
-              */
-
             Upload.upload({
                 url: '/upload',
-                //data: {file: file}
                 file: file
-                //file: {key:file, name:'test.jpg'}
-
-
             }).progress(function(evt) {
                 var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                 console.log('progress: ' + progressPercentage + '% ' +
@@ -81,6 +64,46 @@ module.controller('EditCtrl',function($scope, $routeParams, Upload, ioFactory) {
         };
     };
 
+    $scope.removeTimeFrame = function(index){
+        $scope.Message.TimeFrame.splice(index,1);
+    };
+
+    $scope.addTimeFrame = function(){
+        if ($scope.Message.TimeFrame)
+            $scope.Message.TimeFrame.splice($scope.Message.TimeFrame.length,0,{});
+        else {
+            $scope.Message.TimeFrame = [];
+            $scope.Message.TimeFrame.splice($scope.Message.TimeFrame.length,0,{});
+        }
+    };
+
+    $scope.uploadImage = function(){
+        console.log($scope.imageToUpload);
+    };
+
+    $scope.updateImages = function(){
+        ioFactory.emit('askImages', '', function (result) { });
+    };
+
+    $scope.saveChanges = function(){
+        $scope.Message.TimeFrame = angular.toJson($scope.Message.TimeFrame);
+        $scope.Message.TimeFrame = JSON.parse($scope.Message.TimeFrame);
+
+        for (var index = 0; index < $scope.Message.TimeFrame.length; index++)
+        {
+            $scope.Message.TimeFrame[index].FromDate = new Date($scope.Message.TimeFrame[index].FromDate);
+            $scope.Message.TimeFrame[index].ToDate = new Date($scope.Message.TimeFrame[index].ToDate);
+            $scope.Message.TimeFrame[index].FromTime = new Date($scope.Message.TimeFrame[index].FromTime);
+            $scope.Message.TimeFrame[index].ToTime = new Date($scope.Message.TimeFrame[index].ToTime);
+        }
+
+        ioFactory.emit('editMessage', $scope.Message, function(result){});
+        ioFactory.on('getStatus',function(status){
+            if (status.ok)
+                $('#chanegsSaved').modal('show');
+        });
+    };
+
     ioFactory.emit('askMessage',messageName, function(result){});
     ioFactory.on('getMessage',function(result){
         if (result) {
@@ -93,41 +116,6 @@ module.controller('EditCtrl',function($scope, $routeParams, Upload, ioFactory) {
                 $scope.Message.TimeFrame[index].FromTime = new Date(result.TimeFrame[index].FromTime);
                 $scope.Message.TimeFrame[index].ToTime = new Date(result.TimeFrame[index].ToTime);
             }
-
-            $scope.removeTimeFrame = function(index){
-                $scope.Message.TimeFrame.splice(index,1);
-            };
-
-            $scope.addTimeFrame = function(){
-                $scope.Message.TimeFrame.splice($scope.Message.TimeFrame.length,0,{});
-            };
-
-            $scope.uploadImage = function(){
-                console.log($scope.imageToUpload);
-            };
-
-            $scope.updateImages = function(){
-                ioFactory.emit('askImages', '', function (result) { });
-            };
-
-            $scope.saveChanges = function(){
-                $scope.Message.TimeFrame = angular.toJson($scope.Message.TimeFrame);
-                $scope.Message.TimeFrame = JSON.parse($scope.Message.TimeFrame);
-
-                for (var index = 0; index < $scope.Message.TimeFrame.length; index++)
-                {
-                    $scope.Message.TimeFrame[index].FromDate = new Date($scope.Message.TimeFrame[index].FromDate);
-                    $scope.Message.TimeFrame[index].ToDate = new Date($scope.Message.TimeFrame[index].ToDate);
-                    $scope.Message.TimeFrame[index].FromTime = new Date($scope.Message.TimeFrame[index].FromTime);
-                    $scope.Message.TimeFrame[index].ToTime = new Date($scope.Message.TimeFrame[index].ToTime);
-                }
-
-                ioFactory.emit('editMessage', $scope.Message, function(result){});
-                ioFactory.on('getStatus',function(status){
-                    if (status.ok)
-                        $('#chanegsSaved').modal('show');
-                });
-            };
         }
     });
 

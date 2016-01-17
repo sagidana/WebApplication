@@ -20,23 +20,6 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage : storage}).any();
 
-//var upload = multer({
-//    dest:  __dirname + '/public/images',
-//    limits: {
-//        fieldNameSize: 50,
-//        files: 1,
-//        fields: 5,
-//        fileSize: 1024 * 1024
-//    },
-//    onFileUploadStart: function (file) {
-//        console.log('uploaading is starting ...');
-//    },
-//    rename: function(fieldname, filename,req,res) {
-//        return 'temp';
-//    },
-//
-//});
-
 app.use("/Bootstrap", express.static(__dirname + "/bower_components/"));
 app.use(express.static(__dirname + "/public"));
 app.use("/Views", express.static(__dirname + "/Views"));
@@ -63,13 +46,6 @@ app.post('/upload',function(req,res){
         }
         res.end("File is uploaded");
     });
-
-    //upload
-    //multer({
-    //    onFileUploadComplete: function(file) {
-    //        res.send();
-    //    }
-    //});
 });
 
 app.get('/', function (req, res) {
@@ -130,32 +106,32 @@ app.get('/update', function (req, res) {
 // after the user get the basic html, a get request is send with the screen id
 io.sockets.on('connection', function (socket) {
 
-    socket.on('askMessages',function(){
+    socket.on('askMessages', function () {
         getMessages(function (result) {
             var data = result;
             socket.emit('getMessages', data);
         });
     });
 
-    socket.on('askScreens',function(){
+    socket.on('askScreens', function () {
         getScreens(function (screens) {
             socket.emit('getScreens', screens);
         });
     });
 
-    socket.on('askTemplates',function(){
+    socket.on('askTemplates', function () {
         getTemplates(function (templates) {
             socket.emit('getTemplates', templates);
         });
     });
 
-    socket.on('askMessage',function(messageName){
+    socket.on('askMessage', function (messageName) {
         getMessage(messageName, function (message) {
             socket.emit('getMessage', message);
         });
     });
 
-    socket.on('askImages',function(){
+    socket.on('askImages', function () {
         getImages(function (filesNames) {
             socket.emit('getImages', filesNames);
         });
@@ -170,7 +146,7 @@ io.sockets.on('connection', function (socket) {
     // the server will get the data from DB and send back to user as 'result'
     socket.on('getdata', function (screenId) {
 
-       getDataFromDb(screenId, function (result) {
+        getDataFromDb(screenId, function (result) {
             var data = result;
             //console.log("date:	"+data);
             socket.emit('displayData', data);
@@ -179,42 +155,30 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('addMessage', function (message) {
         addMessage(message, function (result) {
+            console.log(result);
             socket.emit('getStatus', result);
-            io.sockets.emit('updateData');
+            //io.sockets.emit('updateData');
         });
     });
 
-    socket.on('addScreen', function(location){
-        addScreen(location,function(result){
-            socket.emit('getStatus', result);
-        });
-    });
-
-    socket.on('editScreen', function(screen){
-        editScreen(screen,function(result){
+    socket.on('addScreen', function (location) {
+        addScreen(location, function (result) {
             socket.emit('getStatus', result);
         });
     });
 
-    socket.on('deleteScreen', function(screen){
-        deleteScreen(screen,function(result){
+    socket.on('editScreen', function (screen) {
+        editScreen(screen, function (result) {
             socket.emit('getStatus', result);
         });
     });
 
-
-    // recive new mess from the update page - not in use
-    socket.on('addMessage2', function (message) {
-        //console.log("message: "+JSON.stringify(message)+"\n\n\n\n");
-        addMessage(message, function () {
-
-            //getDataFromDb(screenId, function (result) {
-              //  io.sockets.emit('updateData', result);
-            //});
-
+    socket.on('deleteScreen', function (screen) {
+        deleteScreen(screen, function (result) {
+            socket.emit('getStatus', result);
         });
     });
-}); // sock.on
+});
 
 function addMessage(message, callback) {
     MongoClient.connect(url, function (err, db) {
