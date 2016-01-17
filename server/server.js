@@ -7,6 +7,7 @@ var express = require('express')
 var walk = require('walk');
 var multer = require('multer');
 
+//////// for Image
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
         callback(null, __dirname + '/public/images');
@@ -15,10 +16,44 @@ var storage = multer.diskStorage({
         var date = new Date().getFullYear().toString() +'-'+ (new Date().getMonth()+1).toString() +'-'+ new Date().getDate().toString() +'-'+ new Date().getTime().toString();
         var name = date +'-'+ file.originalname;
         //console.log(name);
-        callback(null, name); //needs to add random number + name of original file
+        callback(null, name);
     }
 });
 var upload = multer({ storage : storage}).any();
+
+
+//////// for Template
+var storageTemplate = multer.diskStorage({
+    destination: function (req, file, callback) {
+        callback(null, __dirname + '/Templates');
+    },
+    filename: function (req, file, callback) {
+        var date = new Date().getFullYear().toString() +'-'+ (new Date().getMonth()+1).toString() +'-'+ new Date().getDate().toString() +'-'+ new Date().getTime().toString();
+        var name = date +'-'+ file.originalname;
+        //console.log(name);
+
+        callback(null, name);
+    }
+});
+var uploadTemplate = multer({ storage : storageTemplate}).any();
+
+
+//var upload = multer({
+//    dest:  __dirname + '/public/images',
+//    limits: {
+//        fieldNameSize: 50,
+//        files: 1,
+//        fields: 5,
+//        fileSize: 1024 * 1024
+//    },
+//    onFileUploadStart: function (file) {
+//        console.log('uploaading is starting ...');
+//    },
+//    rename: function(fieldname, filename,req,res) {
+//        return 'temp';
+//    },
+//
+//});
 
 app.use("/Bootstrap", express.static(__dirname + "/bower_components/"));
 app.use(express.static(__dirname + "/public"));
@@ -28,7 +63,7 @@ server.listen(8080);
 
 var _collectionMessages = "messagesCollection";
 var _collectionScreens = "screensCollection";
-var _collactionTemplates = "templatesCollection";
+var _collectionTemplates = "templatesCollection";
 
 //require node modules (see package.json)
 var mongodb = require('mongodb');
@@ -45,6 +80,16 @@ app.post('/upload',function(req,res){
             return res.end("Error uploading file.");
         }
         res.end("File is uploaded");
+    });
+});
+
+app.post('/uploadTemplate',function(req,res){
+    uploadTemplate(req,res,function(err) {
+        if(err) {
+            return res.end("Error uploading file.");
+        }
+        //console.log(req);
+        res.end(req.files[0].filename);
     });
 });
 
@@ -136,6 +181,13 @@ io.sockets.on('connection', function (socket) {
             socket.emit('getImages', filesNames);
         });
     });
+
+    socket.on('saveTemplate',function(path){
+        addTemplate(path,function(result){
+            socket.emit('getStatus', result);
+        });
+    });
+
 
     socket.on('editMessage', function (message) {
         editMessage(message, function (result) {
@@ -255,7 +307,7 @@ function getTemplates(callback){
             console.log('Unable to connect to the mongoDB server. Error:', err);
         }
 
-        var templatesCollection = db.collection(_collactionTemplates);
+        var templatesCollection = db.collection(_collectionTemplates);
         templatesCollection.find().toArray(function (err, result) {
 
             if (err) {
@@ -456,6 +508,30 @@ function deleteScreen(screen,callback){
                     callback(result);
                 }
                 db.close();
+            });
+        }
+    });
+};
+
+
+function addTemplate(path,callback){
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+        else {
+            var collection = db.collection(_collectionTemplates);
+            //console.log('pattttt',path);
+            collection.insert({path:path}, function (err, records) {
+                if (err) {
+                    //console.log("Error: " + err);
+                    callback(err);
+                } else {
+                    callback(records, path);
+                }
+                //Close connection
+                db.close();
+
             });
         }
     });
