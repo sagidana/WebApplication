@@ -41,8 +41,9 @@
     <title>Screens</title>
 </head>
 <body  ng-controller="ScreensCtrl">
+
     <div class="container">
-        <header class="col-sm-12">
+        <header>
             <h3 class="text-muted">Messages</h3>
             <ul class="nav nav-pills">
                 <li><a href="/list">List</a></li>
@@ -84,10 +85,33 @@
                 {{screen.location}}
             </div>
             <div class="col-sm-1">
-                edit
+                <button type="button" class="btn btn-default" ng-click="editScreen(screen)">Edit</button>
             </div>
             <div class="col-sm-1">
                 delete
+            </div>
+        </div>
+
+        <div id="editScreen" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form class="form-horizontal" role="form">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Edit screen</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <label class=" col-sm-2">Location:</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="" ng-model="editScreen.location" ng-value="$scope.editScreen.location">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="saveEditScreen(editScreen)">Save</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
@@ -99,14 +123,15 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">New screen</h4>
                         </div>
-                        <div class="modal-content">
+
+                        <div class="modal-body">
                             <label class=" col-sm-2">Location:</label>
                             <div class="col-sm-3">
                                 <input type="text" class="" id="newLocation" ng-model="newLocation">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="saveScreen(newLocation)">Save</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="saveNewScreen(newLocation)">Save</button>
                         </div>
                     </form>
                 </div>

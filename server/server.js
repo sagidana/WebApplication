@@ -186,6 +186,12 @@ io.sockets.on('connection', function (socket) {
         });
     });
 
+    socket.on('editScreen', function(screen){
+        editScreen(screen,function(result){
+            socket.emit('getStatus', result);
+        });
+    });
+
 
     // recive new mess from the update page - not in use
     socket.on('addMessage2', function (message) {
@@ -389,6 +395,33 @@ function getDataFromDb(screenId, callback) {
     });
 };
 
+function editScreen(screen, callback){
+    delete screen._id;
+    delete screen.$$hashKey;
+
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+        else {
+            var messagesCollection = db.collection(_collectionScreens);
+
+            messagesCollection.updateOne({
+                "number": screen.number
+            },{
+                $set : screen
+            }, function(err, result){
+                if (err) {
+                    //console.log(err);
+                    callback(err);
+                } else {
+                    callback(result);
+                }
+                db.close();
+            });
+        }
+    });
+};
 
 function addScreen(location, callback){
     MongoClient.connect(url, function (err, db) {

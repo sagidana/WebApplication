@@ -23,7 +23,29 @@ module.controller('ScreensCtrl',function($scope, $routeParams, Upload, ioFactory
         $("#newScreen").modal('show');
     };
 
-    $scope.saveScreen = function(location){
+    $scope.editScreen = function(editScreen){
+        $scope.editScreen = editScreen;
+        $("#editScreen").modal('show');
+    };
+
+    $scope.saveEditScreen = function(editScreen){
+
+        ioFactory.emit('editScreen',editScreen ,function (result){});
+        ioFactory.on('getStatus',function(status){
+            if (status.ok)
+                $('#chanegsSaved').modal('show');
+        });
+
+        ioFactory.emit('askScreens', '', function (result) { });
+        ioFactory.on('getScreens', function (result) {
+            if (result) {
+                $scope.Screens = result;
+                $scope.Initialize();
+            }
+        });
+    };
+
+    $scope.saveNewScreen = function(location){
 
         ioFactory.emit('addScreen',location ,function (result){});
         ioFactory.on('getStatus',function(status){
@@ -90,7 +112,7 @@ module.controller('ScreensCtrl',function($scope, $routeParams, Upload, ioFactory
                 });
             } // Else = address not found --> just skip
             else{
-                console.log('address not found');
+                //console.log('address not found');
             }
 
         }); // end of geocoder.geocode
