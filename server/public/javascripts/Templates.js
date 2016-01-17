@@ -68,22 +68,23 @@ module.controller('TemplatesCtrl',function($scope, $routeParams, Upload, ioFacto
                     console.log('error on hand');
                 } else {
                     //console.log(data);
+                    ioFactory.emit('saveTemplate', data, function (result) {});
 
-                    ioFactory.emit('saveTemplate', data, function (result) { });
+                    ioFactory.on('getStatus', function (status) {
 
-                    ioFactory.on('getStatus',function(status){
-                        if (status.ok)
+                        if (status.result.ok) {
                             $('#chanegsSaved').modal('show');
+                            ioFactory.emit('askTemplates', '', function (result) { });
+                            ioFactory.on('getTemplates', function (result) {
+                                if (result) {
+                                    $scope.Templates = result;
+                                }
+                            });
+                        }
                     });
 
                 }
             });
-        }
-
-
-
+        };
     };
-
-
-
 });
