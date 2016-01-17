@@ -233,6 +233,12 @@ io.sockets.on('connection', function (socket) {
 });
 
 function addMessage(message, callback) {
+
+    for(var i=0; i<message.TimeFrame.length; i++)
+        delete message.TimeFrame[i].$$hashKey;
+
+    //console.log(message);
+
     MongoClient.connect(url, function (err, db) {
         if (err) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
