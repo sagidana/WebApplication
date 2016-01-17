@@ -540,8 +540,8 @@ function addTemplate(path,callback){
             console.log('Unable to connect to the mongoDB server. Error:', err);
         }
         else {
-            var collection = db.collection(_collectionScreens);
-
+            var collection = db.collection(_collectionTemplates);
+            //console.log('pattttt',path);
             collection.insert({path:path}, function (err, records) {
                 if (err) {
                     //console.log("Error: " + err);

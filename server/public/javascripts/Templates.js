@@ -69,7 +69,7 @@ module.controller('TemplatesCtrl',function($scope, $routeParams, Upload, ioFacto
                 } else {
                     //console.log(data);
 
-                    ioFactory.emit('saveTemplate', 'data', function (result) { });
+                    ioFactory.emit('saveTemplate', data, function (result) { });
 
                     ioFactory.on('getStatus',function(status){
                         if (status.ok)
