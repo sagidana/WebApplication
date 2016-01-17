@@ -233,7 +233,7 @@ io.sockets.on('connection', function (socket) {
 });
 
 function addMessage(message, callback) {
-
+    /// real addMessage !!!
     for(var i=0; i<message.TimeFrame.length; i++)
         delete message.TimeFrame[i].$$hashKey;
 
