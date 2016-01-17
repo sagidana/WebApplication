@@ -4,18 +4,20 @@
     <script src="/javascripts/angular/angular.js"></script>
     <script src="/javascripts/angular/angular-route.js"></script>
     <script type="text/javascript" src="/javascripts/checklist-model.js"></script>
-    <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload.js"></script>
-    <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload-shim.js"></script>
     <link rel="stylesheet" type="text/css" href="/Bootstrap/bootstrap/dist/css/bootstrap.css" />
     <script type="text/javascript" src="/javascripts/display.js"></script>
+    <!--<script type="text/javascript" src="/Bootstrap/angular-file-upload/dist/angular-file-upload.js"></script>-->
+    <!--<script type="text/javascript" src="/Bootstrap/angular-file-upload/dist/angular-file-upload.min.js"></script>-->
+    <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload.js"></script>
+    <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload-shim.js"></script>
     <script type="text/javascript" src="/Bootstrap/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="/Bootstrap/bootstrap/dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="/javascripts/socket.io-client/socket.io.js"></script>
     <script type="text/javascript" src="/javascripts/App.js"></script>
     <script type="text/javascript" src="/javascripts/Services.js"></script>
     <script type="text/javascript" src="/javascripts/Edit.js"></script>
-    <script type="text/javascript" src="/javascripts/ScreensManagement.js"></script>
     <script type="text/javascript" src="/javascripts/List.js"></script>
+    <script type="text/javascript" src="/javascripts/ScreensManagement.js"></script>
     <script type="text/javascript" src="/javascripts/Create.js"></script>
     <script type="text/javascript" src="/javascripts/Item.js"></script>
     <script type="text/javascript" src="/javascripts/Screens.js"></script>
@@ -28,109 +30,152 @@
 </head>
 <body ng-controller="CreateCtrl">
 
-    <div class="container">
-        <header>
-            <h3 class="text-muted">Messages</h3>
-            <ul class="nav nav-pills">
-                <li><a href="/list">List</a></li>
-                <li class="active"><a href="/Create">Create</a></li>
-                <li><a href="/ScreensManagement">Manage</a></li>
-                <a href="/Screens">Screens</a></li>
-                <li><a href="/Templates">Templates</a></li>
-                <li><a href="/About">About</a></li>
-            </ul>
+<div class="container">
+    <header>
+        <h3 class="text-muted">Messages</h3>
+        <ul class="nav nav-pills">
+            <li><a href="/list">List</a></li>
+            <li><a href="/Create">Create</a></li>
+            <li><a href="/ScreensManagement">Manage</a></li>
+            <a href="/Screens">Screens</a></li>
+            <li><a href="/Templates">Templates</a></li>
+            <li><a href="/About">About</a></li>
+        </ul>
+    </header>
+    <h2>Create message</h2>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="control-label col-sm-2">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="Message.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Template</label>
+            <div class="col-sm-10">
+                <select class="form-control" ng-model="Message.template">
+                    <option ng-repeat="template in Templates" ng-value="template.path">{{template.path}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Display Time (milliseconds)</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="dispTimeSec" ng-model="Message.dispTimeSec">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Screens</label>
 
-        </header>
-        <h2>Create message</h2>
-        <form class="form-horizontal" role="form" ng-submit="addMessage(Message)">
+            <label class="checkbox-inline" ng-repeat="screen in Screens">
+                <input type="checkbox" checklist-model="Message.screen" checklist-value="screen.number">
+                {{screen.location}}
+            </label>
+        </div>
+
+        <h3>Texts</h3>
+        <div ng-repeat="index in [1,2,3,4,5,6,7,8,9,10]">
             <div class="form-group">
-                <label class="control-label col-sm-2">Name</label>
+                <label class="control-label col-sm-2">Text {{index}}: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name"  ng-model="Message.name">
+                    <input type="text" class="form-control" id="text{{index}}" ng-model="Message.text[index-1]">
                 </div>
             </div>
+        </div>
+        <h3>Images</h3>
+
+
+        <!--<form>-->
+        <!--<input type="file" ng-file-select="imageSelected($image)" accept="'image/*'">-->
+        <!--<input class="btn btn-default"  type="submit" ng-click="uploadImage()" >-->
+
+        <!--</form>-->
+
+        <!-- uploadPic($files) -->
+        <button class="btn btn-default" ngf-select="upload($files)">
+            Upload Image
+        </button>
+
+        <!--<div>-->
+        <!--<input  type="file" fileread="imageToUpload"/>-->
+        <!--<button class="btn btn-default" ng-click="uploadImage()">Upload</button>-->
+        <!--</div>-->
+
+        <div ng-repeat="index in [1,2,3,4,5]">
             <div class="form-group">
-                <label class="control-label col-sm-2">Template</label>
+
+                <label class="control-label col-sm-2">Image {{index}}</label>
                 <div class="col-sm-10">
-                    <select class="form-control" ng-model="Message.template">
-                        <option value="">-- choose template --</option>
-                        <option ng-repeat="template in Templates"  ng-value="template.path">{{template.path}}</option>
+                    <select class="form-control" ng-model="Message.images[index-1]">
+                        <option ng-repeat="image in Images" ng-value="image">{{image}}</option>
                     </select>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2">Dispy Time (sec)</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control" id="dispTimeSec" ng-model="Message.dispTimeSec" min="0">
+        </div>
+        <ul ng-repeat="timeFrame in Message.TimeFrame" class="nav nav-tabs nav-stacked">
+            <li>
+                <div class="hover-btn">
+                    <button type="button" ng-click="removeTimeFrame($index)" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">×</span>
+                        <span class="sr-only">Close</span>
+                    </button>
                 </div>
-            </div>
-            <label class="control-label col-sm-2">Screens</label>
-            <div class="form-group">
-                <label class="checkbox-inline" ng-repeat="screen in Screens">
-                    <input type="checkbox" title="{{screen.number}}" checklist-model="Message.screen" checklist-value="screen.number">
-                    {{screen.location}}
-                </label>
-            </div>
-            <h3>Texts</h3>
-            <div ng-repeat="index in [1,2,3,4,5,6,7,8,9,10]">
-                <div class="form-group">
-                    <label class="control-label col-sm-2">Text {{index}}: </label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="text{{index}}"  ng-model="Message.text[index-1]">
+                <h3>Time Frame {{$index+1}}
+                </h3>
+
+                <div class="form-group" id="TimeFrame">
+                    <label class="control-label col-sm-2">From date:</label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" ng-model="timeFrame.FromDate" placeholder="dd-MM-yyyy">
+                    </div>
+                    <label class="control-label col-sm-2">To date:</label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" ng-model="timeFrame.ToDate" placeholder="dd-MM-yyyy">
+                    </div>
+                    <label class="control-label col-sm-2">From time:</label>
+                    <div class="col-sm-4">
+                        <input type="time" class="form-control" ng-model="timeFrame.FromTime" placeholder="HH:mm:ss">
+                    </div>
+                    <label class="control-label col-sm-2">To time:</label>
+                    <div class="col-sm-4">
+                        <input type="time" class="form-control" ng-model="timeFrame.ToTime" placeholder="HH:mm:ss">
+                    </div>
+                    <label class="control-label col-sm-2">Days:</label>
+                    <div class="form-group col-sm-10">
+                        <label class="checkbox-inline" ng-repeat="day in ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']">
+                            <input class="" type="checkbox" ng-model="timeFrame.days[$index]"/>
+                            {{day}}
+                        </label>
                     </div>
                 </div>
+            </li>
+
+        </ul>
+
+        <button type="button" ng-click="addTimeFrame()" class="btn glyphicon glyphicon-plus"></button>
+
+        <div class="form-group">
+            <div class="btn btn-large btn-block">
+                <button type="submit" ng-click="addMessage()" class="btn btn-default">Create</button>
             </div>
-            <h3>Images</h3>
-            <div ng-repeat="index in [1,2,3,4,5]">
-                <div class="form-group">
-                    <label class="control-label col-sm-2">Image {{index}}: </label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="image{{index}}"  ng-model="Message.images[index-1]">
-                    </div>
+        </div>
+    </form>
+
+    <div id="messageAdded" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Message added!</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
 
-            <div id="TimeFrame">
-                <div ng-repeat="timef in Message.TimeFrame track by $index">
-                    <div class="form-group" id="TimeFrame{{$index}}">
-                        <h3>
-                            Time Frame {{$index+1}}
-                            <button ng-click="(Message.TimeFrame.length == 1 ? null: Message.TimeFrame.splice($index, 1) )" aria-label="Remove">X</button>
-                        </h3>
-                        <label class="control-label col-sm-2">From date:</label>
-                        <div class="col-sm-4">
-                            <input type="date" class="form-control" id="fromdate{{$index}}" ng-model="Message.TimeFrame[$index].FromDate" />
-                        </div>
-                        <label class="control-label col-sm-2">To date:</label>
-                        <div class="col-sm-4">
-                            <input type="date" class="form-control" id="todate{{$index}}" ng-model="Message.TimeFrame[$index].ToDate" />
-                        </div>
-                        <label class="control-label col-sm-2">From time:</label>
-                        <div class="col-sm-4">
-                            <input type="time" class="form-control" id="FromTime{{$index}}" ng-model="Message.TimeFrame[$index].FromTime" />
-                        </div>
-                        <label class="control-label col-sm-2">To time:</label>
-                        <div class="col-sm-4">
-                            <input type="time" class="form-control" id="ToTime{{$index}}" ng-model="Message.TimeFrame[$index].ToTime" />
-                        </div>
-                        <label class="control-label col-sm-2">Days:</label>
-                        <div class="form-group col-sm-10">
-                            <label class="checkbox-inline" ng-repeat="day in Message.TimeFrame[$index].days track by $index">
-                                <input class="" type="checkbox" ng-model="Message.TimeFrame[$parent.$index].days[$index]" name="$parent.$index+'day'+[$index]" ng-true-value="true" ng-false-value="false" />
-                                {{daysName[$index]}}
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <input type="button" id="addTF" value="add more" ng-click="Message.TimeFrame.push({ days:[false,false,false,false,false,false,false] } )" />
-
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Save</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
+</div>
+
 </body>
 </html>
