@@ -9,7 +9,7 @@ module.config(['$routeProvider', function($routeProvider) {
     })
 }]);
 
-module.controller('ScreensCtrl',function($scope, $routeParams, Upload, ioFactory) {
+module.controller('ScreensCtrl',function($scope, $routeParams, ioFactory) {
 
     ioFactory.emit('askScreens', '', function (result) { });
     ioFactory.on('getScreens', function (result) {
@@ -24,12 +24,12 @@ module.controller('ScreensCtrl',function($scope, $routeParams, Upload, ioFactory
     };
 
     $scope.editScreen = function(editScreen){
-        $scope.editScreen = editScreen;
+        $scope.editScreenData = editScreen;
         $("#editScreen").modal('show');
     };
 
     $scope.deleteScreen = function(deleteScreen){
-        $scope.deleteScreen = deleteScreen;
+        $scope.deleteScreenData = deleteScreen;
         $("#deleteScreen").modal('show');
     };
 

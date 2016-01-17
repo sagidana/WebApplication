@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MessagesApp">
+<head>
+    <script src="/javascripts/angular/angular.js"></script>
+    <script src="/javascripts/angular/angular-route.js"></script>
+    <script type="text/javascript" src="/javascripts/checklist-model.js"></script>
+    <link rel="stylesheet" type="text/css" href="/Bootstrap/bootstrap/dist/css/bootstrap.css" />
+    <script type="text/javascript" src="/javascripts/display.js"></script>
+    <!--<script type="text/javascript" src="/Bootstrap/angular-file-upload/dist/angular-file-upload.js"></script>-->
+    <!--<script type="text/javascript" src="/Bootstrap/angular-file-upload/dist/angular-file-upload.min.js"></script>-->
+    <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload.js"></script>
+    <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload-shim.js"></script>
+    <script type="text/javascript" src="/Bootstrap/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/Bootstrap/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/javascripts/socket.io-client/socket.io.js"></script>
+    <script type="text/javascript" src="/javascripts/App.js"></script>
+    <script type="text/javascript" src="/javascripts/Services.js"></script>
+    <script type="text/javascript" src="/javascripts/Edit.js"></script>
+    <script type="text/javascript" src="/javascripts/List.js"></script>
+    <script type="text/javascript" src="/javascripts/ScreensManagement.js"></script>
+    <script type="text/javascript" src="/javascripts/Create.js"></script>
+    <script type="text/javascript" src="/javascripts/Item.js"></script>
+    <script type="text/javascript" src="/javascripts/Screens.js"></script>
+    <script type="text/javascript" src="/javascripts/Templates.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Templates</title>
+
+</head>
+<body ng-controller="TemplatesCtrl">
+
+    <div class="container">
+        <header>
+            <h3 class="text-muted">Messages</h3>
+            <ul class="nav nav-pills">
+                <li><a href="/list">List</a></li>
+                <li><a href="/Create">Create</a></li>
+                <li><a href="/ScreensManagement">Manage</a></li>
+                <li><a href="/Screens">Screens</a></li>
+                <li class="active"><a href="/Templates">Templates</a></li>
+                <li><a href="/About">About</a></li>
+            </ul>
+        </header>
+
+        <div class="jumbotron">
+            <h1>Manage Templates:</h1>
+        </div>
+
+        <h2>Templates:</h2>
+        <br>
+
+        <div id="editDelete" class="col-sm-12 form-inline" ng-hide="isEditMode">
+            <button class="form-control" style="width:80px;" ng-click="editTemplate()" ng-Disabled="!isShowMode">Edit</button>
+            <button class="form-control" style="width:80px;" ng-click="deleteTemplate(currentTemplate)" ng-Disabled="!isShowMode">Delete</button>
+            <label class="">{{currentTemplate.path}}</label>
+        </div>
+
+        <div id="saveCancel" class="col-sm-12 form-inline"  ng-hide="!isEditMode">
+            <button class="form-control" style="width:80px;" ng-click="">Save</button>
+            <button class="form-control" style="width:80px;" ng-click="cancelShow()">Cancel</button>
+            <label class="">{{currentTemplate.path}}</label>
+        </div>
+
+        <div class="col-sm-10">
+        <textarea id="templateHtml" class="form-control" style="border: 1px black solid; height: 400px;" rows="5" ng-Disabled="!isEditMode">
+        </textarea>
+        </div>
+
+        <div class="col-sm-2"></div>
+        <div ng-repeat="template in Templates" class="col-sm-2">
+               <button class="form-control" style="margin: 5px;" ng-click="showTemplate(template)" ng-Disabled="isEditMode">{{template.path}}</button>
+        </div>
+
+
+
+
+    </div>
+</body>
+</html>

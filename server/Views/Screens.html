@@ -21,6 +21,7 @@
     <script type="text/javascript" src="/javascripts/Create.js"></script>
     <script type="text/javascript" src="/javascripts/Item.js"></script>
     <script type="text/javascript" src="/javascripts/Screens.js"></script>
+    <script type="text/javascript" src="/javascripts/Templates.js"></script>
 
     <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=places" type="text/javascript"></script>
 
@@ -38,6 +39,7 @@
                 <li><a href="/Create">Create</a></li>
                 <li><a href="/ScreensManagement">Manage</a></li>
                 <li class="active"><a href="/Screens">Screens</a></li>
+                <li><a href="/Templates">Templates</a></li>
                 <li><a href="/About">About</a></li>
             </ul>
         </header>
@@ -91,11 +93,11 @@
                         <div class="modal-body">
                             are you sure you want to delete screen-
                             <label class="col-sm-2 form-control" style="font-weight: bold">
-                                {{deleteScreen.number}}. {{deleteScreen.location}}
+                                {{deleteScreenData.number}}. {{deleteScreenData.location}}
                             </label>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="saveDeleteScreen(deleteScreen)">Yes</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="saveDeleteScreen(deleteScreenData)">Yes</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">no</button>
                         </div>
 
@@ -115,11 +117,11 @@
                         <div class="modal-body">
                             <label class=" col-sm-2">Location:</label>
                             <div class="col-sm-3">
-                                <input type="text" class="" ng-model="editScreen.location" ng-value="$scope.editScreen.location">
+                                <input type="text" class="" ng-model="editScreenData.location" ng-value="$scope.editScreenData.location">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="saveEditScreen(editScreen)">Save</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="saveEditScreen(editScreenData)">Save</button>
                         </div>
                     </form>
                 </div>

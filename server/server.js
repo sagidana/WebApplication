@@ -82,6 +82,10 @@ app.get('/Item', function (req, res) {
     res.sendFile(__dirname + "/Views/Item.html");
 });
 
+app.get('/Templates', function (req, res) {
+    res.sendFile(__dirname + "/Views/Templates.html");
+});
+
 app.get('/ScreensManagement', function (req, res) {
     res.sendFile(__dirname + "/Views/ScreensManagement.html");
 });
