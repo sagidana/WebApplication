@@ -19,6 +19,7 @@
     <script type="text/javascript" src="/javascripts/List.js"></script>
     <script type="text/javascript" src="/javascripts/Create.js"></script>
     <script type="text/javascript" src="/javascripts/Item.js"></script>
+    <script type="text/javascript" src="/javascripts/Screens.js"></script>
 
     <meta charset="UTF-8">
     <title>Screen Display</title>
@@ -27,17 +28,19 @@
 <body ng-controller="ScreensManagementCtrl">
 
 <div class="container">
-    <header>
+    <header class="col-sm-12">
         <h3 class="text-muted">Messages</h3>
         <ul class="nav nav-pills">
             <li><a href="/list">List</a></li>
             <li><a href="/Create">Create</a></li>
             <li class="active"><a href="/ScreensManagement">Manage</a></li>
+            <li><a href="/Screens">Screens</a></li>
             <li><a href="/About">About</a></li>
         </ul>
 
     </header>
-    <div>
+
+
         <div class="jumbotron">
             <h1>Show display:</h1>
             <form class="form-horizontal" role="form" ng-submit="ShowScreen(Display)">
@@ -74,12 +77,8 @@
             </form>
         </div>
         <h2>Screen:</h2>
+        <div id="display" style="border: 1px black solid; height:400px">&nbsp;</div>
 
-        <div id="display" style="border: 1px black solid; height:400px">
-        &nbsp;
-        </div>
-
-    </div>
 </div>
 </body>
 </html>

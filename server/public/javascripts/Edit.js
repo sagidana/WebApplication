@@ -18,32 +18,6 @@ module.controller('EditCtrl',function($scope, $routeParams, Upload, ioFactory) {
         $scope.upload($scope.files);
     });
 
-    ////////////////////////
-
-
-    $scope.uploadPic = function(file) {
-        file.upload = Upload.upload({
-            url: '/upload',
-            data: {file: file},
-        });
-
-        file.upload.then(function (response) {
-            $timeout(function () {
-                file.result = response.data;
-            });
-        }, function (response) {
-            if (response.status > 0) {
-                //$scope.errorMsg = response.status + ': ' + response.data;
-                console.log(response.status + ': ' + response.data);
-            }
-        }, function (evt) {
-            // Math.min is to fix IE which reports 200% sometimes
-            file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-        });
-    };
-
-
-    /////////////////////
 
     $scope.upload = function(files) {
         console.log(files);
@@ -148,7 +122,7 @@ module.controller('EditCtrl',function($scope, $routeParams, Upload, ioFactory) {
                     $scope.Message.TimeFrame[index].ToTime = new Date($scope.Message.TimeFrame[index].ToTime);
                 }
 
-                ioFactory.emit('editMessage', $scope.Message, function(result){})
+                ioFactory.emit('editMessage', $scope.Message, function(result){});
                 ioFactory.on('getStatus',function(status){
                     if (status.ok)
                         $('#chanegsSaved').modal('show');
