@@ -7,12 +7,12 @@ var express = require('express')
 var walk = require('walk');
 var multer = require('multer');
 
-var storage =   multer.diskStorage({
+var storage = multer.diskStorage({
     destination: function (req, file, callback) {
         callback(null, __dirname + '/public/images');
     },
     filename: function (req, file, callback) {
-        callback(null, 'image'); //needs to add random number + name of original file
+        callback(null, file.originalname); //needs to add random number + name of original file
     }
 });
 var upload = multer({ storage : storage}).any();
