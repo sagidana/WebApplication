@@ -188,7 +188,7 @@ function ShowMes(mes) {
         screenNum: screenId,
         tempPath : mes.template,
         messageName : mes.name,
-        displayTime : mes.displayTime,
+        displayTime : mes.dispTimeSec,
         date : new Date(),
         time : new Date().getTime()
     };
