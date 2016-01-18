@@ -197,6 +197,33 @@ var screens = [
     }
 ];
 
+var statistics = [
+    {
+        "screenNum": 1,
+        "tempPath" : "tempA.html",
+        "messageName" : "mes1",
+        "displayTime" : 5000,
+        "date" : new Date(2015,1,4),
+        "time" : new Date(1000,1,1,23,0,0)
+    },
+    {
+        "screenNum": 2,
+        "tempPath" : "tempB.html",
+        "messageName" : "mes2",
+        "displayTime" : 5000,
+        "date" : new Date(2015,1,5),
+        "time" : new Date(1000,1,1,14,59,0)
+    },
+    {
+        "screenNum": 3,
+        "tempPath" : "tempC.html",
+        "messageName" : "mes3",
+        "displayTime" : 5000,
+        "date" : new Date(2015,1,2),
+        "time" : new Date(1000,1,1,10,0,0)
+    }
+];
+
 MongoClient.connect(url, function (err, db) {
 
     if (err) {
@@ -236,6 +263,22 @@ MongoClient.connect(url, function (err, db) {
                 }
 
                 if (index == templates.length - 1){
+                    db.close();
+                    console.log("Done!");
+                }
+            });
+        }
+
+        var statisticsCollection = db.collection('statisticsCollection');
+        for ( var index = 0; index <statistics.length; index++){
+            statisticsCollection.insert(statistics[index],function(err,result){
+                if (err) {
+                    console.log("1 "+err);
+                } else {
+                    console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
+                }
+
+                if (index == statistics.length - 1){
                     db.close();
                     console.log("Done!");
                 }

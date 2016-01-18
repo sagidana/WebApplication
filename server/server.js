@@ -64,6 +64,7 @@ server.listen(8080);
 var _collectionMessages = "messagesCollection";
 var _collectionScreens = "screensCollection";
 var _collectionTemplates = "templatesCollection";
+var _collectionStatistics = "statisticsCollection";
 
 //require node modules (see package.json)
 var mongodb = require('mongodb');
@@ -229,6 +230,10 @@ io.sockets.on('connection', function (socket) {
         deleteScreen(screen, function (result) {
             socket.emit('getStatus', result);
         });
+    });
+
+    socket.on('writeLog',function(log){
+        writeLog(log);
     });
 });
 
@@ -519,7 +524,6 @@ function deleteScreen(screen,callback){
     });
 };
 
-
 function addTemplate(path,callback){
     MongoClient.connect(url, function (err, db) {
         if (err) {
@@ -542,3 +546,44 @@ function addTemplate(path,callback){
         }
     });
 };
+
+
+function writeLog(log){
+    console.log(log);
+
+    /*
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+        else {
+            var collection = db.collection(_collectionStatistics);
+            //console.log("Connected to Database");
+
+            collection.insert(log, function (err, records) {
+                if (err) {
+                   console.log("Error: " + err);
+                } else
+                    //console.log("Record added: " + JSON.stringify(message) + "\n\n\n\n");
+
+                //Close connection
+                db.close();
+
+            });
+        }
+    });
+    */
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
