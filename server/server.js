@@ -207,9 +207,7 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('addMessage', function (message) {
         addMessage(message, function (result) {
-            console.log(result);
             socket.emit('getStatus', result);
-            //io.sockets.emit('updateData');
         });
     });
 
@@ -236,8 +234,6 @@ function addMessage(message, callback) {
     /// real addMessage !!!
     for(var i=0; i<message.TimeFrame.length; i++)
         delete message.TimeFrame[i].$$hashKey;
-
-    //console.log(message);
 
     MongoClient.connect(url, function (err, db) {
         if (err) {
@@ -518,7 +514,6 @@ function deleteScreen(screen,callback){
         }
     });
 };
-
 
 function addTemplate(path,callback){
     MongoClient.connect(url, function (err, db) {

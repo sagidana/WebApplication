@@ -71,30 +71,7 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
         }
     };
 
-    $scope.addMessage = function(){
-        delete $scope.Message.$$hashKey;
-        $scope.Message.TimeFrame = angular.toJson($scope.Message.TimeFrame);
-        $scope.Message.TimeFrame = JSON.parse($scope.Message.TimeFrame);
-
-        $scope.Message.TimeFrame = angular.copy($scope.Message.TimeFrame);
-
-        for (var index = 0; index < $scope.Message.TimeFrame.length; index++)
-        {
-            $scope.Message.TimeFrame[index].FromDate = new Date($scope.Message.TimeFrame[index].FromDate);
-            $scope.Message.TimeFrame[index].ToDate = new Date($scope.Message.TimeFrame[index].ToDate);
-            $scope.Message.TimeFrame[index].FromTime = new Date($scope.Message.TimeFrame[index].FromTime);
-            $scope.Message.TimeFrame[index].ToTime = new Date($scope.Message.TimeFrame[index].ToTime);
-        }
-
-        ioFactory.emit('addMessage', $scope.Message, function(result){});
-        ioFactory.on('getStatus',function(status){
-            if (status.ok)
-                $('#messageAdded').modal('show');
-        });
-    };
-
     ioFactory.emit('askScreens', '', function (result) { });
-
     ioFactory.on('getScreens', function (result) {
         if (result) {
             $scope.Screens = result;
@@ -109,14 +86,13 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
     });
 
     ioFactory.emit('askTemplates', '', function (result) { });
-
     ioFactory.on('getTemplates', function (result) {
         if (result) {
             $scope.Templates = result;
         }
     });
 
-    $scope.addMessage = function(Message){
+    $scope.addMessage = function(){
         clean($scope.Message.text,undefined);
         clean($scope.Message.images,undefined);
 
@@ -126,13 +102,13 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
             timef = angular.toJson(timef);
             timef = JSON.parse(timef);
         }
-        //console.log(JSON.stringify($scope.Message));
-        //console.log($scope.Message);
 
         ioFactory.emit('addMessage', $scope.Message, function(result){})
-        ioFactory.on('getStatus',function(result){
-            //console.log(result);
-            $scope.Status = result;
+        ioFactory.on('getStatus',function(status){
+            if (status.result.ok)
+                $('#messageAdded').modal('show');
+
+            $scope.Status = status;
         });
 
     };
