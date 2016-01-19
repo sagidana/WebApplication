@@ -17,6 +17,7 @@ var _Time;
 var _Day;
 var _ScreenId;
 
+var _simulate = false;
 var _Stop = false;
 //StartCycle(Messages, i, flag, cycle);
 //}
@@ -185,18 +186,20 @@ function CheckTime(Time) {
 // .load() and activate text and img replace
 function ShowMes(mes) {
 
-    currentDate = new Date();
-    dateString = currentDate.getDate() + "-" + currentDate.getMonth() + "-" + currentDate.getFullYear();
+    if (!_simulate) {
+        currentDate = new Date();
+        dateString = currentDate.getDate() + "-" + currentDate.getMonth() + "-" + currentDate.getFullYear();
 
-    var log = {
-        screenNum: _ScreenId,
-        tempPath : mes.template,
-        messageName : mes.name,
-        displayTime : mes.dispTimeSec,
-        date : dateString,
-        time : new Date().getTime()
-    };
-    socket.emit('writeLog', log);
+        var log = {
+            screenNum: _ScreenId,
+            tempPath: mes.template,
+            messageName: mes.name,
+            displayTime: mes.dispTimeSec,
+            date: dateString,
+            time: new Date().getTime()
+        };
+        socket.emit('writeLog', log);
+    }
 
     $(_DisplayContainer).load('Templates/' + mes.template, function () {
         addText(mes.text);

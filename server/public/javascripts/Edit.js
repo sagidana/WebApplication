@@ -64,15 +64,28 @@ module.controller('EditCtrl',function($scope, $routeParams, Upload, ioFactory) {
     };
 
     $scope.removeTimeFrame = function(index){
-        $scope.Message.TimeFrame.splice(index,1);
+        if ($scope.Message.TimeFrame.length > 1)
+            $scope.Message.TimeFrame.splice(index,1);
     };
 
     $scope.addTimeFrame = function(){
         if ($scope.Message.TimeFrame)
-            $scope.Message.TimeFrame.splice($scope.Message.TimeFrame.length,0,{});
+            $scope.Message.TimeFrame.splice($scope.Message.TimeFrame.length,0,{
+                "FromDate": new Date(),
+                "ToDate": new Date(),
+                "days": [false, false, false, false, false, false, false],
+                "FromTime": new Date(1000,1,1,1,0,0),
+                "ToTime": new Date(1000,1,1,23,59,0)
+            });
         else {
             $scope.Message.TimeFrame = [];
-            $scope.Message.TimeFrame.splice($scope.Message.TimeFrame.length,0,{});
+            $scope.Message.TimeFrame.splice($scope.Message.TimeFrame.length,0,{
+                "FromDate": new Date(),
+                "ToDate": new Date(),
+                "days": [false, false, false, false, false, false, false],
+                "FromTime": new Date(1000,1,1,1,0,0),
+                "ToTime": new Date(1000,1,1,23,59,0)
+            });
         }
     };
 
@@ -83,6 +96,8 @@ module.controller('EditCtrl',function($scope, $routeParams, Upload, ioFactory) {
     $scope.updateImages = function(){
         ioFactory.emit('askImages', '', function (result) { });
     };
+
+
 
     $scope.saveChanges = function(){
         $scope.Message.TimeFrame = angular.toJson($scope.Message.TimeFrame);
@@ -117,6 +132,28 @@ module.controller('EditCtrl',function($scope, $routeParams, Upload, ioFactory) {
             }
         }
     });
+
+    $scope.validation = function(){
+
+        var screenValid = true;
+        var TFValid = false;
+
+        if ($scope.Message) {
+            if ($scope.Message.screen.length != 0)
+                screenValid = false;
+            else
+                screenValid = true;
+
+            for (var index = 0; index < $scope.Message.TimeFrame.length; index++) {
+                if ($scope.Message.TimeFrame[index].days.indexOf(true) != -1)
+                    TFValid = TFValid || false;
+                else
+                    TFValid = TFValid || true;
+            }
+        }
+
+        return TFValid || screenValid;
+    };
 
     ioFactory.emit('askImages', '', function (result) { });
     ioFactory.on('getImages', function (result) {

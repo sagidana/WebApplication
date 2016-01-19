@@ -58,7 +58,7 @@
             <h1>Edit message</h1>
         </div>
 
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form"  ng-submit="saveChanges()">
             <div class="form-group">
                 <label class="control-label col-sm-2">Name</label>
                 <div class="col-sm-10">
@@ -69,14 +69,14 @@
                 <label class="control-label col-sm-2">Template</label>
                 <div class="col-sm-10">
                     <select class="form-control" ng-model="Message.template">
-                        <option ng-repeat="template in Templates" ng-value="template.path">{{template.path}}</option>
+                        <option ng-repeat="template in Templates" ng-value="template.path" required>{{template.path}}</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">Display Time (milliseconds)</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="dispTimeSec" ng-model="Message.dispTimeSec">
+                    <input type="number" class="form-control" id="dispTimeSec" ng-model="Message.dispTimeSec" min="1">
                 </div>
             </div>
             <div class="form-group">
@@ -141,19 +141,19 @@
                          <div class="form-group" id="TimeFrame">
                              <label class="control-label col-sm-2">From date:</label>
                              <div class="col-sm-4">
-                                 <input type="date" class="form-control" ng-model="timeFrame.FromDate" placeholder="dd-MM-yyyy">
+                                 <input type="date" class="form-control" ng-model="timeFrame.FromDate" placeholder="dd-MM-yyyy" required>
                              </div>
                              <label class="control-label col-sm-2">To date:</label>
                              <div class="col-sm-4">
-                                 <input type="date" class="form-control" ng-model="timeFrame.ToDate" placeholder="dd-MM-yyyy">
+                                 <input type="date" class="form-control" ng-model="timeFrame.ToDate" placeholder="dd-MM-yyyy" required>
                              </div>
                              <label class="control-label col-sm-2">From time:</label>
                              <div class="col-sm-4">
-                                 <input type="time" class="form-control" ng-model="timeFrame.FromTime" placeholder="HH:mm:ss">
+                                 <input type="time" class="form-control" ng-model="timeFrame.FromTime" placeholder="HH:mm:ss" required>
                              </div>
                              <label class="control-label col-sm-2">To time:</label>
                              <div class="col-sm-4">
-                                 <input type="time" class="form-control" ng-model="timeFrame.ToTime" placeholder="HH:mm:ss">
+                                 <input type="time" class="form-control" ng-model="timeFrame.ToTime" placeholder="HH:mm:ss" required>
                              </div>
                              <label class="control-label col-sm-2">Days:</label>
                              <div class="form-group col-sm-10">
@@ -171,7 +171,7 @@
 
             <div class="form-group">
                 <div class="btn btn-large btn-block">
-                    <button type="submit" ng-click="saveChanges()" class="btn btn-default">Save</button>
+                    <button type="submit" class="btn btn-default" ng-disabled="validation()">Save</button>
                 </div>
             </div>
         </form>

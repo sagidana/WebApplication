@@ -53,6 +53,8 @@ module.controller('ScreensManagementCtrl', function($scope, ioFactory) {
                 _Time = Display.time;
                 _Day = Display.day;
 
+                _simulate = true;
+
                 if (!_ON){
                     _ON = true;
                     cycle = 1;
