@@ -51,11 +51,9 @@
                 <label>Text: <input ng-model="search.text"></label>&nbsp;
                 <label>Screen: <input ng-model="search.screen"></label>&nbsp;
             </div>
-            <h2>Messages:</h2>
 
-
-            <div ng-repeat="Message in Messages | filter:search" class="col-md-12">
-
+            <ul ng-repeat="Message in Messages | filter:search" class="nav nav-tabs nav-stacked">
+                <li>
                 <p style="font-size:20px;">Name: 
                     <span style="text-decoration:underline;font-weight:bold">
                         <a href="/Item?name={{Message.name}}" role="button">                            
@@ -105,8 +103,8 @@
                         </p>
                     </div>
                 </div>
-            </div>
-
+                </li>
+            </ul>
         </div>
     </div>
 
