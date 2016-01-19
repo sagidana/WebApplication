@@ -15,7 +15,6 @@ var storage = multer.diskStorage({
     filename: function (req, file, callback) {
         var date = new Date().getFullYear().toString() +'-'+ (new Date().getMonth()+1).toString() +'-'+ new Date().getDate().toString() +'-'+ new Date().getTime().toString();
         var name = date +'-'+ file.originalname;
-        //console.log(name);
         callback(null, name);
     }
 });
@@ -120,12 +119,10 @@ app.get('/List', function (req, res) {
 });
 
 app.get('/display', function (req, res) {
-    console.log("display: " + req.query.screen);
     res.sendFile(__dirname + "/Views/Display.html");
 });
 
 app.get('/update', function (req, res) {
-    console.log("update: " + req.query.screen);
     res.sendFile(__dirname + "/Views/Update.html");
 });
 
@@ -180,7 +177,6 @@ io.sockets.on('connection', function (socket) {
 
         getDataFromDb(screenId, function (result) {
             var data = result;
-            //console.log("date:	"+data);
             socket.emit('displayData', data);
         });
     }); // socket on connect
@@ -248,14 +244,11 @@ function addMessage(message, callback) {
         }
         else {
             var collection = db.collection(_collectionMessages);
-            //console.log("Connected to Database");
 
             collection.insert(message, function (err, records) {
                 if (err) {
-                    //console.log("Error: " + err);
                     callback(err);
                 } else {
-                    //console.log("Record added: " + JSON.stringify(message) + "\n\n\n\n");
                     callback(records);
                 }
                     //Close connection
@@ -323,7 +316,6 @@ function getTemplates(callback){
                 console.log("Error: " + err);
 
             } else if (result.length) {
-                console.log("Sending result");
                 callback(result);
             } else {
                 console.log("No document(s) found");
@@ -347,7 +339,6 @@ function getScreens(callback){
                 console.log("Error: " + err);
 
             } else if (result.length) {
-                console.log("Sending result");
                 callback(result);
             } else {
                 console.log("No document(s) found");
@@ -391,7 +382,6 @@ function getMessages(callback) {
                 console.log("Error: " + err);
 
             } else if (result.length) {
-                console.log("Sending result");
                 callback(result);
             } else {
                 console.log("No document(s) found");
@@ -409,17 +399,12 @@ function getDataFromDb(screenId, callback) {
         }
         // add else
         var collection = db.collection(_collectionMessages);
-        //console.log("Connected to Database");
-
-        console.log(screenId);
 
         collection.find({ screen: parseInt(screenId) }).toArray(function (err, result) {
             if (err) {
                 console.log("Error: " + err);
 
             } else if (result.length) {
-                //console.log('Found: ', result);
-                console.log("Sending result to screen: " + screenId);
                 callback(result);
             } else {
                 console.log("No document(s) found");
@@ -447,7 +432,6 @@ function editScreen(screen, callback){
                 $set : screen
             }, function(err, result){
                 if (err) {
-                    //console.log(err);
                     callback(err);
                 } else {
                     callback(result);
@@ -470,16 +454,12 @@ function addScreen(location, callback){
                 if (err) {
                     console.log("Error: " + err);
                 } else if (result.length) {
-
-                    //console.log(result[0].number + 1);
                     var num = result[0].number + 1;
 
                     collection.insert({number:num, location: location}, function (err, records) {
                         if (err) {
-                            //console.log("Error: " + err);
                             callback(err);
                         } else {
-                            //console.log("Record added: " + JSON.stringify(message) + "\n\n\n\n");
                             callback(records);
                         }
                         //Close connection
@@ -511,7 +491,6 @@ function deleteScreen(screen,callback){
             },
             function(err, result){
                 if (err) {
-                    //console.log(err);
                     callback(err);
                 } else {
                     callback(result);
@@ -537,7 +516,6 @@ function deleteMessage(message,callback){
                 },
                 function(err, result){
                     if (err) {
-                        //console.log(err);
                         callback(err);
                     } else {
                         callback(result);
@@ -562,7 +540,6 @@ function deleteTemplate(template, callback){
                 },
                 function(err, result){
                     if (err) {
-                        //console.log(err);
                         callback(err);
                     } else {
                         callback(result);
@@ -580,10 +557,9 @@ function addTemplate(path,callback){
         }
         else {
             var collection = db.collection(_collectionTemplates);
-            //console.log('pattttt',path);
+
             collection.insert({path:path}, function (err, records) {
                 if (err) {
-                    //console.log("Error: " + err);
                     callback(err);
                 } else {
                     callback(records, path);
