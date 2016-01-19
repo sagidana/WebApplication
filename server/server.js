@@ -624,7 +624,8 @@ function askMessagesStatistics(callback){
                     },
                     messagesCount: {$sum: 1}
                 }
-            },
+            }
+
         ]).toArray(function(err, results){
             callback(results);
 
