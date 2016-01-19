@@ -13,7 +13,7 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
 
     $scope.daysName = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
 
-    $scope.Message = {
+    $scope.cleanMessage = {
         "name": "",
         "text": [""],
         "images": [""],
@@ -31,6 +31,7 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
         "screen": []
     };
 
+    $scope.Message = $scope.cleanMessage;
     $scope.uploadImage = function(){
 
         $scope.imageSelected = function(image) {
@@ -51,7 +52,8 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
     };
 
     $scope.removeTimeFrame = function(index){
-        $scope.Message.TimeFrame.splice(index,1);
+        if ($scope.Message.TimeFrame.length > 1)
+            $scope.Message.TimeFrame.splice(index,1);
     };
 
     $scope.uploadImage = function(){
@@ -64,11 +66,24 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
 
     $scope.addTimeFrame = function(){
         if ($scope.Message.TimeFrame)
-            $scope.Message.TimeFrame.splice($scope.Message.TimeFrame.length,0,{});
+            $scope.Message.TimeFrame.splice($scope.Message.TimeFrame.length,0,{
+                "FromDate": new Date(),
+                "ToDate": new Date(),
+                "days": [false, false, false, false, false, false, false],
+                "FromTime": new Date(1000,1,1,1,0,0),
+                "ToTime": new Date(1000,1,1,23,59,0)
+            });
         else {
             $scope.Message.TimeFrame = [];
-            $scope.Message.TimeFrame.splice($scope.Message.TimeFrame.length,0,{});
+            $scope.Message.TimeFrame.splice($scope.Message.TimeFrame.length,0,{
+                "FromDate": new Date(),
+                "ToDate": new Date(),
+                "days": [false, false, false, false, false, false, false],
+                "FromTime": new Date(1000,1,1,1,0,0),
+                "ToTime": new Date(1000,1,1,23,59,0)
+            });
         }
+        //console.log($scope.Message.TimeFrame);
     };
 
     ioFactory.emit('askScreens', '', function (result) { });
@@ -89,8 +104,29 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
     ioFactory.on('getTemplates', function (result) {
         if (result) {
             $scope.Templates = result;
+            $scope.Message.template = $scope.Templates[0].path;
         }
     });
+
+    $scope.validation = function(){
+
+        var screenValid = true;
+        var TFValid = false;
+
+        if ($scope.Message.screen.length != 0)
+            screenValid = false;
+        else
+            screenValid = true;
+
+        for(var index=0; index<$scope.Message.TimeFrame.length; index++){
+            if (  $scope.Message.TimeFrame[index].days.indexOf(true) != -1 )
+                TFValid = TFValid || false;
+            else
+                TFValid = TFValid || true;
+        }
+
+        return TFValid || screenValid;
+    };
 
     $scope.addMessage = function(){
         clean($scope.Message.text,undefined);
@@ -105,9 +141,11 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
 
         ioFactory.emit('addMessage', $scope.Message, function(result){})
         ioFactory.on('getStatus',function(status){
-            if (status.result.ok)
+            if (status.result.ok) {
                 $('#messageAdded').modal('show');
 
+            }
+            $scope.Message = $scope.cleanMessage; // not working
             $scope.Status = status;
         });
 

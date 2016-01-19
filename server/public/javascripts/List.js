@@ -2,7 +2,7 @@
 
 var module = angular.module('MessagesApp.List', ['ngRoute','ServicesModule']);
 
-module.controller('ListCtrl', function($scope, ioFactory) {
+module.controller('ListCtrl', function($scope, $routeParams, ioFactory) {
     ioFactory.emit('askMessages', '', function (result) { });
 
     ioFactory.on('getMessages', function (result) {
@@ -15,6 +15,12 @@ module.controller('ListCtrl', function($scope, ioFactory) {
         if (status.ok)
             ioFactory.emit('askMessages', '', function (result) { });
     });
+
+    // not working..
+    $scope.preDeleteMessage = function(Message){
+        $scope.deleteMessageData = Message;
+        $("#deleteMessage").modal('show');
+    };
 
     $scope.deleteMessage = function(message){
         ioFactory.emit('deleteMessage', message, function (result) { });

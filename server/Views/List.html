@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en" ng-app="MessagesApp">
 <head>
+
     <script type="text/javascript" src="/javascripts/Graphs/fusioncharts/fusioncharts.js"></script>
     <script src="/javascripts/angular/angular.js"></script>
     <script src="/javascripts/angular/angular-route.js"></script>
@@ -40,7 +41,7 @@
         <header>
             <ul class="nav nav-pills">
                 <li><a href="/index">Home</a></li>
-                <li><a href="/list">List</a></li>
+                <li class="active"><a href="/list">List</a></li>
                 <li><a href="/Create">Create</a></li>
                 <li><a href="/ScreensManagement">Simulate</a></li>
                 <li><a href="/Screens">Screens</a></li>
@@ -106,12 +107,36 @@
                         </div>
                         <p>
                             <a class="btn btn-primary" href="/Edit?name={{Message.name}}" role="button">Edit &raquo;</a>
+                            <!--<button class="btn btn-warning" ng-click="preDeleteMessage(Message)">Delete</button>-->
                             <button class="btn btn-warning" ng-click="deleteMessage(Message)">Delete</button>
+
                         </p>
                     </div>
                 </div>
                 </li>
             </ul>
+        </div>
+    </div>
+
+    <div id="deleteMessage" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Delete message</h4>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete message
+                    <label class="col-sm-2 form-control" style="font-weight: bold">
+                        {{deleteMessageData.name}}
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="deleteMessage(deleteMessageData)">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">no</button>
+                </div>
+
+            </div>
         </div>
     </div>
 
