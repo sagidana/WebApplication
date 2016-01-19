@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MessagesApp">
+<head>
+    <script src="/javascripts/angular/angular.js"></script>
+    <script src="/javascripts/angular/angular-route.js"></script>
+    <script type="text/javascript" src="/javascripts/checklist-model.js"></script>
+    <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload.js"></script>
+    <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload-shim.js"></script>
+    <link rel="stylesheet" type="text/css" href="/Bootstrap/bootstrap/dist/css/bootstrap.css" />
+    <script type="text/javascript" src="javascripts/display.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.js"></script>
+    <script type="text/javascript" src="/javascripts/socket.io-client/socket.io.js"></script>
+    <script type="text/javascript" src="/javascripts/App.js"></script>
+    <script type="text/javascript" src="/javascripts/Services.js"></script>
+    <script type="text/javascript" src="/javascripts/Edit.js"></script>
+    <script type="text/javascript" src="/javascripts/ScreensManagement.js"></script>
+    <script type="text/javascript" src="/javascripts/List.js"></script>
+    <script type="text/javascript" src="/javascripts/Create.js"></script>
+    <script type="text/javascript" src="/javascripts/Item.js"></script>
+    <script type="text/javascript" src="/javascripts/Screens.js"></script>
+    <script type="text/javascript" src="/javascripts/Templates.js"></script>
+    <script type="text/javascript" src="/javascripts/Statistics.js"></script>
+
+
+    <meta charset="UTF-8">
+    <title>Statistics</title>
+</head>
+<body ng-controller="StatisticsCtrl">
+<div class="container">
+    <header>
+        <h3 class="text-muted">Messages</h3>
+        <ul class="nav nav-pills">
+            <li><a href="/list">List</a></li>
+            <li><a href="/Create">Create</a></li>
+            <li><a href="/ScreensManagement">Manage</a></li>
+            <li><a href="/Screens">Screens</a></li>
+            <li><a href="/Templates">Templates</a></li>
+            <li><a href="/Statistics">Statistics</a></li>
+            <li><a href="/About">About</a></li>
+        </ul>
+    </header>
+    <h2>Statistics</h2>
+
+    <div>
+        <label>Date</label>
+        <label>Screen</label>
+        <label>Message</label>
+    </div>
+    <div ng-repeat="log in Logs">
+
+        <label>{{log.date}}</label>
+        <label>{{log.screenNum}}</label>
+        <label>{{log.messageName}}</label>
+
+    </div>
+
+
+</div>
+</body>
+</html>

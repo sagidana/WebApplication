@@ -4,7 +4,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-var module = angular.module('MessagesApp', ['ngRoute','checklist-model', 'MessagesApp.List','MessagesApp.ScreensManagement','MessagesApp.Screens','MessagesApp.Templates', 'MessagesApp.Edit', 'MessagesApp.Create', 'MessagesApp.Item', 'ServicesModule']);
+var module = angular.module('MessagesApp', ['ngRoute','checklist-model','MessagesApp.Statistics', 'MessagesApp.ScreensManagement','MessagesApp.Screens','MessagesApp.Templates', 'MessagesApp.List','MessagesApp.Edit', 'MessagesApp.Create', 'MessagesApp.Item', 'ServicesModule']);
 
 module.config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode({

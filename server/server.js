@@ -64,6 +64,7 @@ server.listen(8080);
 var _collectionMessages = "messagesCollection";
 var _collectionScreens = "screensCollection";
 var _collectionTemplates = "templatesCollection";
+var _collectionStatistics = "statisticsCollection";
 
 //require node modules (see package.json)
 var mongodb = require('mongodb');
@@ -95,6 +96,11 @@ app.post('/uploadTemplate',function(req,res){
 
 app.get('/', function (req, res) {
     res.sendFile(__dirname + "/Views/index.html");
+});
+
+
+app.get('/Statistics', function (req, res) {
+    res.sendFile(__dirname + "/Views/Statistics.html");
 });
 
 // send the basic html
@@ -226,6 +232,16 @@ io.sockets.on('connection', function (socket) {
     socket.on('deleteScreen', function (screen) {
         deleteScreen(screen, function (result) {
             socket.emit('getStatus', result);
+        });
+    });
+
+    socket.on('writeLog',function(log){
+        writeLog(log);
+    });
+
+    socket.on('askLogs',function(){
+        askLogs(function(result){
+            socket.emit('getLogs', result);
         });
     });
 });
@@ -537,3 +553,184 @@ function addTemplate(path,callback){
         }
     });
 };
+
+function writeLog(log){
+    //console.log(log);
+
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+        else {
+            var collection = db.collection(_collectionStatistics);
+            //console.log("Connected to Database");
+
+            collection.insert(log, function (err, records) {
+                if (err) {
+                   console.log("Error: " + err);
+                } else
+                    //console.log("Record added: " + JSON.stringify(message) + "\n\n\n\n");
+
+                //Close connection
+                db.close();
+
+            });
+        }
+    });
+
+};
+
+
+function askLogs(callback){
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+        var collection = db.collection(_collectionStatistics);
+
+/*
+//  date    | screens | messages
+//  1.1.15  |    5    |   35        //  on day 1.1.15 there was 5 active screens and total on 35 messages display
+//  2.1.15  |    7    |   86
+
+// date is on dd/mm/yyyy so it can not be grouped..
+
+ https://docs.mongodb.org/getting-started/node/aggregation/
+ https://docs.mongodb.org/manual/reference/sql-aggregation-comparison/
+ https://docs.mongodb.org/v2.6/reference/method/db.collection.group/
+
+ with 2 videos:
+ https://smyl.es/how-to-count-the-number-of-values-found-for-a-field-in-mongodb-using-node-js-and-mongoose-using-aggregation/
+
+ */
+
+        /*
+         // row data
+
+         collection.find().toArray(function (err, result) {
+         if (err) {
+         console.log("Error: " + err);
+         } else if (result.length) {
+         //console.log("Sending result");
+         callback(result);
+         }
+         db.close();
+         });
+         */
+
+
+
+        /*
+
+        // [ { _id: 'date', count: 28 } ]
+
+        collection.aggregate(
+            [
+                {
+                    $group: {
+                        "_id": "date",
+                        "count": { $sum: 1 }
+                    }
+                }
+            ]
+        ).toArray(function(err, result) {
+            console.log(result);
+        });
+        */
+
+
+
+        //////////////
+
+        collection.aggregate(
+            [
+                {
+                    $group: {
+                        "_id": "$date",
+                        "count": { $sum: 1 }
+                    }
+                }
+            ]
+        ).toArray(function(err, result) {
+            console.log(result);
+        });
+        /*
+         [ { _id: Thu Feb 05 2015 00:00:00 GMT+0200 (Jerusalem Standard Time),
+         count: 1 },
+         { _id: Wed Feb 04 2015 00:00:00 GMT+0200 (Jerusalem Standard Time),
+         count: 1 },
+         { _id: Mon Feb 02 2015 00:00:00 GMT+0200 (Jerusalem Standard Time),
+         count: 1 },
+         { _id: '2016-01-18T19:34:12.951Z', count: 1 },
+         { _id: '2016-01-18T19:34:00.331Z', count: 1 },
+         { _id: '2016-01-18T19:34:16.948Z', count: 1 },
+         { _id: '2016-01-18T19:34:05.954Z', count: 1 },
+         { _id: '2016-01-18T19:34:10.946Z', count: 1 },
+         .
+         .
+         */
+
+
+        //////////////
+
+
+
+        /*
+        // not working
+        collection.aggregate( [
+            {
+                $group: {
+                    keyf: function(doc) {
+                        return { date: doc.date.getDate()+'/'+doc.date.getMonth()+'/'+doc.date.getYear() };
+                    },
+                    "count": { $sum: 1 }
+                }
+            }
+        ],function(err,docs){
+            console.log(docs);
+        });
+
+        //////////////////////////////////
+        collection.aggregate( [
+            {
+                $group: {
+                    "key" : "$date",
+                    reduce: function (curr, result) {
+                        result.count++;
+                    },
+                    initial: {
+                        count : 0
+                    }
+                }
+            }
+        ],function(err,docs){
+            console.log(docs);
+        });
+
+
+         db.orders.group(
+         {
+         key: { ord_dt: 1, 'item.sku': 1 },
+         cond: { ord_dt: { $gt: new Date( '01/01/2012' ) } },
+         reduce: function( curr, result ) {
+         result.total += curr.item.qty;
+         },
+         initial: { total : 0 }
+         }
+         )
+
+        */
+
+
+    });
+};
+
+
+
+
+
+
+
+
+
+

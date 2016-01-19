@@ -184,6 +184,16 @@ function CheckTime(Time) {
 // .load() and activate text and img replace
 function ShowMes(mes) {
 
+    var log = {
+        screenNum: screenId,
+        tempPath : mes.template,
+        messageName : mes.name,
+        displayTime : mes.dispTimeSec,
+        date : new Date(),
+        time : new Date().getTime()
+    };
+    socket.emit('writeLog', log);
+
     $(_DisplayContainer).load('Templates/' + mes.template, function () {
         addText(mes.text);
         addImage(mes.images);
