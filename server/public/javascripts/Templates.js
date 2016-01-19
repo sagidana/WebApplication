@@ -1,6 +1,6 @@
 'use strict';
 
-var module = angular.module('MessagesApp.Templates', ['ngRoute', 'ngFileUpload', 'ServicesModule']);
+var module = angular.module('MessagesApp.Templates', ['ngRoute', 'ngFileUpload', 'ServicesModule','ngMaterial']);
 
 module.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/Templates', {
@@ -9,12 +9,51 @@ module.config(['$routeProvider', function($routeProvider) {
     })
 }]);
 
-module.controller('TemplatesCtrl',function($scope, $routeParams, Upload, ioFactory) {
+module.controller('TemplatesCtrl',function($scope, $routeParams, Upload, ioFactory, $http) {
+
+    var tabs = [
+            { title: "", content: ""}
+        ];
+
+        $scope.TemplatesTabs  = tabs;
+        $scope.selectedIndex = 1;
+
+        $scope.addTab = function (title, view) {
+            view = view || title + " Content View";
+            $scope.TemplatesTabs.push({ title: title, content: view, disabled: false});
+        };
+        $scope.removeTab = function (template) {
+            var index = $scope.TemplatesTabs.indexOf(template);
+            $scope.TemplatesTabs.splice(index, 1);
+
+            $scope.deleteTemplate({"path":template.title});
+        };
 
     ioFactory.emit('askTemplates', '', function (result) { });
     ioFactory.on('getTemplates', function (result) {
         if (result) {
             $scope.Templates = result;
+            $scope.TemplatesContent = [];
+
+            for (var index = 0;index < result.length; index++){
+                $scope.TemplatesTabs[index] = {
+                    "title": result[index].path,
+                    "content": ""
+                };
+
+                $http({
+                    method: 'GET',
+                    url: result[index].path
+                }).then(function successCallback(response) {
+                    console.log(response.config.url);
+
+                    for (var index = 0; index <  $scope.TemplatesTabs.length; index++){
+                        if ($scope.TemplatesTabs[index].title == response.config.url){
+                            $scope.TemplatesTabs[index].content = response.data;
+                        }
+                    }
+                }, function errorCallback(response) {});
+            }
         }
     });
 
