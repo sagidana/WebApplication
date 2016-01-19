@@ -45,8 +45,6 @@ module.controller('TemplatesCtrl',function($scope, $routeParams, Upload, ioFacto
                     method: 'GET',
                     url: result[index].path
                 }).then(function successCallback(response) {
-                    console.log(response.config.url);
-
                     for (var index = 0; index <  $scope.TemplatesTabs.length; index++){
                         if ($scope.TemplatesTabs[index].title == response.config.url){
                             $scope.TemplatesTabs[index].content = response.data;
