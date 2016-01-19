@@ -73,7 +73,7 @@
                         </div>
 
                         <p style="font-size:20px">Images:</p>
-                        <div class="list-group" ng-repeat="Image in Message.images">
+                        <div class="list-group" ng-repeat="Image in Message.images track by $index">
                             <img ng-src="{{Image}}" />
                         </div>
 

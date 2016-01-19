@@ -6,28 +6,32 @@
     <script src="/javascripts/angular/angular-route.js"></script>
     <script type="text/javascript" src="/javascripts/Graphs/angular-fusioncharts.min.js"></script>
     <script type="text/javascript" src="/javascripts/checklist-model.js"></script>
+    <link rel="stylesheet" type="text/css" href="/Bootstrap/bootstrap/dist/css/bootstrap.css" />
+    <script type="text/javascript" src="/javascripts/display.js"></script>
+    <!--<script type="text/javascript" src="/Bootstrap/angular-file-upload/dist/angular-file-upload.js"></script>-->
+    <!--<script type="text/javascript" src="/Bootstrap/angular-file-upload/dist/angular-file-upload.min.js"></script>-->
     <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload.js"></script>
     <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload-shim.js"></script>
-    <link rel="stylesheet" type="text/css" href="/Bootstrap/bootstrap/dist/css/bootstrap.css" />
-    <script type="text/javascript" src="javascripts/display.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.js"></script>
+    <script type="text/javascript" src="/Bootstrap/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/Bootstrap/bootstrap/dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="/javascripts/socket.io-client/socket.io.js"></script>
     <script type="text/javascript" src="/javascripts/App.js"></script>
     <script type="text/javascript" src="/javascripts/Services.js"></script>
     <script type="text/javascript" src="/javascripts/Edit.js"></script>
-    <script type="text/javascript" src="/javascripts/ScreensManagement.js"></script>
     <script type="text/javascript" src="/javascripts/List.js"></script>
+    <script type="text/javascript" src="/javascripts/ScreensManagement.js"></script>
     <script type="text/javascript" src="/javascripts/Create.js"></script>
     <script type="text/javascript" src="/javascripts/Item.js"></script>
     <script type="text/javascript" src="/javascripts/Screens.js"></script>
     <script type="text/javascript" src="/javascripts/Templates.js"></script>
     <script type="text/javascript" src="/javascripts/Statistics.js"></script>
 
-
     <meta charset="UTF-8">
-    <title>Statistics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About</title>
+
 </head>
-<body ng-controller="StatisticsCtrl">
+<body >
 <div class="container">
     <header>
         <h3 class="text-muted">Messages</h3>
@@ -42,31 +46,14 @@
         </ul>
     </header>
 
-    <div class="jumbotron">
-        <h1>Statistics</h1>
-    </div>
-
-
-    <h3>Screens</h3>
-    <div fusioncharts
-         width="600"
-         height="400"
-         type="msline"
-         chart="{{ScreensStatisticsChartOptions}}"
-         categories="{{ScreensCategories}}"
-         dataset="{{ScreensDataSet}}"
-    ></div>
-
-    <h3>Messages</h3>
-    <div fusioncharts
-         width="600"
-         height="400"
-         type="msline"
-         chart="{{MessagesStatisticsChartOptions}}"
-         categories="{{MessagesCategories}}"
-         dataset="{{MessagesDataSet}}"
-    ></div>
-
+</div>
+<div class="container">
+<div class="jumbotron">
+    <h1>About</h1>
+</div>
+<h4>
+    Created by Sagi dana and Jecki taliaz
+</h4>
 </div>
 </body>
 </html>

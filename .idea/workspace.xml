@@ -2,30 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70df9a95-1a1b-412f-a8d6-441b63e6f2a5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/public/javascripts/Graphs/angular-fusioncharts.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/public/javascripts/Graphs/fusioncharts/fusioncharts.charts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/public/javascripts/Graphs/fusioncharts/fusioncharts.gantt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/public/javascripts/Graphs/fusioncharts/fusioncharts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/public/javascripts/Graphs/fusioncharts/fusioncharts.maps.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/public/javascripts/Graphs/fusioncharts/fusioncharts.powercharts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/public/javascripts/Graphs/fusioncharts/fusioncharts.treemap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/public/javascripts/Graphs/fusioncharts/fusioncharts.widgets.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/public/javascripts/Graphs/fusioncharts/fusioncharts.zoomscatter.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/Views/index.html" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/Views/About.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/DatabaseInitialize.js" afterPath="$PROJECT_DIR$/server/DatabaseInitialize.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Create.html" afterPath="$PROJECT_DIR$/server/Views/Create.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Display.html" afterPath="$PROJECT_DIR$/server/Views/Display.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Edit.html" afterPath="$PROJECT_DIR$/server/Views/Edit.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Item.html" afterPath="$PROJECT_DIR$/server/Views/Item.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/List.html" afterPath="$PROJECT_DIR$/server/Views/List.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Screens.html" afterPath="$PROJECT_DIR$/server/Views/Screens.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/ScreensManagement.html" afterPath="$PROJECT_DIR$/server/Views/ScreensManagement.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Statistics.html" afterPath="$PROJECT_DIR$/server/Views/Statistics.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Templates.html" afterPath="$PROJECT_DIR$/server/Views/Templates.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Views/Update.html" afterPath="$PROJECT_DIR$/server/Views/Update.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/javascripts/Edit.js" afterPath="$PROJECT_DIR$/server/public/javascripts/Edit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/javascripts/Statistics.js" afterPath="$PROJECT_DIR$/server/public/javascripts/Statistics.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/javascripts/Create.js" afterPath="$PROJECT_DIR$/server/public/javascripts/Create.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/javascripts/ScreensManagement.js" afterPath="$PROJECT_DIR$/server/public/javascripts/ScreensManagement.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/javascripts/display.js" afterPath="$PROJECT_DIR$/server/public/javascripts/display.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.js" afterPath="$PROJECT_DIR$/server/server.js" />
     </list>
@@ -48,35 +35,58 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Item.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/Views/Item.html">
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.9230769">
-              <caret line="6" column="98" selection-start-line="6" selection-start-column="98" selection-end-line="6" selection-end-column="98" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="List.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/Views/List.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.9230769">
-              <caret line="6" column="98" selection-start-line="6" selection-start-column="98" selection-end-line="6" selection-end-column="98" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
               <folding>
-                <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#p#6;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="e#271#721#0" expanded="false" />
+                <element signature="e#832#1279#0" expanded="false" />
+                <element signature="e#2193#2357#0" expanded="false" />
+                <element signature="e#2405#2608#0" expanded="false" />
+                <element signature="e#2645#2704#0" expanded="false" />
+                <element signature="e#2751#2810#0" expanded="false" />
+                <element signature="e#2851#2904#0" expanded="false" />
+                <element signature="e#2950#3008#0" expanded="false" />
+                <element signature="e#3062#3128#0" expanded="false" />
+                <element signature="e#3268#3324#0" expanded="false" />
+                <element signature="e#3367#3422#0" expanded="false" />
+                <element signature="e#3463#3516#0" expanded="false" />
+                <element signature="e#3557#3610#0" expanded="false" />
+                <element signature="e#3654#3759#0" expanded="false" />
+                <element signature="e#3802#3905#0" expanded="false" />
+                <element signature="e#4079#4215#0" expanded="false" />
+                <element signature="e#4259#4366#0" expanded="false" />
+                <element signature="e#4412#4527#0" expanded="false" />
+                <element signature="e#4582#4702#0" expanded="false" />
+                <element signature="e#4745#4856#0" expanded="false" />
+                <element signature="e#4903#5011#0" expanded="false" />
+                <element signature="e#5063#5177#0" expanded="false" />
+                <element signature="e#5226#5417#0" expanded="false" />
+                <element signature="e#5489#5602#0" expanded="false" />
+                <element signature="e#5653#5766#0" expanded="false" />
+                <element signature="e#5816#5928#0" expanded="false" />
+                <element signature="e#5980#6094#0" expanded="false" />
+                <element signature="e#6136#6166#0" expanded="false" />
+                <element signature="e#6218#6343#0" expanded="false" />
+                <element signature="e#6394#6517#0" expanded="false" />
+                <element signature="n#!!block;n#addMessage#0" expanded="false" />
+                <element signature="n#!!block;n#getImages#0" expanded="false" />
+                <element signature="n#!!block;n#editMessage#0" expanded="false" />
+                <element signature="n#!!block;n#getTemplates#0" expanded="false" />
+                <element signature="n#!!block;n#getScreens#0" expanded="false" />
+                <element signature="n#!!block;n#getMessage#0" expanded="false" />
+                <element signature="n#!!block;n#getMessages#0" expanded="false" />
+                <element signature="n#!!block;n#getDataFromDb#0" expanded="false" />
+                <element signature="n#!!block;n#editScreen#0" expanded="false" />
+                <element signature="n#!!block;n#addScreen#0" expanded="false" />
+                <element signature="n#!!block;n#deleteScreen#0" expanded="false" />
+                <element signature="n#!!block;n#addTemplate#0" expanded="false" />
+                <element signature="n#!!block;n#writeLog#0" expanded="false" />
+                <element signature="n#!!block;n#askMessagesStatistics#0" expanded="false" />
+                <element signature="n#!!block;n#askScreensStatistics#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Statistics.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/Views/Statistics.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.384615">
-              <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="76" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -84,7 +94,7 @@
       <file leaf-file-name="Templates.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/Views/Templates.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.9230769">
+            <state vertical-scroll-proportion="-0.65384614">
               <caret line="6" column="98" selection-start-line="6" selection-start-column="98" selection-end-line="6" selection-end-column="98" />
               <folding />
             </state>
@@ -94,7 +104,7 @@
       <file leaf-file-name="Update.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/Views/Update.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.423077">
+            <state vertical-scroll-proportion="-0.65384614">
               <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
@@ -104,45 +114,43 @@
       <file leaf-file-name="Screens.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/Views/Screens.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.8846154">
+            <state vertical-scroll-proportion="13.730769">
               <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScreensManagement.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/Views/ScreensManagement.html">
+      <file leaf-file-name="Display.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/Views/Display.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.230769">
-              <caret line="8" column="98" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="98" />
+            <state vertical-scroll-proportion="-4.8846154">
+              <caret line="53" column="44" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Statistics.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/public/javascripts/Statistics.js">
+      <file leaf-file-name="display.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/public/javascripts/display.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7794118">
-              <caret line="32" column="47" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="195" column="26" selection-start-line="195" selection-start-column="26" selection-end-line="195" selection-end-column="26" />
               <folding>
-                <element signature="e#854#908#0" expanded="false" />
-                <element signature="e#1610#1664#0" expanded="false" />
-                <element signature="e#1812#1889#0" expanded="false" />
-                <element signature="e#2003#2079#0" expanded="false" />
-                <element signature="e#3348#3957#0" expanded="false" />
-                <element signature="e#4667#5216#0" expanded="false" />
+                <element signature="n#!!block;n#Show#0" expanded="false" />
+                <element signature="n#!!block;n#addText#0" expanded="false" />
+                <element signature="n#!!block;n#addImage#0" expanded="false" />
+                <element signature="n#!!block;n#getParameterByName#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Edit.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/Views/Edit.html">
+      <file leaf-file-name="ScreensManagement.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/Views/ScreensManagement.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.9230769">
-              <caret line="6" column="98" selection-start-line="6" selection-start-column="98" selection-end-line="6" selection-end-column="98" />
+            <state vertical-scroll-proportion="0.72200775">
+              <caret line="79" column="82" selection-start-line="79" selection-start-column="79" selection-end-line="79" selection-end-column="92" />
               <folding />
             </state>
           </provider>
@@ -151,8 +159,28 @@
       <file leaf-file-name="Create.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/Views/Create.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.9230769">
-              <caret line="6" column="98" selection-start-line="6" selection-start-column="98" selection-end-line="6" selection-end-column="98" />
+            <state vertical-scroll-proportion="-0.65384614">
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="50" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Create.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/public/javascripts/Create.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="98" column="63" selection-start-line="98" selection-start-column="63" selection-end-line="98" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScreensManagement.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/public/javascripts/ScreensManagement.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -197,27 +225,29 @@
         <option value="$PROJECT_DIR$/server/public/javascripts/checklist-model.js" />
         <option value="$PROJECT_DIR$/server/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/server/public/javascripts/ScreenManage.js" />
-        <option value="$PROJECT_DIR$/server/public/javascripts/ScreensManagement.js" />
         <option value="$PROJECT_DIR$/server/public/javascripts/socket.io-client/Screens.js" />
         <option value="$PROJECT_DIR$/server/public/javascripts/App.js" />
         <option value="$PROJECT_DIR$/server/public/javascripts/Screens.js" />
         <option value="$PROJECT_DIR$/server/Views/index.html" />
         <option value="$PROJECT_DIR$/server/public/javascripts/Templates.js" />
         <option value="$PROJECT_DIR$/server/public/javascripts/Edit.js" />
-        <option value="$PROJECT_DIR$/server/public/javascripts/display.js" />
         <option value="$PROJECT_DIR$/server/DatabaseInitialize.js" />
-        <option value="$PROJECT_DIR$/server/server.js" />
-        <option value="$PROJECT_DIR$/server/Views/Statistics.html" />
-        <option value="$PROJECT_DIR$/server/Views/Display.html" />
-        <option value="$PROJECT_DIR$/server/Views/Create.html" />
-        <option value="$PROJECT_DIR$/server/Views/Edit.html" />
-        <option value="$PROJECT_DIR$/server/Views/Item.html" />
-        <option value="$PROJECT_DIR$/server/Views/List.html" />
-        <option value="$PROJECT_DIR$/server/Views/ScreensManagement.html" />
         <option value="$PROJECT_DIR$/server/Views/Templates.html" />
         <option value="$PROJECT_DIR$/server/Views/Update.html" />
         <option value="$PROJECT_DIR$/server/Views/Screens.html" />
         <option value="$PROJECT_DIR$/server/public/javascripts/Statistics.js" />
+        <option value="$PROJECT_DIR$/server/Views/Item.html" />
+        <option value="$PROJECT_DIR$/server/server.js" />
+        <option value="$PROJECT_DIR$/server/Views/List.html" />
+        <option value="$PROJECT_DIR$/server/Views/Statistics.html" />
+        <option value="$PROJECT_DIR$/server/Views/Create.html" />
+        <option value="$PROJECT_DIR$/server/Views/Edit.html" />
+        <option value="$PROJECT_DIR$/server/Views/About.html" />
+        <option value="$PROJECT_DIR$/server/Views/ScreensManagement.html" />
+        <option value="$PROJECT_DIR$/server/Views/Display.html" />
+        <option value="$PROJECT_DIR$/server/public/javascripts/display.js" />
+        <option value="$PROJECT_DIR$/server/public/javascripts/ScreensManagement.js" />
+        <option value="$PROJECT_DIR$/server/public/javascripts/Create.js" />
       </list>
     </option>
   </component>
@@ -344,62 +374,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graphs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graphs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fusioncharts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -601,7 +575,13 @@
       <option name="project" value="LOCAL" />
       <updated>1453188240474</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Adding statisticts">
+      <created>1453207019103</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1453207019103</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -610,6 +590,7 @@
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.175" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20368364" sideWeight="0.5021075" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23653643" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21647307" sideWeight="0.49789253" order="5" side_tool="false" content_ui="tabs" />
@@ -618,7 +599,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39598733" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -669,7 +649,8 @@
     <MESSAGE value="delete screen -done" />
     <MESSAGE value="Merge branch 'master' of https://github.com/sagidana/WebApplication&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;fixing addMess" />
     <MESSAGE value="Merge branch 'master' of https://github.com/sagidana/WebApplication&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/sagidana/WebApplication&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
+    <MESSAGE value="Adding statisticts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding statisticts" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -734,13 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/public/javascripts/Create.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/public/javascripts/angular/version.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -759,6 +733,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -825,13 +800,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/public/javascripts/ScreensManagement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.66570187">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/public/javascripts/Screens.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -853,19 +821,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/public/javascripts/display.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="188" column="0" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!block;n#Show#0" expanded="false" />
-            <element signature="n#!!block;n#addText#0" expanded="false" />
-            <element signature="n#!!block;n#addImage#0" expanded="false" />
-            <element signature="n#!!block;n#getParameterByName#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -973,10 +928,108 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/public/javascripts/Statistics.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="47" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
+          <folding>
+            <element signature="e#854#908#0" expanded="false" />
+            <element signature="e#1610#1664#0" expanded="false" />
+            <element signature="e#1812#1889#0" expanded="false" />
+            <element signature="e#2003#2079#0" expanded="false" />
+            <element signature="e#3348#3957#0" expanded="false" />
+            <element signature="e#4667#5216#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/Views/Item.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="70" column="90" selection-start-line="70" selection-start-column="90" selection-end-line="70" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/Views/List.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="12.769231">
+          <caret line="46" column="35" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
+          <folding>
+            <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#p#6;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/Views/Statistics.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.076923">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/Views/Edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.038462">
+          <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/Views/About.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.692307">
+          <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/Views/Screens.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="13.730769">
+          <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/Views/Templates.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="6" column="98" selection-start-line="6" selection-start-column="98" selection-end-line="6" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/Views/Update.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/Views/Display.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.8846154">
+          <caret line="53" column="44" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/public/javascripts/ScreensManagement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="574" column="56" selection-start-line="574" selection-start-column="43" selection-end-line="574" selection-end-column="56" />
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding>
             <element signature="e#271#721#0" expanded="false" />
             <element signature="e#832#1279#0" expanded="false" />
@@ -987,27 +1040,27 @@
             <element signature="e#2851#2904#0" expanded="false" />
             <element signature="e#2950#3008#0" expanded="false" />
             <element signature="e#3062#3128#0" expanded="false" />
-            <element signature="e#3172#3228#0" expanded="false" />
-            <element signature="e#3271#3326#0" expanded="false" />
-            <element signature="e#3367#3420#0" expanded="false" />
-            <element signature="e#3461#3514#0" expanded="false" />
-            <element signature="e#3558#3663#0" expanded="false" />
-            <element signature="e#3706#3809#0" expanded="false" />
-            <element signature="e#3983#4119#0" expanded="false" />
-            <element signature="e#4163#4270#0" expanded="false" />
-            <element signature="e#4316#4431#0" expanded="false" />
-            <element signature="e#4486#4606#0" expanded="false" />
-            <element signature="e#4649#4760#0" expanded="false" />
-            <element signature="e#4807#4915#0" expanded="false" />
-            <element signature="e#4967#5081#0" expanded="false" />
-            <element signature="e#5130#5321#0" expanded="false" />
-            <element signature="e#5393#5506#0" expanded="false" />
-            <element signature="e#5557#5670#0" expanded="false" />
-            <element signature="e#5720#5832#0" expanded="false" />
-            <element signature="e#5884#5998#0" expanded="false" />
-            <element signature="e#6040#6070#0" expanded="false" />
-            <element signature="e#6122#6247#0" expanded="false" />
-            <element signature="e#6298#6421#0" expanded="false" />
+            <element signature="e#3268#3324#0" expanded="false" />
+            <element signature="e#3367#3422#0" expanded="false" />
+            <element signature="e#3463#3516#0" expanded="false" />
+            <element signature="e#3557#3610#0" expanded="false" />
+            <element signature="e#3654#3759#0" expanded="false" />
+            <element signature="e#3802#3905#0" expanded="false" />
+            <element signature="e#4079#4215#0" expanded="false" />
+            <element signature="e#4259#4366#0" expanded="false" />
+            <element signature="e#4412#4527#0" expanded="false" />
+            <element signature="e#4582#4702#0" expanded="false" />
+            <element signature="e#4745#4856#0" expanded="false" />
+            <element signature="e#4903#5011#0" expanded="false" />
+            <element signature="e#5063#5177#0" expanded="false" />
+            <element signature="e#5226#5417#0" expanded="false" />
+            <element signature="e#5489#5602#0" expanded="false" />
+            <element signature="e#5653#5766#0" expanded="false" />
+            <element signature="e#5816#5928#0" expanded="false" />
+            <element signature="e#5980#6094#0" expanded="false" />
+            <element signature="e#6136#6166#0" expanded="false" />
+            <element signature="e#6218#6343#0" expanded="false" />
+            <element signature="e#6394#6517#0" expanded="false" />
             <element signature="n#!!block;n#addMessage#0" expanded="false" />
             <element signature="n#!!block;n#getImages#0" expanded="false" />
             <element signature="n#!!block;n#editMessage#0" expanded="false" />
@@ -1021,106 +1074,46 @@
             <element signature="n#!!block;n#deleteScreen#0" expanded="false" />
             <element signature="n#!!block;n#addTemplate#0" expanded="false" />
             <element signature="n#!!block;n#writeLog#0" expanded="false" />
+            <element signature="n#!!block;n#askMessagesStatistics#0" expanded="false" />
             <element signature="n#!!block;n#askScreensStatistics#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/Views/Display.html">
+    <entry file="file://$PROJECT_DIR$/server/Views/Create.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.076923">
-          <caret line="22" column="76" selection-start-line="22" selection-start-column="76" selection-end-line="22" selection-end-column="76" />
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="50" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/Views/Edit.html">
+    <entry file="file://$PROJECT_DIR$/server/public/javascripts/Create.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769">
-          <caret line="6" column="98" selection-start-line="6" selection-start-column="98" selection-end-line="6" selection-end-column="98" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="98" column="63" selection-start-line="98" selection-start-column="63" selection-end-line="98" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/Views/Item.html">
+    <entry file="file://$PROJECT_DIR$/server/public/javascripts/display.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769">
-          <caret line="6" column="98" selection-start-line="6" selection-start-column="98" selection-end-line="6" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/Views/List.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769">
-          <caret line="6" column="98" selection-start-line="6" selection-start-column="98" selection-end-line="6" selection-end-column="98" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="195" column="26" selection-start-line="195" selection-start-column="26" selection-end-line="195" selection-end-column="26" />
           <folding>
-            <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#p#6;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#Show#0" expanded="false" />
+            <element signature="n#!!block;n#addText#0" expanded="false" />
+            <element signature="n#!!block;n#addImage#0" expanded="false" />
+            <element signature="n#!!block;n#getParameterByName#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/Views/ScreensManagement.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769">
-          <caret line="8" column="98" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="98" />
+        <state vertical-scroll-proportion="0.72200775">
+          <caret line="79" column="82" selection-start-line="79" selection-start-column="79" selection-end-line="79" selection-end-column="92" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/Views/Templates.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769">
-          <caret line="6" column="98" selection-start-line="6" selection-start-column="98" selection-end-line="6" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/Views/Update.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.423077">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/Views/Screens.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8846154">
-          <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/Views/Create.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769">
-          <caret line="6" column="98" selection-start-line="6" selection-start-column="98" selection-end-line="6" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/Views/Statistics.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.384615">
-          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/public/javascripts/Statistics.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7794118">
-          <caret line="32" column="47" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
-          <folding>
-            <element signature="e#854#908#0" expanded="false" />
-            <element signature="e#1610#1664#0" expanded="false" />
-            <element signature="e#1812#1889#0" expanded="false" />
-            <element signature="e#2003#2079#0" expanded="false" />
-            <element signature="e#3348#3957#0" expanded="false" />
-            <element signature="e#4667#5216#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

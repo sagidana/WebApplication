@@ -62,13 +62,13 @@
             <div class="FullLine">
 
                 <p style="font-size:20px">Texts:</p>
-                <div class="list-group" ng-repeat="Text in Message.text">
+                <div class="list-group" ng-repeat="Text in Message.text track by $index">
                     <label class="control-label col-sm-1">Text {{$index + 1}}: </label>
                     <p style="font-size:15px">{{Text}}</p>
                 </div>
 
                 <p style="font-size:20px">Images:</p>
-                <div class="list-group" ng-repeat="Image in Message.images">
+                <div class="list-group" ng-repeat="Image in Message.images track by $index">
                     <label class="control-label col-sm-1">Image {{$index + 1}}: </label>
                     <p style="font-size:15px">{{Image}} <img ng-src="{{Image}}" class="img-rounded" alt="Cinque Terre" width="110" height="60"> </p>
                 </div>

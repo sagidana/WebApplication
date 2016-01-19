@@ -95,6 +95,10 @@ app.get('/ScreensManagement', function (req, res) {
     res.sendFile(__dirname + "/Views/ScreensManagement.html");
 });
 
+app.get('/About', function (req, res) {
+    res.sendFile(__dirname + "/Views/About.html");
+});
+
 app.get('/Screens', function (req, res) {
     res.sendFile(__dirname + "/Views/Screens.html");
 });

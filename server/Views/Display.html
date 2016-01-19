@@ -30,14 +30,14 @@
     <script type="text/javascript">
 
 
-        var screenId = getParameterByName('screen');
-        console.log('screen: ' + screenId);
+        _ScreenId = getParameterByName('screen');
+        console.log('screen: ' + _ScreenId);
 
         var socket = io.connect('http://localhost:8080');
 
         // on connection to server, ask for user's name with an anonymous callback
         socket.on('connect', function () {
-            socket.emit('getdata', screenId);
+            socket.emit('getdata', _ScreenId);
 
         });
 
@@ -51,7 +51,7 @@
         });
 
         socket.on('updateData', function () {
-            socket.emit('getdata', screenId);
+            socket.emit('getdata', _ScreenId);
             console.log("update Messages");
 
             /*

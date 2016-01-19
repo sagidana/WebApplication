@@ -44,6 +44,7 @@ module.controller('ScreensManagementCtrl', function($scope, ioFactory) {
             if (data) {
                 //console.log(data);
                 $scope.Messages = data;
+                _ScreenId = Display.screen;
 
                 _DisplayContainer = "#display";
                 _Messages = data;

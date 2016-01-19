@@ -15,6 +15,7 @@ var _DisplayContainer = "#pageTemplate";
 var _Date;
 var _Time;
 var _Day;
+var _ScreenId;
 
 var _Stop = false;
 //StartCycle(Messages, i, flag, cycle);
@@ -188,7 +189,7 @@ function ShowMes(mes) {
     dateString = currentDate.getDate() + "-" + currentDate.getMonth() + "-" + currentDate.getFullYear();
 
     var log = {
-        screenNum: screenId,
+        screenNum: _ScreenId,
         tempPath : mes.template,
         messageName : mes.name,
         displayTime : mes.dispTimeSec,

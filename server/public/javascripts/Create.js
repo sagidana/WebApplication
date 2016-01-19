@@ -96,7 +96,7 @@ module.controller('CreateCtrl', function ($scope, $routeParams, ioFactory) {
         clean($scope.Message.text,undefined);
         clean($scope.Message.images,undefined);
 
-        $scope.Message.dispTimeSec = $scope.Message.dispTimeSec * 1000;
+        $scope.Message.dispTimeSec = $scope.Message.dispTimeSec;
 
         for (var timef in $scope.Message.TimeFrame) {
             timef = angular.toJson(timef);
