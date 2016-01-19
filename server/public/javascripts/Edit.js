@@ -19,7 +19,6 @@ module.controller('EditCtrl',function($scope, $routeParams, Upload, ioFactory) {
     });
 
     $scope.upload = function(files) {
-        console.log(files);
 
         if (files && files.length) {
             var file = files[0];

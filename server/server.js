@@ -7,7 +7,7 @@ var express = require('express')
 var walk = require('walk');
 var multer = require('multer');
 
-//////// for Image
+// For images
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
         callback(null, __dirname + '/public/images');
@@ -21,8 +21,7 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage : storage}).any();
 
-
-//////// for Template
+// For templates
 var storageTemplate = multer.diskStorage({
     destination: function (req, file, callback) {
         callback(null, __dirname + '/Templates');
@@ -36,24 +35,6 @@ var storageTemplate = multer.diskStorage({
     }
 });
 var uploadTemplate = multer({ storage : storageTemplate}).any();
-
-
-//var upload = multer({
-//    dest:  __dirname + '/public/images',
-//    limits: {
-//        fieldNameSize: 50,
-//        files: 1,
-//        fields: 5,
-//        fileSize: 1024 * 1024
-//    },
-//    onFileUploadStart: function (file) {
-//        console.log('uploaading is starting ...');
-//    },
-//    rename: function(fieldname, filename,req,res) {
-//        return 'temp';
-//    },
-//
-//});
 
 app.use("/Bootstrap", express.static(__dirname + "/bower_components/"));
 app.use(express.static(__dirname + "/public"));
@@ -95,16 +76,13 @@ app.post('/uploadTemplate',function(req,res){
 });
 
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + "/Views/index.html");
+    res.sendFile(__dirname + "/Views/Statistics.html");
 });
-
 
 app.get('/Statistics', function (req, res) {
     res.sendFile(__dirname + "/Views/Statistics.html");
 });
 
-// send the basic html
-// http://localhost:8080/Edit?name=mes1
 app.get('/Item', function (req, res) {
     res.sendFile(__dirname + "/Views/Item.html");
 });
@@ -121,33 +99,23 @@ app.get('/Screens', function (req, res) {
     res.sendFile(__dirname + "/Views/Screens.html");
 });
 
-// send the basic html
-// http://localhost:8080/Edit?name=mes1
 app.get('/Create', function (req, res) {
     res.sendFile(__dirname + "/Views/Create.html");
 });
 
-// send the basic html
-// http://localhost:8080/Edit?name=mes1
 app.get('/Edit', function (req, res) {
     res.sendFile(__dirname + "/Views/Edit.html");
 });
 
-// send the basic html (no attention to screen id..)
-// http://localhost:8080/List
 app.get('/List', function (req, res) {
     res.sendFile(__dirname + "/Views/List.html");
 });
 
-// send the basic html
-// http://localhost:8080/display?screen=1
 app.get('/display', function (req, res) {
     console.log("display: " + req.query.screen);
     res.sendFile(__dirname + "/Views/Display.html");
 });
 
-// allow the user to add a Mes to screen i
-// http://localhost:8080/update?screen=1
 app.get('/update', function (req, res) {
     console.log("update: " + req.query.screen);
     res.sendFile(__dirname + "/Views/Update.html");
@@ -194,14 +162,12 @@ io.sockets.on('connection', function (socket) {
         });
     });
 
-
     socket.on('editMessage', function (message) {
         editMessage(message, function (result) {
             socket.emit('getStatus', result);
         });
     });
 
-    // the server will get the data from DB and send back to user as 'result'
     socket.on('getdata', function (screenId) {
 
         getDataFromDb(screenId, function (result) {
@@ -239,15 +205,20 @@ io.sockets.on('connection', function (socket) {
         writeLog(log);
     });
 
-    socket.on('askLogs',function(){
-        askLogs(function(result){
-            socket.emit('getLogs', result);
+    socket.on('askMessagesStatistics',function(){
+        askMessagesStatistics(function(result){
+            socket.emit('getMessagesStatistics', result);
+        });
+    });
+
+    socket.on('askScreensStatistics',function(){
+        askScreensStatistics(function(result){
+            socket.emit('getScreensStatistics', result);
         });
     });
 });
 
 function addMessage(message, callback) {
-    /// real addMessage !!!
     for(var i=0; i<message.TimeFrame.length; i++)
         delete message.TimeFrame[i].$$hashKey;
 
@@ -555,7 +526,6 @@ function addTemplate(path,callback){
 };
 
 function writeLog(log){
-    //console.log(log);
 
     MongoClient.connect(url, function (err, db) {
         if (err) {
@@ -563,172 +533,98 @@ function writeLog(log){
         }
         else {
             var collection = db.collection(_collectionStatistics);
-            //console.log("Connected to Database");
 
             collection.insert(log, function (err, records) {
                 if (err) {
                    console.log("Error: " + err);
-                } else
-                    //console.log("Record added: " + JSON.stringify(message) + "\n\n\n\n");
+                }
 
-                //Close connection
                 db.close();
-
             });
         }
     });
 
 };
 
-
-function askLogs(callback){
+function askMessagesStatistics(callback){
     MongoClient.connect(url, function (err, db) {
         if (err) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
         }
         var collection = db.collection(_collectionStatistics);
 
-/*
-//  date    | screens | messages
-//  1.1.15  |    5    |   35        //  on day 1.1.15 there was 5 active screens and total on 35 messages display
-//  2.1.15  |    7    |   86
-
-// date is on dd/mm/yyyy so it can not be grouped..
-
- https://docs.mongodb.org/getting-started/node/aggregation/
- https://docs.mongodb.org/manual/reference/sql-aggregation-comparison/
- https://docs.mongodb.org/v2.6/reference/method/db.collection.group/
-
- with 2 videos:
- https://smyl.es/how-to-count-the-number-of-values-found-for-a-field-in-mongodb-using-node-js-and-mongoose-using-aggregation/
-
- */
-
-        /*
-         // row data
-
-         collection.find().toArray(function (err, result) {
-         if (err) {
-         console.log("Error: " + err);
-         } else if (result.length) {
-         //console.log("Sending result");
-         callback(result);
-         }
-         db.close();
-         });
-         */
-
-
-
-        /*
-
-        // [ { _id: 'date', count: 28 } ]
-
-        collection.aggregate(
-            [
-                {
-                    $group: {
-                        "_id": "date",
-                        "count": { $sum: 1 }
-                    }
-                }
-            ]
-        ).toArray(function(err, result) {
-            console.log(result);
-        });
-        */
-
-
-
-        //////////////
-
-        collection.aggregate(
-            [
-                {
-                    $group: {
-                        "_id": "$date",
-                        "count": { $sum: 1 }
-                    }
-                }
-            ]
-        ).toArray(function(err, result) {
-            console.log(result);
-        });
-        /*
-         [ { _id: Thu Feb 05 2015 00:00:00 GMT+0200 (Jerusalem Standard Time),
-         count: 1 },
-         { _id: Wed Feb 04 2015 00:00:00 GMT+0200 (Jerusalem Standard Time),
-         count: 1 },
-         { _id: Mon Feb 02 2015 00:00:00 GMT+0200 (Jerusalem Standard Time),
-         count: 1 },
-         { _id: '2016-01-18T19:34:12.951Z', count: 1 },
-         { _id: '2016-01-18T19:34:00.331Z', count: 1 },
-         { _id: '2016-01-18T19:34:16.948Z', count: 1 },
-         { _id: '2016-01-18T19:34:05.954Z', count: 1 },
-         { _id: '2016-01-18T19:34:10.946Z', count: 1 },
-         .
-         .
-         */
-
-
-        //////////////
-
-
-
-        /*
-        // not working
-        collection.aggregate( [
+        collection.aggregate([
+            {
+                $match:{}
+            },
             {
                 $group: {
-                    keyf: function(doc) {
-                        return { date: doc.date.getDate()+'/'+doc.date.getMonth()+'/'+doc.date.getYear() };
+                    _id: {
+                        'Date': '$date',
+                        'Message': '$messageName'
                     },
-                    "count": { $sum: 1 }
+                    displayCount: {$sum: 1}
                 }
-            }
-        ],function(err,docs){
-            console.log(docs);
-        });
-
-        //////////////////////////////////
-        collection.aggregate( [
+            },
             {
                 $group: {
-                    "key" : "$date",
-                    reduce: function (curr, result) {
-                        result.count++;
+                    _id: '$_id.Date',
+                    Messages: {
+                        $push: {
+                            Message: '$_id.Message',
+                            displayCount: '$displayCount'
+                        }
                     },
-                    initial: {
-                        count : 0
-                    }
+                    messagesCount: {$sum: 1}
                 }
-            }
-        ],function(err,docs){
-            console.log(docs);
+            },
+        ]).toArray(function(err, results){
+            callback(results);
+
+            db.close();
         });
-
-
-         db.orders.group(
-         {
-         key: { ord_dt: 1, 'item.sku': 1 },
-         cond: { ord_dt: { $gt: new Date( '01/01/2012' ) } },
-         reduce: function( curr, result ) {
-         result.total += curr.item.qty;
-         },
-         initial: { total : 0 }
-         }
-         )
-
-        */
-
-
     });
 };
 
+function askScreensStatistics(callback){
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+        var collection = db.collection(_collectionStatistics);
 
+        collection.aggregate([
+            {
+                $match:{}
+            },
+            {
+                $group: {
+                    _id: {
+                        'Date': '$date',
+                        'Screen': '$screenNum'
+                    },
+                    messagesDisplayed: {$sum: 1}
+                }
+            },
+            {
+                $group: {
+                    _id: '$_id.Date',
+                    Screens: {
+                        $push: {
+                            Screen: '$_id.Screen',
+                            messagesDisplayed: '$messagesDisplayed'
+                        }
+                    },
+                    screensCount: {$sum: 1}
+                }
+            },
+        ]).toArray(function(err, results){
+            callback(results);
 
-
-
+            db.close();
+        });
+    });
+};
 
 
 

@@ -197,13 +197,18 @@ var screens = [
     }
 ];
 
+currentDate = new Date();
+dateString = currentDate.getDate() + "-" + currentDate.getMonth() + "-" + currentDate.getFullYear();
+dateString = new Date(2015,1,2).getDate() + "-" + new Date(2015,1,2).getMonth() + "-" + new Date(2015,1,2).getFullYear();
+
+
 var statistics = [
     {
         "screenNum": 1,
         "tempPath" : "tempA.html",
         "messageName" : "mes1",
         "displayTime" : 5000,
-        "date" : new Date(2015,1,4),
+        "date" : new Date(2015,1,4).getDate() + "-" + new Date(2015,1,4).getMonth() + "-" + new Date(2015,1,4).getFullYear(),
         "time" : new Date(1000,1,1,23,0,0)
     },
     {
@@ -211,7 +216,7 @@ var statistics = [
         "tempPath" : "tempB.html",
         "messageName" : "mes2",
         "displayTime" : 5000,
-        "date" : new Date(2015,1,5),
+        "date" : new Date(2015,1,5).getDate() + "-" + new Date(2015,1,5).getMonth() + "-" + new Date(2015,1,5).getFullYear(),
         "time" : new Date(1000,1,1,14,59,0)
     },
     {
@@ -219,7 +224,7 @@ var statistics = [
         "tempPath" : "tempC.html",
         "messageName" : "mes3",
         "displayTime" : 5000,
-        "date" : new Date(2015,1,2),
+        "date" : new Date(2015,1,2).getDate() + "-" + new Date(2015,1,2).getMonth() + "-" + new Date(2015,1,2).getFullYear(),
         "time" : new Date(1000,1,1,10,0,0)
     }
 ];

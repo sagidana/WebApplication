@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="MessagesApp">
 <head>
+    <script type="text/javascript" src="/javascripts/Graphs/fusioncharts/fusioncharts.js"></script>
     <script src="/javascripts/angular/angular.js"></script>
     <script src="/javascripts/angular/angular-route.js"></script>
+    <script type="text/javascript" src="/javascripts/Graphs/angular-fusioncharts.min.js"></script>
     <script type="text/javascript" src="/javascripts/checklist-model.js"></script>
     <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload.js"></script>
     <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload-shim.js"></script>
@@ -41,19 +43,25 @@
     </header>
     <h2>Statistics</h2>
 
-    <div>
-        <label>Date</label>
-        <label>Screen</label>
-        <label>Message</label>
-    </div>
-    <div ng-repeat="log in Logs">
+    <h3>Screens</h3>
+    <div fusioncharts
+         width="600"
+         height="400"
+         type="msline"
+         chart="{{ScreensStatisticsChartOptions}}"
+         categories="{{ScreensCategories}}"
+         dataset="{{ScreensDataSet}}"
+    ></div>
 
-        <label>{{log.date}}</label>
-        <label>{{log.screenNum}}</label>
-        <label>{{log.messageName}}</label>
-
-    </div>
-
+    <h3>Messages</h3>
+    <div fusioncharts
+         width="600"
+         height="400"
+         type="msline"
+         chart="{{MessagesStatisticsChartOptions}}"
+         categories="{{MessagesCategories}}"
+         dataset="{{MessagesDataSet}}"
+    ></div>
 
 </div>
 </body>

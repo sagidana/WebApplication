@@ -4,8 +4,10 @@
    
     <link rel="stylesheet" type="text/css" href="/stylesheets/Display.css" />
 
+    <script type="text/javascript" src="/javascripts/Graphs/fusioncharts/fusioncharts.js"></script>
     <script type="text/javascript" src="/javascripts/angular/angular.js"></script>
     <script type="text/javascript" src="/javascripts/angular/angular-route.js"></script>
+    <script type="text/javascript" src="/javascripts/Graphs/angular-fusioncharts.min.js"></script>
     <script type="text/javascript" src="/javascripts/checklist-model.js"></script>
     <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload.js"></script>
     <script type="text/javascript" src="/Bootstrap/ng-file-upload/ng-file-upload-shim.js"></script>
@@ -24,87 +26,6 @@
     <meta charset="UTF-8" />
     <title>Update</title>
 
-    <!-- script type="text/javascript">
-
-        var TFsize = 1;
-        var message = {};
-        var text = {};
-        var img = {};
-        var TimeFrame = [];
-        TimeFrame[TFsize - 1] = {};
-        var days = [];
-        var screen = [];
-
-
-        var screenId = getParameterByName('screen');
-        console.log('screen: ' + screenId);
-        var socket = io.connect('http://localhost:8080');
-
-        $(function () {
-            message = {};
-            text = {};
-            img = {};
-            days = [];
-
-            // when the client clicks SEND
-            $("#datasend").click(function () {
-
-                message['name'] = $("#name").val();
-
-                $("#Form #Text").find("input").each(function () {
-                    if (this.tagName.toUpperCase() === "INPUT") {
-                        text[this.name] = $(this).val();
-                    }
-                });
-                message['text'] = text;
-
-                $("#Form #IMG").find("input").each(function () {
-                    if (this.tagName.toUpperCase() === "INPUT") {
-                        img[this.name] = $(this).val();
-                    }
-                });
-                message['img'] = img;
-
-                message['template'] = $("#template").val();
-                message['dispTimeSec'] = $("#dispTimeSec").val() * 1000;
-
-                for (var i = 0; i < TFsize; i++) {
-                    days = [];
-
-                    $("#Form #TimeFrame" + i).find("input").each(function () {
-                        if (this.tagName.toUpperCase() === "INPUT") {
-                            TimeFrame[i][this.name] = $(this).val();
-                        }
-                    });
-
-                    // checked
-                    $("#Form #TimeFrame #TimeFrame" + i + " input:checked").each(function () {
-                        days.push($(this).val());
-                    });
-                    TimeFrame[i]['days'] = days;
-                }
-                message['TimeFrame'] = TimeFrame;
-
-                message['screen'] = $('#screen').val();
-
-                //console.log(JSON.stringify(message));
-                socket.emit('addMessage2', message, screenId);
-               
-
-            });
-
-            $("#addTF").click(function () { addTF(); });
-        }); // on load
-
-        // add more Time Frame option
-        function addTF() {
-            TFsize++;
-            TimeFrame[TFsize - 1] = {};
-            console.log("TFsize", TFsize - 1);
-            //$("#TimeFrame").append('<div id="TimeFrame' + (TFsize - 1) + '">From date: <input type="date" id="FromDate" name="FromDate" />To date: <input type="date" id="ToDate" name="ToDate" /><input type="checkbox" id="days" name="days" value="0" />sunday<input type="checkbox" id="days" name="days" value="1" />monday<input type="checkbox" id="days" name="days" value="2" />tuesday<input type="checkbox" id="days" name="days" value="3" />wednesday<input type="checkbox" id="days" name="days" value="4" />thursday<input type="checkbox" id="days" name="days" value="5" />friday<input type="checkbox" id="days" name="days" value="6" />saturday From time: <input type="time" id="FromTime" name="FromTime" />To time: <input type="time" id="ToTime" name="ToTime" /></div>');
-        };
-
-    </script -->
 </head>
 <body>
 

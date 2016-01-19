@@ -184,12 +184,15 @@ function CheckTime(Time) {
 // .load() and activate text and img replace
 function ShowMes(mes) {
 
+    currentDate = new Date();
+    dateString = currentDate.getDate() + "-" + currentDate.getMonth() + "-" + currentDate.getFullYear();
+
     var log = {
         screenNum: screenId,
         tempPath : mes.template,
         messageName : mes.name,
         displayTime : mes.dispTimeSec,
-        date : new Date(),
+        date : dateString,
         time : new Date().getTime()
     };
     socket.emit('writeLog', log);
