@@ -18,6 +18,12 @@ module.controller('TemplatesCtrl',function($scope, $routeParams, Upload, ioFacto
         }
     });
 
+    ioFactory.on('getStatus', function (status) {
+        if (status.ok){
+            ioFactory.emit('askTemplates', '', function (result) { });
+        }
+    });
+
     $scope.isEditMode = false;
     $scope.isShowMode = false;
 
@@ -36,10 +42,9 @@ module.controller('TemplatesCtrl',function($scope, $routeParams, Upload, ioFacto
         $scope.isEditMode = !$scope.isEditMode;
     };
 
-    $scope.deleteTemplate = function(temp){
-
+    $scope.deleteTemplate = function(template){
+        ioFactory.emit('deleteTemplate', template, function (result) { });
     };
-
 
     //watch for image file upload
     $scope.$watch('files', function() {

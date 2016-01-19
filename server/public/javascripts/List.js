@@ -10,6 +10,15 @@ module.controller('ListCtrl', function($scope, ioFactory) {
             $scope.Messages = result;
         }
     });
+
+    ioFactory.on('getStatus', function (status) {
+        if (status.ok)
+            ioFactory.emit('askMessages', '', function (result) { });
+    });
+
+    $scope.deleteMessage = function(message){
+        ioFactory.emit('deleteMessage', message, function (result) { });
+    }
 });
 
 module.filter("Day", function () {

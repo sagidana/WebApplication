@@ -20,4 +20,13 @@ module.controller('ItemCtrl', function ($scope, $routeParams, ioFactory) {
         }
     });
 
+    ioFactory.on('getStatus', function (status) {
+        if (status.ok){
+
+        }
+    });
+
+    $scope.deleteMessage = function(message){
+        ioFactory.emit('deleteMessage', message, function (result) { });
+    }
 });

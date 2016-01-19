@@ -205,6 +205,18 @@ io.sockets.on('connection', function (socket) {
         });
     });
 
+    socket.on('deleteMessage', function (message) {
+        deleteMessage(message, function (result) {
+            socket.emit('getStatus', result);
+        });
+    });
+
+    socket.on('deleteTemplate', function (template) {
+        deleteTemplate(template, function (result) {
+            socket.emit('getStatus', result);
+        });
+    });
+
     socket.on('writeLog',function(log){
         writeLog(log);
     });
@@ -505,6 +517,57 @@ function deleteScreen(screen,callback){
         }
     });
 };
+
+function deleteMessage(message,callback){
+
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+        else {
+            var collection = db.collection(_collectionMessages);
+
+            // .remove( { type : "food" }, 1 )
+            collection.deleteOne({
+                    "name": message.name
+                },
+                function(err, result){
+                    if (err) {
+                        //console.log(err);
+                        callback(err);
+                    } else {
+                        callback(result);
+                    }
+                    db.close();
+                });
+        }
+    });
+};
+
+function deleteTemplate(template, callback){
+    MongoClient.connect(url, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        }
+        else {
+            var collection = db.collection(_collectionTemplates);
+
+            // .remove( { type : "food" }, 1 )
+            collection.deleteOne({
+                    "path": template.path
+                },
+                function(err, result){
+                    if (err) {
+                        //console.log(err);
+                        callback(err);
+                    } else {
+                        callback(result);
+                    }
+                    db.close();
+                });
+        }
+    });
+}
 
 function addTemplate(path,callback){
     MongoClient.connect(url, function (err, db) {
