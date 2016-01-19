@@ -76,7 +76,11 @@ app.post('/uploadTemplate',function(req,res){
 });
 
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + "/Views/Statistics.html");
+    res.sendFile(__dirname + "/Views/Index.html");
+});
+
+app.get('/Index', function (req, res) {
+    res.sendFile(__dirname + "/Views/Index.html");
 });
 
 app.get('/Statistics', function (req, res) {

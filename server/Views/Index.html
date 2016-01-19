@@ -26,9 +26,10 @@
     <script type="text/javascript" src="/javascripts/Templates.js"></script>
     <script type="text/javascript" src="/javascripts/Statistics.js"></script>
 
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>About</title>
+    <title>Home</title>
 
 </head>
 <body >
@@ -47,13 +48,46 @@
     </header>
 
 </div>
+
+<script>
+    var weatherCallback = function (data) {
+        var wind = data.query.results.channel.wind;
+        var item = data.query.results.channel.item;
+        $("#temperatureDiv h4").text("Weather: " + item.title);
+        var text = "Wind - chill: " + wind.chill + ", speed: " + wind.speed +
+                "</br> Temperature: " + item.condition.temp + " °C";
+        $("#temperatureDiv p").html(text);
+
+        if (item.condition.temp > 20 && item.condition.temp < 25) {
+            $("#temperatureDiv").append("<p><b>Recomendation: </b> Go out and don't read books.</p>");
+        } else {
+            $("#temperatureDiv").append("<p><b>Recomendation: </b> Stay at home and read books.</p>");
+        }
+    };
+</script>
+
 <div class="container">
-<div class="jumbotron">
-    <h1>About</h1>
-</div>
-<h4>
-    Created by Sagi dana and Jecki taliaz
-</h4>
+    <div class="jumbotron">
+        <h1>Home</h1>
+    </div>
+
+    <div>
+        <h3>How to write children's book</h3>
+        <video controls="controls" width="300">
+            <source src="http://content3.videojug.com/7b/7b7dfb03-9643-5dff-636b-ff0008ce14d6/how-to-write-childrens-books__VJ480PENG.mp4" type="video/mp4" />
+        </video>
+    </div>
 </div>
 </body>
+<footer>
+    <div id="temperatureDiv">
+        <h4>Weather</h4>
+        <p>geting info...</p>
+    </div>
+
+    <!-- Weather service -->
+    <script src="/javascripts/weatherService.js"></script>
+    <script src="https://query.yahooapis.com/v1/public/yql?q=select item, wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='israel') and u='c'&format=json&callback=weatherCallback"></script>
+
+</footer>
 </html>
