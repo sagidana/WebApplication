@@ -8,6 +8,6 @@ timeout 5
 start cmd /k node server\server.js
 
 timeout 5
-start chrome.exe "http://localhost:8080/display?screen=1"
+start chrome.exe "http://localhost:8080/"
 
 @PAUSE

@@ -258,74 +258,7 @@ function getParameterByName(name) {
 
 
 ////////////////////////////////////////////////// not in use:
-/*
-// create new list each hour of this hour items.
-function UpdateDisplayQ(DisplayDataA) {
 
-    var DisplayQ = [];
-
-    $.each(DisplayDataA, function (i, DisplayData) {
-        $.each(DisplayData.TimeFreame, function (j, Time) {
-            if (CheckDates(Time) && CheckDays(Time) && CheckTime(Time)) {
-                // only the first meach is insert to the Q, is it ok?
-                DisplayQ.push({ item: DisplayData, sec: 1000 });
-                return true;
-            }
-        })
-    });
-
-    return DisplayQ;
-};
-
-// Schedule the display for all itmes on AllMes.
-function DisplayQ() {
-
-    var time = 0;
-    $.each(allMes, function (i, Mes) {
-        if (i == 0)
-            time = 0;
-        else
-            time = time + Mes.dispTimeSec;
-        console.log(time);
-        setTimeout(function () {
-            $('#screen').text(Mes.name);
-            console.log('i=' + Mes.dispTimeSec + ' ' + Mes.name + ' after ' + Mes.dispTimeSec / 1000 + ' sec.');
-        }, time);
-    });
-};
-*/
-
-
-////////////////////////////////////////////////// need to check:
-
-/*
-var block = $('#screen');
-
-function show_mes(block,text){
-block.delay(5000).text(text);
-};
-
-
-for (var i = 0; i < allMes.length; i++) {
-//setTimeout(show_mes(block, allMes[i].name), 500000); // 5000 = 5 seconds
-// setTimeout(block.text(allMes[i].name), 500000); // 5000 = 5 seconds
-
-show_mes(block, allMes[i].name);
-
-console.log(allMes[i].name);
-}*/
-
-/*
-// print displayQ items 
-console.log('q data:');
-if (displayQ.length != 0) {
-//console.log('length: ' +displayQ.length);
-//console.log(displayQ);
-$.each(displayQ, function (k, dis) {
-console.log(dis.name);
-});
-}
-*/
 
 
 /////////////////////////////////
@@ -333,20 +266,6 @@ console.log(dis.name);
 function show_mes(block, text) {
     block.text(text);
 };
-/*
-var time = 0;
-$.each(allMes, function (i, Mes) {
-if (i == 0)
-time = 0;
-else
-time = time + Mes.dispTimeSec;
-console.log(time);
-setTimeout(function () {
-$('#screen').text(Mes.name);
-console.log('i=' + Mes.dispTimeSec + ' ' + Mes.name + ' after ' + Mes.dispTimeSec / 1000 + ' sec.');
-}, time);
-});
-*/
 
 ///////////////////////////////// not in use
 // convert 'inputFormat' to format: dd/mm/yyyy
@@ -363,15 +282,3 @@ function myTimer() {
     var t = d.toLocaleTimeString();
     document.getElementById("timer").innerHTML = t;
 }
-/////////////////////////////////
-
-
-/*
-var check = new Date;
-var testt = allMes[0];
-if ((check.getTime() <= testt.TimeFreame[0].ToDate.getTime() && check.getTime() >= testt.TimeFreame[0].FromDate.getTime())) console.log("date contained");
-*/
-
-
-
-/////////////////////////////////

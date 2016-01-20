@@ -78,6 +78,16 @@
         <h1>Home</h1>
     </div>
 
+    <canvas id="myCanvas" width="400" height="100">
+        Your browser does not support the HTML5 canvas tag.</canvas>
+
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.font = "30px Arial";
+        ctx.fillText("Messages Application!",10,50);
+    </script>
+
     <div>
         <h3>How to write children's book</h3>
         <video controls="controls" width="300">
@@ -96,5 +106,6 @@
     <script src="/javascripts/weatherService.js"></script>
     <script src="https://query.yahooapis.com/v1/public/yql?q=select item, wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='israel') and u='c'&format=json&callback=weatherCallback"></script>
 
+    All rights belong to Sagi dana and Jecki taliaz
 </footer>
 </html>
